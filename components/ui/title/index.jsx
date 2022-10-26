@@ -7,10 +7,10 @@ const H3 = styled.h3`
   /* font-weight: 600; */
   font-weight: ${({ theme }) => theme?.fontWeight.semiBold};
   /* color: #333; */
-  color: ${({ theme }) => theme?.color?.textColor};
+  color: ${({ theme }) => theme?.color?.text};
 `;
 const Bar = styled.div`
-  background: ${({ theme }) => theme?.color?.primaryColor};
+  background: ${({ theme }) => theme?.color?.primary};
   border-radius: 0.3rem;
   width: 3.2rem;
   height: 0.25rem;
