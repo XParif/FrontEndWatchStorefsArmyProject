@@ -6,6 +6,7 @@ export default function Home() {
   return (
     <>
       <h1>Hello TeamLinkedList</h1>
+      <p>It's Dev Branch </p>
     </>
   )
 }
