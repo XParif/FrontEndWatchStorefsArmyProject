@@ -6,7 +6,10 @@ export default function Home() {
   return (
     <>
       <h1>Hello TeamLinkedList</h1>
-      <p>I'm Murshed</p>
+
+
+      <h1>I am Elias </h1>
+
     </>
   )
 }
