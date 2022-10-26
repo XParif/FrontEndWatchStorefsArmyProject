@@ -2,6 +2,7 @@ import GlobalStyle from "../components/globalStyles";
 import { ThemeProvider } from "styled-components";
 import theme from "../theme";
 import WeeklyProducts from "../components/shared/weeklyProducts";
+import SummerSale from "../components/shared/summerSale";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
 
         <h1>Hello TeamLinkedList</h1>
         <WeeklyProducts />
+        <SummerSale />
       </ThemeProvider>
     </>
   );
