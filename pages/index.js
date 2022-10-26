@@ -1,15 +1,15 @@
-// import Head from 'next/head'
-// import Image from 'next/image'
-// import styles from '../styles/Home.module.css'
+import GlobalStyle from "../components/globalStyles";
+import { ThemeProvider } from "styled-components";
+import theme from "../theme";
 
 export default function Home() {
   return (
     <>
-      <h1>Hello TeamLinkedList</h1>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
 
-
-      <h1>I am Elias </h1>
-
+        <h1>Hello TeamLinkedList</h1>
+      </ThemeProvider>
     </>
-  )
+  );
 }
