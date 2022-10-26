@@ -6,7 +6,9 @@ export default function Home() {
   return (
     <>
       <h1>Hello TeamLinkedList</h1>
+
       <h1>I am tapu </h1>
+
     </>
   )
 }
