@@ -1,15 +1,23 @@
-// import Head from 'next/head'
-// import Image from 'next/image'
-// import styles from '../styles/Home.module.css'
+import GlobalStyle from "../components/globalStyles";
+import { ThemeProvider } from "styled-components";
+import theme from "../theme";
+import WeeklyProducts from "../components/shared/weeklyProducts";
+import SummerSale from "../components/shared/summerSale";
+import SpecialFeatures from "../components/shared/specialFeatures";
+import MostPremiumWatch from "../components/shared/mostPremiumWatch";
 
 export default function Home() {
   return (
     <>
-      <h1>Hello TeamLinkedList</h1>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
 
-
-      <h1>I am Elias </h1>
-
+        <h1>Hello TeamLinkedList</h1>
+        <WeeklyProducts />
+        <SummerSale />
+        <SpecialFeatures />
+        <MostPremiumWatch />
+      </ThemeProvider>
     </>
-  )
+  );
 }
