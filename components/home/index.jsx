@@ -5,6 +5,7 @@ import MostPremiumWatch from "./mostPremiumWatch";
 import Slider from "./slider";
 import HotOffer from "./hotOffer";
 import AllProduct from "./allProduct";
+import Upcoming from "./upcoming";
 
 const HomgePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomgePage = () => {
       {/* <WeeklyProducts /> */}
       <SummerSale />
       <AllProduct/>
+      <Upcoming/>
       <SpecialFeatures />
       <MostPremiumWatch />
     </>
