@@ -6,6 +6,7 @@ import Slider from "./slider";
 import HotOffer from "./hotOffer";
 import AllProduct from "./allProduct";
 import Upcoming from "./upcoming";
+import OurHappyCustomer from "./happyCustomer";
 
 const HomgePage = () => {
   return (
@@ -18,6 +19,7 @@ const HomgePage = () => {
       <Upcoming/>
       <SpecialFeatures />
       <MostPremiumWatch />
+      <OurHappyCustomer/>
     </>
   );
 };
