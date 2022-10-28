@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Title } from "./../../UI/texts";
+import Title from "../../shared/texts/Title";
 
 const SectionHeadingStyle = styled.div`
   margin: 1rem 0;

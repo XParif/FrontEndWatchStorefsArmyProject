@@ -14,11 +14,13 @@ const BaseCard = styled.div`
   }
 `;
 
-export const Card = () => {
+const Card = ({item}) => {
   return (
     <BaseCard>
       <ImageBlock />
-      <TextBlock />
+      <TextBlock item={item} />
     </BaseCard>
   );
 };
+
+export default Card
