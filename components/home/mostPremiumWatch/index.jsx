@@ -1,7 +1,7 @@
 import styled from "styled-components";
 // import Image from "next/image";
-import Title from "../../ui/title";
-import Container from "../../ui/container";
+import Title from "../../shared/title";
+import Container from "../../shared/container";
 
 const Wrapper = styled.div`
   display: grid;
