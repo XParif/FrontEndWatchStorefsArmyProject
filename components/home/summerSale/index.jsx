@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { FaLongArrowAltRight } from "react-icons/fa";
-import Container from "../../ui/container";
+import Container from "../../shared/container";
 
 const Wrap = styled.div`
   background-image: url("summerSale.jpg");

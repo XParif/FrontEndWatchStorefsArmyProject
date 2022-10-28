@@ -1,5 +1,5 @@
-import Container from "../../ui/container";
-import Title from "../../ui/title";
+import Container from "../../shared/container"
+import Title from "../../shared/title";
 
 const WeeklyProducts = () => {
   return (

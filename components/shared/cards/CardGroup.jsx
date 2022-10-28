@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Card from "./index";
 
 const BaseCardGroup = styled.div`
   display: flex;
@@ -6,11 +7,9 @@ const BaseCardGroup = styled.div`
   justify-content: space-between;
 `;
 
-const CardGroup = ({ cardCount }) => {
-  const cards = [];
-  for (let i = 0; i < cardCount; i++) {
-    cards.push(<Card key={i} />);
-  }
+const CardGroup = ({ list }) => {
+  const cards = list.map((item) => <Card key={item.id} item={item} />);
+
   return <BaseCardGroup>{cards}</BaseCardGroup>;
 };
 
