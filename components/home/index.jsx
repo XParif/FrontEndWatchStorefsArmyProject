@@ -4,14 +4,16 @@ import SpecialFeatures from "./specialFeatures";
 import MostPremiumWatch from "./mostPremiumWatch";
 import Slider from "./slider";
 import HotOffer from "./hotOffer";
+import AllProduct from "./allProduct";
 
 const HomgePage = () => {
   return (
     <>
       <Slider />
       <HotOffer/>
-      <WeeklyProducts />
+      {/* <WeeklyProducts /> */}
       <SummerSale />
+      <AllProduct/>
       <SpecialFeatures />
       <MostPremiumWatch />
     </>

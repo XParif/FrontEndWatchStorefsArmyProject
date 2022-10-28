@@ -32,7 +32,6 @@ const allProduct = [
     price: 120,
     offerPrice: 99
   },
-
 ]
 
 const SectionBody = () => {
