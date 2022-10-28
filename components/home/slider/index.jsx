@@ -2,6 +2,10 @@ import { Carousel } from "react-responsive-carousel";
 import Background from "../../shared/backgrounds";
 import Container from "../../shared/container";
 
+const handleClick = (index) => {
+  console.log(`${index} no item clicked`);
+};
+
 const Slider = () => {
   return (
     <Background>
@@ -14,6 +18,7 @@ const Slider = () => {
           stopOnHover={false}
           showStatus={false}
           useKeyboardArrows={true}
+          onClickItem={handleClick}
         >
           <img src="/images/slider/1.png" />
           <img src="/images/slider/2.png" />
