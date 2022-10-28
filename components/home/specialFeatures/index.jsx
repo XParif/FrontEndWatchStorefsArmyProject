@@ -3,9 +3,9 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { MdOutlineLocalShipping } from "react-icons/md";
 import { AiOutlineLock } from "react-icons/ai";
 import { MdOutlineSupportAgent } from "react-icons/md";
-import Feature from "../../ui/feature";
-import Background from "../../ui/backgrounds";
-import Container from "../../ui/container";
+import Feature from "../../shared/feature";
+import Background from "../../shared/backgrounds";
+import Container from "../../shared/container";
 
 const Wrapper = styled.div`
   display: grid;

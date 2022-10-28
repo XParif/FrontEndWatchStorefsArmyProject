@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {FaArrowLeft, FaArrowRight} from 'react-icons/fa'
-import { Button } from "../../UI/buttons"
+import Button from "../../shared/buttons"
 
 const Pagination = styled.div`
   & button {

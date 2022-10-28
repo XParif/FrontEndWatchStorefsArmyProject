@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "./../buttons";
+import Button from "../../buttons";
 import { FaCartPlus, FaInfo } from "react-icons/fa";
 
 const ButtonGroupStyle = styled.div`
