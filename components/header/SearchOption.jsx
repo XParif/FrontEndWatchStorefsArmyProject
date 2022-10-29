@@ -21,7 +21,7 @@ const SearchForm = styled.form``;
 //   width: 4rem;
 // `;
 
-const SearchOption = (props) => {
+const SearchOption = () => {
   return (
     <SearchContainer>
       <SearchForm>

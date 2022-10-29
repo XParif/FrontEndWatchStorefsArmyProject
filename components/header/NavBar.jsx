@@ -27,9 +27,9 @@ const MyNavLink = styled.div`
   }
   /* &:active {
     color: ${({ bg = "primary", theme }) =>
-      theme.color[bg] ?? theme?.color?.secondary};
-    background-color: ${({ theme }) => theme?.color?.white}; */
-  }
+    theme.color[bg] ?? theme?.color?.secondary};
+    background-color: ${({ theme }) => theme?.color?.white}; 
+  }*/
 `;
 
 const NavBar = ({ openModal }) => {
