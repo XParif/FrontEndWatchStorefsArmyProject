@@ -33,7 +33,7 @@ const MyNavLink = styled.div`
 `;
 
 const NavBar = ({ openModal }) => {
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
   return (
     <NavContainer>
       <Link href="/collections">
