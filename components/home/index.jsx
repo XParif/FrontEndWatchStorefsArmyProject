@@ -12,14 +12,14 @@ const HomgePage = () => {
   return (
     <>
       <Slider />
-      <HotOffer/>
-      {/* <WeeklyProducts /> */}
+      <HotOffer />
       <SummerSale />
-      <AllProduct/>
-      <Upcoming/>
+      <AllProduct />
+      <Upcoming />
       <SpecialFeatures />
+      <WeeklyProducts />
       <MostPremiumWatch />
-      <OurHappyCustomer/>
+      <OurHappyCustomer />
     </>
   );
 };
