@@ -3,7 +3,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "../../theme";
 import GlobalStyle from "../globalStyles";
 import Footer from "./../footer";
-// import Header from "./Header";
+import Header from "./../header";
 // import Modal from "./modal";
 
 export default function Layout({ children }) {
@@ -13,6 +13,7 @@ export default function Layout({ children }) {
       <GlobalStyle />
       {/* {openModal && <Modal modalController={setOpenModal} />} */}
       {/* <Header modalController={setOpenModal} /> */}
+      <Header />
       <main>{children}</main>
       <Footer />
     </ThemeProvider>
