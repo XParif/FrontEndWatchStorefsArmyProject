@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "../../theme";
 import GlobalStyle from "../globalStyles";
-// import Footer from "./footer";
+import Footer from "./footer";
 // import Header from "./Header";
 // import Modal from "./modal";
 
@@ -14,7 +14,7 @@ export default function Layout({ children }) {
       {/* {openModal && <Modal modalController={setOpenModal} />} */}
       {/* <Header modalController={setOpenModal} /> */}
       <main>{children}</main>
-      {/* <Footer /> */}
+      <Footer />
     </ThemeProvider>
   );
 }
