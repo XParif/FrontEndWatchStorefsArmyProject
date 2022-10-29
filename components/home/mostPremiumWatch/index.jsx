@@ -2,6 +2,8 @@ import styled from "styled-components";
 // import Image from "next/image";
 import Title from "../../shared/title";
 import Container from "../../shared/container";
+import Button from "../../shared/buttons";
+import { FaInfoCircle, FaHome } from "react-icons/fa";
 
 const Wrapper = styled.div`
   display: grid;
@@ -13,13 +15,18 @@ const Wrapper = styled.div`
 const Disclaimer = styled.span`
   color: ${({ theme }) => theme?.color?.primary};
   font-size: 0.94rem;
-  margin-top: 0.94rem;
 `;
 
 const ImageContainer = styled.div`
   & img {
     max-width: 100%;
   }
+`;
+
+const ButtonWrap = styled.div`
+  display: flex;
+  gap: 1.2rem;
+  padding: 2rem 0 1rem 0;
 `;
 
 const MostPremiumWatch = () => {
@@ -49,7 +56,14 @@ const MostPremiumWatch = () => {
               Lorem Ipsum.
             </p>
 
-            {/* TODO: Reuse button component */}
+            <ButtonWrap>
+              <Button>
+                more details <FaInfoCircle />
+              </Button>
+              <Button bg="primary">
+                want live try <FaHome />
+              </Button>
+            </ButtonWrap>
 
             <Disclaimer>
               *If You are Interested in our premium products. Click “Want Live
