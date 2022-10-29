@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Background from "../Shared/backgrounds";
-import Container from "../Shared/container";
+import Background from "../shared/backgrounds";
+import Container from "../shared/container";
 import FBodyItem from "./FBodyItem";
 import Subscribe from "./Subscribe";
 
