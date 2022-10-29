@@ -1,11 +1,7 @@
-// import Head from 'next/head'
-// import Image from 'next/image'
-// import styles from '../styles/Home.module.css'
+import HomgePage from "../components/home";
 
 export default function Home() {
   return (
-    <>
-      <h1>Hello TeamLinkedList</h1>
-    </>
-  )
+        <HomgePage />
+  );
 }
