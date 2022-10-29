@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "../../theme";
+import Footer from "../footer";
 import GlobalStyle from "../globalStyles";
-import Footer from "./../footer";
-import Header from "./../header";
+import Header from "../header";
 // import Modal from "./modal";
 
 export default function Layout({ children }) {

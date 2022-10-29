@@ -4,6 +4,8 @@ import SearchInput from "./SearchInput";
 
 const SearchStyle = styled.div`
   border-radius: 10px;
+  display: flex;
+  align-items: center;
 `;
 
 const Search = ({ placeholder, children }) => {
