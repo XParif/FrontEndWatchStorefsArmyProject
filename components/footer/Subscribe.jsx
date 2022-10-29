@@ -1,7 +1,7 @@
 import { FaRegPaperPlane } from "react-icons/fa";
 import styled from "styled-components";
-import Search from "../Shared/search";
-import { Title } from "../Shared/texts";
+import Search from "../shared/searchs";
+import Title from "./../shared/texts/Title";
 
 const SubscribeStyle = styled.div`
   & button {

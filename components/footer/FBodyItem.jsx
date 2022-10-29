@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Title } from "../Shared/texts";
+import Title from "../shared/texts/Title";
 
 const FDetails = styled.p``;
 
