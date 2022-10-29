@@ -7,6 +7,7 @@ import HotOffer from "./hotOffer";
 import AllProduct from "./allProduct";
 import Upcoming from "./upcoming";
 import OurHappyCustomer from "./happyCustomer";
+import ProductReviewVideo from './productReviewVideo'
 
 const HomgePage = () => {
   return (
@@ -20,6 +21,7 @@ const HomgePage = () => {
       <SpecialFeatures />
       <MostPremiumWatch />
       <OurHappyCustomer/>
+      <ProductReviewVideo/>
     </>
   );
 };
