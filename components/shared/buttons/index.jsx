@@ -14,10 +14,11 @@ export const BaseButton = styled.button`
   font-size: ${({ fontSize, theme }) => theme?.fontSizes[fontSize] ?? "1rem"};
 
   padding: ${({ shape, theme }) =>
-    shape === "square" ? "0.5rem" : "0.25rem 0.75rem"};
+    shape === "square" ? "0.5rem" : "0.5rem 0.85rem"};
 
   border-radius: 10px;
   cursor: pointer;
+  text-transform: capitalize;
   transition: 0.5s;
 
   & > * {
