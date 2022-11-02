@@ -7,19 +7,21 @@ import HotOffer from "./hotOffer";
 import AllProduct from "./allProduct";
 import Upcoming from "./upcoming";
 import OurHappyCustomer from "./happyCustomer";
+import ProductReviewVideo from './productReviewVideo'
 
 const HomgePage = () => {
   return (
     <>
       <Slider />
-      <HotOffer/>
-      {/* <WeeklyProducts /> */}
+      <HotOffer />
       <SummerSale />
-      <AllProduct/>
-      <Upcoming/>
+      <AllProduct />
+      <Upcoming />
       <SpecialFeatures />
+      <WeeklyProducts />
       <MostPremiumWatch />
       <OurHappyCustomer/>
+      <ProductReviewVideo/>
     </>
   );
 };

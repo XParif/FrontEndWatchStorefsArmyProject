@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import Button from "../shared/buttons";
-// import Button from "../shared/buttons";
 import Bar from "../shared/texts/Bar";
 import CartItem from "./CartItem";
 
 const CartInfoWrap = styled.div`
   flex: 3;
   padding: 2%;
-  background-color: white;
+  background-color: ${({ theme }) => theme?.color?.white};
 `;
 
 const Hader = styled.div`
@@ -19,7 +18,7 @@ const CartTitle = styled.h3``;
 const CartItemCount = styled.h3``;
 
 const ItemTitle = styled.div`
-  color: #7678ed;
+  color: ${({ theme }) => theme?.color?.primary};
   font-weight: bold;
   display: flex;
 `;
