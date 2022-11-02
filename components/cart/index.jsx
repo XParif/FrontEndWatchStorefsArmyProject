@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styled from "styled-components";
 import Button from "../shared/buttons";
 import CartInfo from "./CartInfo";
@@ -37,9 +38,11 @@ const CartBody = () => {
         </InfoContainer>
       </CartContainer>
       <BackButtonContainer>
-        <Button bg="primary" fontSize={"lg"}>
-          Back To Store
-        </Button>
+        <Link href="/">
+          <Button bg="primary" fontSize={"lg"}>
+            Back To Collections
+          </Button>
+        </Link>
       </BackButtonContainer>
     </>
   );

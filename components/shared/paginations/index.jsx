@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "../buttons";
+import Button from "../buttons";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const PaginationStyle = styled.div`
