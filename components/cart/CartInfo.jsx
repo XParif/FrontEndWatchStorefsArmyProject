@@ -27,7 +27,7 @@ const ProductDetailTitle = styled.span`
 `;
 const ProductQuantityTitle = styled.span`
   margin: 10px;
-  margin-left: 50px;
+  margin-left: 70px;
 `;
 const ProductPriceTitle = styled.span`
   margin: 10px 80px;

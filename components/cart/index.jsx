@@ -38,9 +38,9 @@ const CartBody = () => {
         </InfoContainer>
       </CartContainer>
       <BackButtonContainer>
-        <Link href="/collections">
+        <Link href="/">
           <Button bg="primary" fontSize={"lg"}>
-            Back To Store
+            Back To Collections
           </Button>
         </Link>
       </BackButtonContainer>
