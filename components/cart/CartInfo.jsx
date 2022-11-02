@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Button from "../shared/buttons";
+// import Button from "../shared/buttons";
 import Bar from "../shared/texts/Bar";
 import CartItem from "./CartItem";
 
@@ -36,12 +38,16 @@ const ProductTotalTitle = styled.span`
 `;
 
 const CartItemList = styled.div`
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
 `;
-
+const ClearAll = styled.div`
+  text-align: center;
+`;
 const CartInfo = () => {
-  const count = 1;
+  const data = [{ ann: "1" }, { sadjk: 3 }];
+
+  const count = data.length;
   return (
     <CartInfoWrap>
       <Hader>
@@ -51,8 +57,9 @@ const CartInfo = () => {
           {count > 1 ? `${count} Items` : `${count} Item`}{" "}
         </CartItemCount>
       </Hader>
-      {/* <HrLine /> */}
-      <Bar />
+
+      <Bar width="full" height="sm" />
+
       <ItemTitle>
         <ProductDetailTitle>Product Details</ProductDetailTitle>
         <ProductQuantityTitle>Quantity</ProductQuantityTitle>
@@ -62,7 +69,14 @@ const CartInfo = () => {
 
       <CartItemList>
         <CartItem />
+        <CartItem />
+        <CartItem />
       </CartItemList>
+      <ClearAll>
+        <Button bg="red" fontSize="lg">
+          Clear All
+        </Button>
+      </ClearAll>
     </CartInfoWrap>
   );
 };

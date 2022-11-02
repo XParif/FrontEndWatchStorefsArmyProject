@@ -1,14 +1,26 @@
+import Image from "next/image";
+import { FaMinus, FaPlus } from "react-icons/fa";
 import styled from "styled-components";
+import Button from "./../shared/buttons";
+import BlockText from "./../shared/texts/BlockText";
 
-const CartItemContainer = styled.div``;
+const CartItemContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 5px;
+  /* border: 1px black solid; */
+`;
 
 const ProdInfo = styled.div`
   display: flex;
+  align-items: center;
 `;
 const ProdImage = styled.div`
-  height: 80px;
-  width: 80px;
-  background-color: green;
+  height: 70px;
+  width: 70px;
+  background-color: ${({ bg, theme }) =>
+    theme.color[bg] ?? theme?.color?.secondary};
 `;
 const ProdDetails = styled.div`
   display: flex;
@@ -19,10 +31,26 @@ const ProdDetails = styled.div`
 const ProdQty = styled.div`
   margin: 0 10px;
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   gap: 0.5rem;
 `;
-const AmountText = styled.h2``;
+const AmountText = styled.h3``;
+
+const DeletItem = styled.button`
+  display: flex;
+  justify-content: flex-end;
+  background-color: transparent;
+  border: none;
+  /* color: ${({ theme }) => theme?.color?.text}; */
+  color: ${({ theme }) => theme?.color?.red};
+  font-size: 25px;
+  transition: 0.5s;
+  /* font-weight: bold; */
+  cursor: pointer;
+  /* &:hover {
+    color: ${({ theme }) => theme?.color?.red};
+  } */
+`;
 
 const CartItem = () => {
   return (
@@ -49,9 +77,10 @@ const CartItem = () => {
         </Button>
       </ProdQty>
 
-      <AmountText size="lg">$700</AmountText>
+      <BlockText size="md">$700</BlockText>
 
-      <AmountText size="lg">$1400</AmountText>
+      <BlockText size="md">$1400</BlockText>
+      <DeletItem>x{/* <FaTrashAlt /> */}</DeletItem>
     </CartItemContainer>
   );
 };
