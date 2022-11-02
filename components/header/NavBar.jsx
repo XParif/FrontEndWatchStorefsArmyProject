@@ -32,7 +32,7 @@ const MyNavLink = styled.div`
   }*/
 `;
 
-const NavBar = ({ openModal }) => {
+const NavBar = ({ modalController }) => {
   const [login, setLogin] = useState(false);
   return (
     <NavContainer>
@@ -63,7 +63,7 @@ const NavBar = ({ openModal }) => {
           </MyNavLink>
         </NavContainer>
       ) : (
-        <MyNavLink onClick={() => openModal(true)}>
+        <MyNavLink onClick={() => modalController(true)}>
           <NavList title="LogIn" logo={<FaSignInAlt />} />
         </MyNavLink>
       )}

@@ -1,4 +1,4 @@
-// import { BsWatch } from "react-icons/bs";
+import { BsWatch } from "react-icons/bs";
 import styled from "styled-components";
 const LogoContainer = styled.h1`
   color: White;
@@ -10,7 +10,7 @@ const LogoStyle = styled.img`
 const BrandLogo = (props) => {
   return (
     <LogoContainer>
-      {/* <BsWatch /> */}
+      <BsWatch />
       Watch Store
     </LogoContainer>
     //  <LogoStyle src="logo.png" alt="Logo" />

@@ -27,7 +27,7 @@ const Header = ({ modalController }) => {
           <HeaderContainer>
             <BrandLogo />
             <SearchOption />
-            <NavBar openModal={modalController} />
+            <NavBar modalController={modalController} />
           </HeaderContainer>
         </Container>
       </Background>
