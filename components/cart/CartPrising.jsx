@@ -1,4 +1,5 @@
-import styled from "styled-components"; // Getting Hydtration Error for this File
+import Link from "next/link";
+import styled from "styled-components";
 import Bar from "../shared/texts/Bar";
 import BlockText from "../shared/texts/BlockText";
 import Button from "./../shared/buttons";
@@ -16,13 +17,16 @@ const PrisingTitle = styled.h3`
 const TagContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
-  /* padding: 0 20px; */
 `;
 const TagName = styled.span`
   margin: 3px 0;
 `;
 
-const CartPrising = () => {
+const CheckOutBtn = styled.div`
+  margin-top: 20px;
+`;
+
+const CartPrising = (props) => {
   const subTotal = 250; // get from props
   const vatRate = 3; // get from props
   const vat = (subTotal / 100) * vatRate;
@@ -34,21 +38,28 @@ const CartPrising = () => {
       <Bar width="full" height="sm" />
 
       <BlockText size="md">
-        <TagName>Sub Total</TagName> <TagName>:</TagName>{" "}
+        <TagName>Sub Total</TagName> <TagName>:</TagName>
+        {" $"}
         <TagName>{subTotal}</TagName>
       </BlockText>
 
       <BlockText size="md">
-        <TagName>Vat({vatRate}%)</TagName> <TagName>:</TagName>{" "}
+        <TagName>Vat({vatRate}%)</TagName> <TagName>:</TagName>
+        {" $"}
         <TagName>{vat}</TagName>
       </BlockText>
       <BlockText size="md" weight="bold">
-        <TagName>Grand Total</TagName> <TagName>:</TagName>{" "}
+        <TagName>Grand Total</TagName> <TagName>:</TagName>
+        {" $"}
         <TagName>{grandTotal}</TagName>
       </BlockText>
-      <Button bg="primary" fontSize="md">
-        Checkout
-      </Button>
+      <CheckOutBtn>
+        <Link href="/checkout">
+          <Button bg="primary" fontSize="md">
+            Checkout
+          </Button>
+        </Link>
+      </CheckOutBtn>
     </CartPrisingContainer>
   );
 };
