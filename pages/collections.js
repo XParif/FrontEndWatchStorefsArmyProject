@@ -1,7 +1,7 @@
 import PageHead from "../components/Collection/pageHead";
-import PageBody from './../components/collection/pageBody/index';
+import PageBody from '../components/collection/pageBody/index';
 
-const Collection = () => {
+const Collections = () => {
   return (
     <>
       <PageHead title="Our All Collections" />
@@ -10,4 +10,4 @@ const Collection = () => {
   );
 };
 
-export default Collection;
+export default Collections;

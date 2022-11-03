@@ -17,7 +17,7 @@ const SearchForm = styled.form``;
 
 // const SearchSubmit = styled.input`
 //   font-size: 1.2rem;
-//   color: #7678ed;
+//   color: #7678ed; //${({ theme }) => theme?.color?.primary}
 //   width: 4rem;
 // `;
 
