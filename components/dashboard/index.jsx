@@ -6,6 +6,7 @@ import SectionBar from "../shared/texts/SectionBar";
 
 const Wrap = styled.div`
   padding: 2rem 0 4rem 0;
+  background-color: #f5f6f8;
 `;
 
 const Top = styled.div``;
@@ -72,8 +73,8 @@ const Details = styled.div`
 const Dashboard = () => {
   return (
     <>
-      <Container>
-        <Wrap>
+      <Wrap>
+        <Container>
           <Top>
             <Breadcrumb>
               <li>
@@ -107,8 +108,8 @@ const Dashboard = () => {
           </Top>
           <SectionBar />
           <Body></Body>
-        </Wrap>
-      </Container>
+        </Container>
+      </Wrap>
     </>
   );
 };
