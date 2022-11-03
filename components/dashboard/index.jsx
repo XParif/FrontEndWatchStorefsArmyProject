@@ -2,6 +2,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { BaseButton } from "../shared/buttons";
 import Container from "../shared/container";
+import SectionBar from "../shared/texts/SectionBar";
 
 const Wrap = styled.div`
   padding: 2rem 0 4rem 0;
@@ -103,7 +104,7 @@ const Dashboard = () => {
               </div>
             </TopContent>
           </Top>
-
+          <SectionBar />
           <Body></Body>
         </Wrap>
       </Container>
