@@ -3,14 +3,17 @@ import styled from "styled-components";
 import { BaseButton } from "../shared/buttons";
 import Container from "../shared/container";
 import SectionBar from "../shared/texts/SectionBar";
+import AllTabs from "./allTabs";
 
 const Wrap = styled.div`
-  padding: 2rem 0 4rem 0;
+  padding: 2rem 0 5rem 0;
   background-color: #f5f6f8;
 `;
 
 const Top = styled.div``;
-const Body = styled.div``;
+const Body = styled.div`
+  padding-top: 3rem;
+`;
 
 const Breadcrumb = styled.ul`
   & li {
@@ -42,6 +45,10 @@ const TopContent = styled.div`
 const SignOutButton = styled(BaseButton)`
   font-size: ${({ theme }) => theme?.fontSizes?.md};
   padding: 0.7rem 2.5rem;
+  :hover {
+    background-color: ${({ theme }) => theme?.color?.red};
+    border: 1px solid ${({ theme }) => theme?.color?.red};
+  }
 `;
 
 const Profile = styled.div`
@@ -107,7 +114,10 @@ const Dashboard = () => {
             </TopContent>
           </Top>
           <SectionBar />
-          <Body></Body>
+
+          <Body>
+            <AllTabs />
+          </Body>
         </Container>
       </Wrap>
     </>
