@@ -89,6 +89,7 @@ const Dashboard = () => {
               <Profile>
                 <Picture>
                   <img src="/HM_Azijul.jpg" alt="Profile Picture" />
+                  {/* TODO:issues when i use nextjs image component, i faced some problem in design. so i use here html img tag. in future hope we can solve it */}
                 </Picture>
 
                 <Details>
