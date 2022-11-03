@@ -1,52 +1,59 @@
 import React, { useState } from "react";
 import { TabContainer, LeftSide, RightSide, Tab, Content } from "./tab.styles";
+import {
+  BsArrowDownLeftCircleFill,
+  BsChatRightQuoteFill,
+  BsFillGearFill,
+} from "react-icons/bs";
+import { FaTruck, FaShoppingBag } from "react-icons/fa";
+import Receive from "./tabComponent/receive";
+import Return from "./tabComponent/return";
+import Review from "./tabComponent/review";
+import History from "./tabComponent/history";
+import Settings from "./tabComponent/settings";
 
-function AllTabs() {
-  const [active, setActive] = useState(0);
-  const handleClick = (e) => {
-    const index = parseInt(e.target.id, 0);
-    if (index !== active) {
-      setActive(index);
+const AllTabs = () => {
+  const [active, setActive] = useState(1);
+  const [content, setContent] = useState(Receive);
+
+  const handleClick = (index) => {
+    setActive(index);
+    if (index === 1) {
+      setContent(Receive);
+    } else if (index === 2) {
+      setContent(Return);
+    } else if (index === 3) {
+      setContent(Review);
+    } else if (index === 4) {
+      setContent(History);
+    } else if (index === 5) {
+      setContent(Settings);
     }
   };
 
   return (
     <TabContainer>
-      {/*TODO: 
-      Returns
-      Review
-      Order History
-      Account Settings
-      */}
-
       <LeftSide>
-        <Tab onClick={handleClick} active={active === 0} id={0}>
-          Returns
+        <Tab onClick={() => handleClick(1)} active={active === 1}>
+          <FaTruck /> <div>Receive</div>
         </Tab>
-
-        <Tab onClick={handleClick} active={active === 1} id={1}>
-          Review
+        <Tab onClick={() => handleClick(2)} active={active === 2}>
+          <BsArrowDownLeftCircleFill /> <div>Returns</div>
+        </Tab>
+        <Tab onClick={() => handleClick(3)} active={active === 3}>
+          <BsChatRightQuoteFill /> <div>Review</div>
+        </Tab>
+        <Tab onClick={() => handleClick(4)} active={active === 4}>
+          <FaShoppingBag /> <div>History</div>
+        </Tab>
+        <Tab onClick={() => handleClick(5)} active={active === 5}>
+          <BsFillGearFill /> <div>Settings</div>
         </Tab>
       </LeftSide>
 
-      <RightSide>
-        <Content active={active === 0}>
-          <h1>Hello Returns</h1>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit
-            molestias placeat inventore aspernatur magni quod doloremque,
-            ratione quo veritatis ipsa voluptatem explicabo omnis culpa
-            praesentium corrupti delectus nulla rem quibusdam eius repudiandae
-            officiis iste eum saepe. Minus eligendi obcaecati tempore provident
-            sequi architecto ad. Id nemo voluptas labore at quibusdam.
-          </p>
-        </Content>
-        <Content active={active === 1}>
-          <h1>Yo Yo Review</h1>
-        </Content>
-      </RightSide>
+      <RightSide>{content}</RightSide>
     </TabContainer>
   );
-}
+};
 
 export default AllTabs;

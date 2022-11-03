@@ -21,7 +21,7 @@ export const RightSide = styled.div`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 `;
 
-export const Tab = styled.button`
+export const Tab = styled.a`
   border: none;
   outline: none;
   cursor: pointer;
@@ -30,12 +30,16 @@ export const Tab = styled.button`
 
   font-size: ${({ theme }) => theme?.fontSizes?.md};
   font-weight: ${({ theme }) => theme?.fontWeight?.medium};
-  background-color: ${(props) => (props.active ? "#7678ed" : "#f5f6f8")};
-  color: ${(props) => (props.active ? "#fff" : "#333")};
+  background-color: ${(props) => (props.active ? "#eaeaff" : "#f5f6f8")};
+  color: ${(props) => (props.active ? "#7678ed" : "#333")};
 
   padding: 1rem 0;
   border-radius: 0.3rem;
   transition: background-color 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
 
   :hover {
     background-color: ${({ theme }) => theme?.color?.primaryDarkShade};
@@ -44,5 +48,5 @@ export const Tab = styled.button`
 `;
 
 export const Content = styled.div`
-  ${(props) => (props.active ? "" : "display:none")}
+  ${(props) => (props.active ? "display:block" : "display:none")}
 `;
