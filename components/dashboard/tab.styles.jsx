@@ -38,7 +38,7 @@ export const Tab = styled.button`
   transition: background-color 0.5s ease-in-out;
 
   :hover {
-    background-color: ${({ theme }) => theme?.color?.primary};
+    background-color: ${({ theme }) => theme?.color?.primaryDarkShade};
     color: ${({ theme }) => theme?.color?.white};
   }
 `;

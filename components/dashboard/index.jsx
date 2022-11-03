@@ -30,7 +30,7 @@ const Breadcrumb = styled.ul`
       }
     }
     & a:hover {
-      color: ${({ theme }) => theme?.color?.primary};
+      color: ${({ theme }) => theme?.color?.primaryDarkShade};
     }
   }
 `;
