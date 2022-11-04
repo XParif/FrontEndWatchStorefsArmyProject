@@ -6,6 +6,7 @@ const NavItem = styled.h3`
   gap: 0.5rem;
   margin: 0 7px;
   padding: 5px;
+  font-weight: ${({ theme }) => theme?.fontWeight?.medium};
 `;
 
 const NavList = (props) => {

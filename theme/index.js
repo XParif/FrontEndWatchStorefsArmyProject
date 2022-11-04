@@ -28,11 +28,12 @@ const theme = {
   },
   color: {
     primary: "#7678ed",
+    primaryDarkShade: "#47488e",
     secondary: "#eaeaff",
     hover: "#3B3B3B",
     text: "#333333",
     white: "#ffffff",
-    red: "#FF0000",
+    red: "#cd1a3e",
   },
   responsive: {
     mobile: "768px",

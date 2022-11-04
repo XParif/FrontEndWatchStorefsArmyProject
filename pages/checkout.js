@@ -1,8 +1,9 @@
 import Link from "next/link";
 import styled from "styled-components";
-import Button from "../shared/buttons";
-import CartInfo from "./CartInfo";
-import CartPrising from "./CartPrising";
+import Button from "../components/shared/buttons";
+import CartInfo from "../components/cart/CartInfo";
+import CartPrising from "../components/cart/CartPrising";
+import CheckoutForm from './../components/cart/checkout/';
 
 const CartContainer = styled.div`
   display: flex;
@@ -28,42 +29,18 @@ const BackButtonContainer = styled.div`
   margin: 20px;
 `;
 
-const CartBody = () => {
-  const data = [
-    {
-      id: 1,
-      name: "AppleWatch",
-      brand: "Apple",
-      quantity: 1,
-      unitePrice: 100,
-      total: 100,
-    },
-    {
-      id: 2,
-      name: "Mi Band 3",
-      brand: "xaomi",
-      quantity: 1,
-      unitePrice: 80,
-      total: 80,
-    },
-  ];
-
-  let subTotal = 0;
-
-  subTotal += data.map((item) => parseInt(item.quantity * item.unitePrice));
-  console.log(subTotal);
-
+const Checkout = () => {
   return (
     <>
       <CartContainer>
         <InfoContainer>
-          <CartInfo data={data} />
-          <CartPrising subTotal={subTotal} vatRate={3} />
+          <CheckoutForm/>
+          <CartPrising />
         </InfoContainer>
       </CartContainer>
       <BackButtonContainer>
         <Link href="/">
-          <Button bg="primary" fontSize={"md"}>
+          <Button bg="primary" fontSize={"lg"}>
             Back To Collections
           </Button>
         </Link>
@@ -72,4 +49,4 @@ const CartBody = () => {
   );
 };
 
-export default CartBody;
+export default Checkout;
