@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TabContainer, LeftSide, RightSide, Tab, Content } from "./tab.styles";
+import { TabContainer, LeftSide, RightSide, Tab } from "./tab.styles";
 import {
   BsArrowDownLeftCircleFill,
   BsChatRightQuoteFill,

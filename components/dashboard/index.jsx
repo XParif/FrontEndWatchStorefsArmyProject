@@ -6,13 +6,13 @@ import SectionBar from "../shared/texts/SectionBar";
 import AllTabs from "./allTabs";
 
 const Wrap = styled.div`
-  padding: 2rem 0 5rem 0;
+  padding: 1.5rem 0 5rem 0;
   background-color: #f5f6f8;
 `;
 
 const Top = styled.div``;
 const Body = styled.div`
-  padding-top: 3rem;
+  padding-top: 2.5rem;
 `;
 
 const Breadcrumb = styled.ul`
@@ -39,12 +39,12 @@ const TopContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 0 1rem 0;
+  padding: 1.5rem 0 1rem 0;
 `;
 
 const SignOutButton = styled(BaseButton)`
   font-size: ${({ theme }) => theme?.fontSizes?.md};
-  padding: 0.7rem 2.5rem;
+  padding: 0.5rem 2rem;
   :hover {
     background-color: ${({ theme }) => theme?.color?.red};
     border: 1px solid ${({ theme }) => theme?.color?.red};
@@ -57,8 +57,8 @@ const Profile = styled.div`
   gap: 1.5rem;
 `;
 const Picture = styled.div`
-  height: 8rem;
-  width: 8rem;
+  height: 6rem;
+  width: 6rem;
 
   & img {
     width: 100%;

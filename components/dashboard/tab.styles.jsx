@@ -46,7 +46,3 @@ export const Tab = styled.a`
     color: ${({ theme }) => theme?.color?.white};
   }
 `;
-
-export const Content = styled.div`
-  ${(props) => (props.active ? "display:block" : "display:none")}
-`;
