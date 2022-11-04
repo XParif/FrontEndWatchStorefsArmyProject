@@ -13,6 +13,8 @@ const CartPrisingContainer = styled.div`
 
 const PrisingTitle = styled.h3`
   text-align: center;
+  color: ${({ theme }) => theme?.color?.text};
+  font-weight: ${({ theme }) => theme?.fontWeight?.semiBold};
 `;
 const TagContainer = styled.div`
   display: flex;
@@ -27,14 +29,14 @@ const CheckOutBtn = styled.div`
 `;
 
 const CartPrising = (props) => {
-  const subTotal = 250; // get from props
-  const vatRate = 3; // get from props
+  const subTotal = props.subTotal;
+  const vatRate = props.vatRate;
   const vat = (subTotal / 100) * vatRate;
   const grandTotal = subTotal + vat;
 
   return (
     <CartPrisingContainer>
-      <PrisingTitle>Prising Summery</PrisingTitle>
+      <PrisingTitle>Pricing Summary</PrisingTitle>
       <Bar width="full" height="sm" />
 
       <BlockText size="md">
@@ -48,7 +50,7 @@ const CartPrising = (props) => {
         {" $"}
         <TagName>{vat}</TagName>
       </BlockText>
-      <BlockText size="md" weight="bold">
+      <BlockText size="md" weight="semiBold">
         <TagName>Grand Total</TagName> <TagName>:</TagName>
         {" $"}
         <TagName>{grandTotal}</TagName>

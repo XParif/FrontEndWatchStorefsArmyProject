@@ -29,17 +29,41 @@ const BackButtonContainer = styled.div`
 `;
 
 const CartBody = () => {
+  const data = [
+    {
+      id: 1,
+      name: "AppleWatch",
+      brand: "Apple",
+      quantity: 1,
+      unitePrice: 100,
+      total: 100,
+    },
+    {
+      id: 2,
+      name: "Mi Band 3",
+      brand: "xaomi",
+      quantity: 1,
+      unitePrice: 80,
+      total: 80,
+    },
+  ];
+
+  let subTotal = 0;
+
+  subTotal += data.map((item) => parseInt(item.quantity * item.unitePrice));
+  console.log(subTotal);
+
   return (
     <>
       <CartContainer>
         <InfoContainer>
-          <CartInfo />
-          <CartPrising />
+          <CartInfo data={data} />
+          <CartPrising subTotal={subTotal} vatRate={3} />
         </InfoContainer>
       </CartContainer>
       <BackButtonContainer>
         <Link href="/">
-          <Button bg="primary" fontSize={"lg"}>
+          <Button bg="primary" fontSize={"md"}>
             Back To Collections
           </Button>
         </Link>
