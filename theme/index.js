@@ -1,8 +1,8 @@
 const theme = {
   typography: "Montserrat",
   bar: {
-    normal: "3.2rem",
-    full: "100%",
+    height: { sm: "0.125rem", md: "0.25rem", lg: "0.35rem" },
+    width: { normal: "3.2rem", full: "100%" },
   },
   fontSizes: {
     sm: "0.8rem",
@@ -28,10 +28,12 @@ const theme = {
   },
   color: {
     primary: "#7678ed",
+    primaryDarkShade: "#47488e",
     secondary: "#eaeaff",
     hover: "#3B3B3B",
     text: "#333333",
     white: "#ffffff",
+    red: "#cd1a3e",
   },
   responsive: {
     mobile: "768px",
