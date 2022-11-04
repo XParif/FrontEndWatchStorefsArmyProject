@@ -8,7 +8,7 @@ const CopyrightMsg = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  color: White;
+  color: ${({ theme }) => theme?.color?.white};
   width: 100%;
   height: 2.5rem;
   background-color: ${({ bg = "primary", theme }) =>
@@ -16,8 +16,9 @@ const CopyrightMsg = styled.div`
 `;
 
 const FooterBody = styled.div`
+  padding: 1rem 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: ${({ bg, theme }) =>
     theme.color[bg] ?? theme?.color?.secondary};
 `;
