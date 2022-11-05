@@ -2,8 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
-  distDir: 'build',
-  nftTracing: true
+  // nftTracing: true
 }
 
 module.exports = nextConfig
