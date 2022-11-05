@@ -45,24 +45,14 @@ const DeletItem = styled.button`
   color: ${({ theme }) => theme?.color?.red};
   font-size: 25px;
   transition: 0.5s;
-  opacity: 0.5;
   /* font-weight: bold; */
   cursor: pointer;
-  &:hover {
-    opacity: 1;
-  }
+  /* &:hover {
+    color: ${({ theme }) => theme?.color?.red};
+  } */
 `;
 
-const CartItem = (props) => {
-  console.log("hi");
-  // const qty = props.quantity;
-  // [quantity, setQuantity] = useState(0);
-  const qtyDec = () => {
-    // setQuantity--;
-  };
-  const qtyInc = () => {
-    // setQuantity++;
-  };
+const CartItem = () => {
   return (
     <CartItemContainer>
       <ProdInfo>
@@ -70,26 +60,26 @@ const CartItem = (props) => {
           <Image />
         </ProdImage>
         <ProdDetails>
-          <span> Name : {props.name}</span>
-          <span> Brand : {props.brand}</span>
-          {/* <span> Category : Smart</span>
-          <span> Sub Category : Smart</span> */}
+          <span> Name : AppleWatch</span>
+          <span> Brand : Apple</span>
+          <span> Category : Smart</span>
+          <span> Sub Category : Smart</span>
         </ProdDetails>
       </ProdInfo>
 
       <ProdQty>
-        <Button bg="primary" shape="square" onClick={qtyDec}>
+        <Button bg="primary" shape="square">
           <FaMinus />
         </Button>
-        <BlockText size="lg">{props.quantity}</BlockText>
-        <Button bg="primary" shape="square" onClick={qtyInc}>
+        <BlockText size="lg">2</BlockText>
+        <Button bg="primary" shape="square">
           <FaPlus />
         </Button>
       </ProdQty>
 
-      <BlockText size="md">{props.unitePrice}</BlockText>
+      <BlockText size="md">$700</BlockText>
 
-      <BlockText size="md">{props.total}</BlockText>
+      <BlockText size="md">$1400</BlockText>
       <DeletItem>x{/* <FaTrashAlt /> */}</DeletItem>
     </CartItemContainer>
   );

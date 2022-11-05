@@ -1,32 +1,12 @@
 import Link from "next/link";
-import styled from "styled-components";
 import Button from "../shared/buttons";
+import {
+  BackButtonContainer,
+  CartContainer,
+  InfoContainer,
+} from "./CartComponents";
 import CartInfo from "./CartInfo";
 import CartPrising from "./CartPrising";
-
-const CartContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0.5% auto;
-  width: 90%;
-  background-color: ${({ bg, theme }) =>
-    theme.color[bg] ?? theme?.color?.secondary};
-  min-height: 500px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  /* text-align: center; */
-`;
-
-const InfoContainer = styled.div`
-  display: flex;
-  width: 100%;
-  padding: 5%;
-  margin: 0 auto;
-`;
-
-const BackButtonContainer = styled.div`
-  text-align: center;
-  margin: 20px;
-`;
 
 const CartBody = () => {
   const data = [
@@ -41,16 +21,24 @@ const CartBody = () => {
     {
       id: 2,
       name: "Mi Band 3",
-      brand: "xaomi",
+      brand: "xiaomi",
       quantity: 1,
       unitePrice: 80,
       total: 80,
+    },
+    {
+      id: 3,
+      name: "Oraimo Band 5",
+      brand: "orima",
+      quantity: 2,
+      unitePrice: 50,
+      total: 100,
     },
   ];
 
   let subTotal = 0;
 
-  subTotal += data.map((item) => parseInt(item.quantity * item.unitePrice));
+  data.map((item) => (subTotal += item.quantity * item.unitePrice));
   console.log(subTotal);
 
   return (
@@ -58,13 +46,13 @@ const CartBody = () => {
       <CartContainer>
         <InfoContainer>
           <CartInfo data={data} />
-          <CartPrising subTotal={subTotal} vatRate={3} />
+          <CartPrising subTotal={subTotal} vatRate={5} />
         </InfoContainer>
       </CartContainer>
       <BackButtonContainer>
         <Link href="/">
           <Button bg="primary" fontSize={"md"}>
-            Back To Collections
+            Back To Store
           </Button>
         </Link>
       </BackButtonContainer>
