@@ -30,17 +30,18 @@ const ItemTitle = styled.div`
   display: flex;
 `;
 const ProductDetailTitle = styled.span`
-  margin: 10px 70px;
+  margin: 10px 80px;
 `;
 const ProductQuantityTitle = styled.span`
   margin: 10px;
-  margin-left: 50px;
+  margin-left: 95px;
 `;
 const ProductPriceTitle = styled.span`
   margin: 10px 60px;
+  margin-right: 0px;
 `;
 const ProductTotalTitle = styled.span`
-  margin: 10px;
+  margin: 10px 45px;
 `;
 
 const CartItemList = styled.div`
@@ -66,6 +67,7 @@ const ClearAllButton = styled.button`
 
 const CartInfo = ({ data }) => {
   const count = data.length ? data.length : 0;
+
   return (
     <CartInfoWrap>
       <Hader>
@@ -92,9 +94,7 @@ const CartInfo = ({ data }) => {
             key={item.id}
             name={item.name}
             brand={item.brand}
-            quantity={item.quantity}
             unitePrice={item.unitePrice}
-            total={item.total}
           />
         ))}
       </CartItemList>

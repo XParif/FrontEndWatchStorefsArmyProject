@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styled from "styled-components";
 import Bar from "../shared/texts/Bar";
 import BlockText from "../shared/texts/BlockText";
@@ -28,9 +27,7 @@ const CheckOutBtn = styled.div`
   margin-top: 20px;
 `;
 
-const CartPrising = (props) => {
-  const subTotal = props.subTotal;
-  const vatRate = props.vatRate;
+const CartPrising = ({ subTotal, vatRate, checkout, setCheckout }) => {
   const vat = (subTotal / 100) * vatRate;
   const grandTotal = subTotal + vat;
 
@@ -56,11 +53,15 @@ const CartPrising = (props) => {
         <TagName>{grandTotal}</TagName>
       </BlockText>
       <CheckOutBtn>
-        <Link href="/checkout">
-          <Button bg="primary" fontSize="md">
+        {checkout ? (
+          <Button bg="primary" fontSize="md" onClick={() => setCheckout(true)}>
+            Confirm My Order
+          </Button>
+        ) : (
+          <Button bg="primary" fontSize="md" onClick={() => setCheckout(true)}>
             Checkout
           </Button>
-        </Link>
+        )}
       </CheckOutBtn>
     </CartPrisingContainer>
   );

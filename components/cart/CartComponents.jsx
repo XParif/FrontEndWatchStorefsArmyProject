@@ -9,7 +9,6 @@ export const CartContainer = styled.div`
     theme.color[bg] ?? theme?.color?.secondary};
   min-height: 500px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  /* text-align: center; */
 `;
 
 export const InfoContainer = styled.div`

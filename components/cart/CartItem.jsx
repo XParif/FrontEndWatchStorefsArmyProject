@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import styled from "styled-components";
 import Button from "./../shared/buttons";
@@ -9,7 +10,6 @@ const CartItemContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 3px 5px;
-  /* border: 1px black solid; */
 `;
 
 const ProdInfo = styled.div`
@@ -23,6 +23,7 @@ const ProdImage = styled.div`
     theme.color[bg] ?? theme?.color?.secondary};
 `;
 const ProdDetails = styled.div`
+  width: 200px;
   display: flex;
   flex-direction: column;
   margin: 5px;
@@ -45,14 +46,30 @@ const DeletItem = styled.button`
   color: ${({ theme }) => theme?.color?.red};
   font-size: 25px;
   transition: 0.5s;
+  opacity: 0.5;
   /* font-weight: bold; */
   cursor: pointer;
-  /* &:hover {
-    color: ${({ theme }) => theme?.color?.red};
-  } */
+  &:hover {
+    opacity: 1;
+  }
 `;
 
-const CartItem = () => {
+const CartItem = ({ name, brand, unitePrice }) => {
+  const [quantity, setQuantity] = useState(1);
+
+  const [Total, setTotal] = useState(quantity * unitePrice);
+
+  const qtyDec = () => {
+    quantity > 0 ? setQuantity(quantity - 1) : setQuantity(0);
+  };
+
+  const qtyInc = () => {
+    setQuantity(quantity + 1);
+  };
+  useEffect(() => {
+    setTotal(quantity * unitePrice);
+  }, [quantity]);
+
   return (
     <CartItemContainer>
       <ProdInfo>
@@ -60,26 +77,26 @@ const CartItem = () => {
           <Image />
         </ProdImage>
         <ProdDetails>
-          <span> Name : AppleWatch</span>
-          <span> Brand : Apple</span>
-          <span> Category : Smart</span>
-          <span> Sub Category : Smart</span>
+          <span> Name : {name}</span>
+          <span> Brand : {brand}</span>
+          {/* <span> Category : Smart</span>
+          <span> Sub Category : Smart</span> */}
         </ProdDetails>
       </ProdInfo>
 
       <ProdQty>
-        <Button bg="primary" shape="square">
+        <Button bg="primary" shape="square" onClick={qtyDec}>
           <FaMinus />
         </Button>
-        <BlockText size="lg">2</BlockText>
-        <Button bg="primary" shape="square">
+        <BlockText size="lg">{quantity}</BlockText>
+        <Button bg="primary" shape="square" onClick={qtyInc}>
           <FaPlus />
         </Button>
       </ProdQty>
 
-      <BlockText size="md">$700</BlockText>
+      <BlockText size="md">${unitePrice}</BlockText>
 
-      <BlockText size="md">$1400</BlockText>
+      <BlockText size="md">${Total}</BlockText>
       <DeletItem>x{/* <FaTrashAlt /> */}</DeletItem>
     </CartItemContainer>
   );
