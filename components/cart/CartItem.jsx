@@ -6,10 +6,14 @@ import Button from "./../shared/buttons";
 import BlockText from "./../shared/texts/BlockText";
 
 const CartItemContainer = styled.div`
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
   justify-content: space-between;
   padding: 3px 5px;
+  display: grid;
+  grid-template-columns: 45% 25% 12% 13% 5%;
+  align-items: center;
+  text-align: center;
 `;
 
 const ProdInfo = styled.div`
@@ -25,12 +29,13 @@ const ProdImage = styled.div`
 const ProdDetails = styled.div`
   width: 200px;
   display: flex;
+  text-align: left;
   flex-direction: column;
   margin: 5px;
 `;
 
 const ProdQty = styled.div`
-  margin: 0 10px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -54,7 +59,7 @@ const DeletItem = styled.button`
   }
 `;
 
-const CartItem = ({ name, brand, unitePrice }) => {
+const CartItem = ({ id, name, brand, unitePrice }) => {
   const [quantity, setQuantity] = useState(1);
 
   const [Total, setTotal] = useState(quantity * unitePrice);
@@ -97,7 +102,9 @@ const CartItem = ({ name, brand, unitePrice }) => {
       <BlockText size="md">${unitePrice}</BlockText>
 
       <BlockText size="md">${Total}</BlockText>
-      <DeletItem>x{/* <FaTrashAlt /> */}</DeletItem>
+      <DeletItem onClick={() => console.log(id)}>
+        x{/* <FaTrashAlt /> */}
+      </DeletItem>
     </CartItemContainer>
   );
 };

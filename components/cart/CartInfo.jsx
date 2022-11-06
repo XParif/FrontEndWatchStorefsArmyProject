@@ -27,21 +27,24 @@ const CartItemCount = styled.h3`
 const ItemTitle = styled.div`
   color: ${({ theme }) => theme?.color?.primary};
   font-weight: bold;
-  display: flex;
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 45% 25% 12% 13% 5%;
+  text-align: center;
 `;
 const ProductDetailTitle = styled.span`
-  margin: 10px 80px;
+  /* margin: 10px 80px; */
 `;
 const ProductQuantityTitle = styled.span`
-  margin: 10px;
-  margin-left: 95px;
+  /* margin: 10px;
+  margin-left: 95px; */
 `;
 const ProductPriceTitle = styled.span`
-  margin: 10px 60px;
-  margin-right: 0px;
+  /* margin: 10px 60px;
+  margin-right: 0px; */
 `;
 const ProductTotalTitle = styled.span`
-  margin: 10px 45px;
+  /* margin: 10px 45px; */
 `;
 
 const CartItemList = styled.div`
@@ -83,7 +86,7 @@ const CartInfo = ({ data }) => {
       <ItemTitle>
         <ProductDetailTitle>Product Details</ProductDetailTitle>
         <ProductQuantityTitle>Quantity</ProductQuantityTitle>
-        <ProductPriceTitle>Unite Price</ProductPriceTitle>
+        <ProductPriceTitle>Rate</ProductPriceTitle>
         <ProductTotalTitle>Total</ProductTotalTitle>
       </ItemTitle>
 
@@ -92,6 +95,7 @@ const CartInfo = ({ data }) => {
           // console.log(item.name);
           <CartItem
             key={item.id}
+            id={item.id}
             name={item.name}
             brand={item.brand}
             unitePrice={item.unitePrice}
