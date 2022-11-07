@@ -1,20 +1,14 @@
 import styled from "styled-components";
-import InlineText from '../../texts/InlineText'
-
 const PriceStyle = styled.div`
+  margin-top : .34rem;
   display: flex;
   justify-content: space-between;
 `;
 
-const PriceBlock = ({price, offerPrice}) => {
+const PriceBlock = ({children}) => {
   return (
     <PriceStyle>
-      <InlineText size="md" color="primary" weight="semiBold">
-        ${offerPrice}
-      </InlineText>
-      <InlineText size="md" cross>
-        ${price}
-      </InlineText>
+      {children}
     </PriceStyle>
   );
 };
