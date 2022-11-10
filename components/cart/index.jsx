@@ -1,70 +1,90 @@
 import Link from "next/link";
-import styled from "styled-components";
+import { useEffect, useState } from "react";
 import Button from "../shared/buttons";
+import {
+  BackButtonContainer,
+  CartContainer,
+  InfoContainer,
+} from "./CartComponents";
 import CartInfo from "./CartInfo";
 import CartPrising from "./CartPrising";
-
-const CartContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0.5% auto;
-  width: 90%;
-  background-color: ${({ bg, theme }) =>
-    theme.color[bg] ?? theme?.color?.secondary};
-  min-height: 500px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  /* text-align: center; */
-`;
-
-const InfoContainer = styled.div`
-  display: flex;
-  width: 100%;
-  padding: 5%;
-  margin: 0 auto;
-`;
-
-const BackButtonContainer = styled.div`
-  text-align: center;
-  margin: 20px;
-`;
+import CheckoutForm from "./checkout";
 
 const CartBody = () => {
+  const [checkout, setCheckout] = useState(false);
+
   const data = [
     {
       id: 1,
       name: "AppleWatch",
       brand: "Apple",
-      quantity: 1,
       unitePrice: 100,
-      total: 100,
+      initQuantity: 1,
     },
     {
       id: 2,
       name: "Mi Band 3",
-      brand: "xaomi",
-      quantity: 1,
+      brand: "xiaomi",
       unitePrice: 80,
-      total: 80,
+      initQuantity: 1,
+    },
+    {
+      id: 3,
+      name: "Oraimo Band 5",
+      brand: "orima",
+      unitePrice: 50,
+      initQuantity: 1,
     },
   ];
 
-  let subTotal = 0;
+  const [cartData, setCartData] = useState(data);
+  const [subTotal, setSubTotal] = useState(0);
 
-  subTotal += data.map((item) => parseInt(item.quantity * item.unitePrice));
-  console.log(subTotal);
+  const quantityHandler = (id, quantity) => {
+    const objIndex = cartData.findIndex((obj) => obj.id == id);
+    cartData[objIndex].initQuantity = quantity;
+    let Total = 0;
+    cartData.map((item) => (Total += item.initQuantity * item.unitePrice));
+    setSubTotal(Total);
+  };
+
+  const removeItemHandler = (id) => {
+    setCartData(cartData.filter((item) => item.id !== id));
+  };
+
+  useEffect(() => {
+    let Total = 0;
+    cartData.map((item) => (Total += item.initQuantity * item.unitePrice));
+    setSubTotal(Total);
+  }, [cartData]);
 
   return (
     <>
       <CartContainer>
         <InfoContainer>
-          <CartInfo data={data} />
-          <CartPrising subTotal={subTotal} vatRate={3} />
+          {checkout ? (
+            <CheckoutForm />
+          ) : (
+            <CartInfo
+              cartData={cartData}
+              setCartData={setCartData}
+              quantityHandler={quantityHandler}
+              removeItemHandler={removeItemHandler}
+            />
+          )}
+
+          <CartPrising
+            subTotal={subTotal}
+            vatRate={5}
+            checkout={checkout}
+            setCheckout={setCheckout}
+          />
         </InfoContainer>
       </CartContainer>
       <BackButtonContainer>
         <Link href="/">
           <Button bg="primary" fontSize={"md"}>
-            Back To Collections
+            Back To Store
           </Button>
         </Link>
       </BackButtonContainer>
