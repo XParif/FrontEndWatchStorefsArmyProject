@@ -16,7 +16,7 @@ const ProductBlock = ({productInfo}) => {
   const [pointedVariantIndex , setPointedVariantIndex] = useState(0)
 
     const variants = [{id : -1 , variantsImage : productInfo?.productImage?.url  , color : "default" , variantsId : -1, variantPrice :  productInfo?.defualtPrice}]
-    console.log(forCartBosta)
+
     productInfo.variants.map((item) => {
       const tempObj = {
         variantsId : item?.id,
@@ -37,7 +37,10 @@ const ProductBlock = ({productInfo}) => {
       setforCartBosta((prv)=>{
         return {
           ...prv,
-          variantsId : item.variantsId
+          variantsId : item.variantsId,
+          price : price,
+          productName : productInfo?.productName,
+          productBrand : productInfo?.brand?.brandName.toUpperCase()
         }
       })
     }

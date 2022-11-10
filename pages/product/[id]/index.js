@@ -6,8 +6,8 @@ import Background from '../../../components/shared/backgrounds/index';
 import Container from '../../../components/shared/container/index';
 import client from '../../../apolloClient/index';
 import { getSingleProduct } from '../../../graphql';
-const Product = ({productInfo}) => {
-  console.log(productInfo)
+const Product = ({productInfo , loading}) => {
+
   return (
     <Background bg="white">
       <Container>
@@ -27,7 +27,8 @@ export async function getServerSideProps(context) {
   })
   return {
     props: {
-      productInfo : data.allProduct
+      productInfo : data.allProduct,
+      loading : loading
     }, // will be passed to the page component as props
   }
 }
