@@ -33,7 +33,7 @@ const MyNavLink = styled.div`
 `;
 
 const NavBar = ({ modalController }) => {
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
   return (
     <NavContainer>
       <Link href="/collections">
