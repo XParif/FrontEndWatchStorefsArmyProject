@@ -1,6 +1,7 @@
 import { FaTrash } from "react-icons/fa";
 import Button from "../shared/buttons";
 import Bar from "../shared/texts/Bar";
+import BlockText from "../shared/texts/BlockText";
 import CartItem from "./CartItem";
 
 import {
@@ -46,7 +47,6 @@ const CartInfo = ({
 
       <CartItemList>
         {cartData.map((item) => (
-          // console.log(item.name);
           <CartItem
             key={item.id}
             id={item.id}
@@ -66,7 +66,10 @@ const CartInfo = ({
             Clear All <FaTrash />
           </Button>
         ) : (
-          ""
+          <BlockText size="lg" weight="bold">
+            <br />
+            <h3> Your Cart is Empty !</h3>
+          </BlockText>
         )}
       </ClearAllContainer>
     </CartInfoWrap>
