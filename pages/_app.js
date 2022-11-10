@@ -5,7 +5,8 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { useRouter } from 'next/router'
 import { useEffect , useState } from 'react'
-import LoadingCompunent from '../components/Loading';
+import LoadingCompunent from '../components/loading/Loading';
+
 
 
 function MyApp({ Component, pageProps }) {
