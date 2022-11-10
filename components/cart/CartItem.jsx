@@ -13,57 +13,47 @@ import {
 } from "./CartComponents";
 
 const CartItem = ({
-  id,
-  name,
-  brand,
-  unitePrice,
+  product_ref,
+  variantsId,
+  productBrand,
+  product_quantity,
+  productImage,
+  productName,
+  color,
   quantityHandler,
   removeItemHandler,
+  index,
+  price
 }) => {
-  const [quantity, setQuantity] = useState(1);
-
-  const [Total, setTotal] = useState(quantity * unitePrice);
-
-  const qtyDec = () => {
-    quantity > 0 ? setQuantity(quantity - 1) : setQuantity(0);
-  };
-
-  const qtyInc = () => {
-    setQuantity(quantity + 1);
-  };
-  useEffect(() => {
-    quantityHandler(id, quantity);
-    setTotal(quantity * unitePrice);
-  }, [quantity]);
 
   return (
     <CartItemContainer>
       <ProdInfo>
-        <ProdImage>
-          <Image />
+        <ProdImage style={{display : "flex" , justifyContent: "center" , alignItems : "center"}}>
+          <img style={{width : 60, height : 60 , boxSizing: "border-box"}} src={productImage} alt={productName} />
         </ProdImage>
         <ProdDetails>
-          <span> Name : {name}</span>
-          <span> Brand : {brand}</span>
-          {/* <span> Category : Smart</span>
-          <span> Sub Category : Smart</span> */}
+          <span> Name : {productName.slice(0,20)}</span>
+          <span> Brand : {productBrand}</span>
+          {/* {/* <span> Category : Smart</span> */}
+          <span> Color : {color}</span> 
         </ProdDetails>
       </ProdInfo>
 
       <ProdQty>
-        <Button bg="primary" shape="square" onClick={qtyDec}>
+        <Button bg="primary" shape="square" onClick={()=>quantityHandler("-" , index)}>
           <FaMinus />
         </Button>
-        <BlockText size="lg">{quantity}</BlockText>
-        <Button bg="primary" shape="square" onClick={qtyInc}>
+        <BlockText size="lg">{product_quantity}</BlockText>
+        <Button bg="primary" shape="square" onClick={()=>quantityHandler("+" , index)} >
           <FaPlus />
         </Button>
       </ProdQty>
 
-      <BlockText size="md">${unitePrice}</BlockText>
+      <BlockText size="md">${price}</BlockText>
 
-      <BlockText size="md">${Total}</BlockText>
-      <DeletItem onClick={() => removeItemHandler(id)}>
+      <BlockText size="md">${product_quantity * price}</BlockText>
+      <DeletItem onClick={() => removeItemHandler(index)}>
         <FaTrashAlt />
       </DeletItem>
     </CartItemContainer>

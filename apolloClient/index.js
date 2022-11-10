@@ -1,5 +1,8 @@
-import { ApolloClient, HttpLink, ApolloLink, InMemoryCache, concat } from '@apollo/client';
-import { useEffect } from 'react';
+import {  Reference, makeVar, ApolloClient, HttpLink, ApolloLink, InMemoryCache, concat } from '@apollo/client';
+
+export const cartItemsVar = makeVar([]);
+
+
 
 const LookupJwt = () =>{
   if(typeof window !== "undefined"){
@@ -21,9 +24,7 @@ const Middleware = new ApolloLink((operation, forward) => {
   return forward(operation);
 })
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: concat(Middleware, httpLink),
 });
-
-export default client;

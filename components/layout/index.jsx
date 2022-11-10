@@ -6,7 +6,7 @@ import GlobalStyle from "../globalStyles";
 import Header from "../header";
 import Modal from "./../modal";
 import { ApolloProvider } from '@apollo/client';
-import client from '../../apolloClient/index';
+import {client} from '../../apolloClient/index';
 
 
 export default function Layout({ children }) {

@@ -1,2 +1,3 @@
 const a = ["dasfsa" , "sadfsf"]
-console.log(typeof a)
+a.splice(1, 1)
+console.log(a)
