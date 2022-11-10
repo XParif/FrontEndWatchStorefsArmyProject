@@ -18,36 +18,100 @@ import {
   FaRedditSquare,
 } from "react-icons/fa";
 
-const colorList = ["Red", "Blue", "Gray", "Black", "Navy", "Gold", "Maroon"];
 
-const ProductInformationSection = () => {
+const ProductTittle = ({children}) =>{
+  return(
+    <>
+      {children}
+    </>
+  )
+}
+
+const ProductCatagory= ({children}) =>{
+  return(
+    <>
+      {children}
+    </>
+  )
+}
+
+const ProductBrand= ({children}) =>{
+  return(
+    <>
+      {children}
+    </>
+  )
+}
+
+// const TensionForVariants = ({item})=>{
+    
+//   return (
+//     <div>
+      
+//     </div>
+//   )
+// }
+
+const ProductInformationSection = ({ pointedVariantIndex ,productInfo , variantsTensionReliefer , variants , price}) => {
+    
   return (
     <InformationStyle>
-      <BlockText size="lg" weight="regular">
-        Lorem Ipsum is simply dummy text of the printing and typsetting
-        industry.
-      </BlockText>
-      <Price />
+
+      {/* Tittle Section  */}
+      <ProductTittle>
+        <BlockText size="lg" weight="regular">
+          {productInfo.productName}
+        </BlockText>
+      </ProductTittle>
+
+      {/* price Section  */}
+      <Price>
+        <InlineText size="lg" color="primary" weight="semiBold">
+          ${price}
+        </InlineText>
+      </Price>
+
+
       <Rating rates="5" />
-      <BlockText>
-        Category : <InlineText color="primary">Classic</InlineText>{" "}
-      </BlockText>
-      <BlockText>
-        Brand : <InlineText color="primary">Rolex</InlineText>{" "}
-      </BlockText>
-      <BlockText>
+
+    {/* Catagory  */}
+      <ProductCatagory>
+        <BlockText>
+          Category : <InlineText color="primary">{productInfo.catagories.map(v => `${(v.name).toUpperCase()}, `)}</InlineText>{" "}
+        </BlockText>
+      </ProductCatagory>
+      
+
+      <ProductBrand>
+        <BlockText>
+        Brand : <InlineText color="primary">{productInfo?.brand?.brandName.toUpperCase()}</InlineText>{" "}
+        </BlockText>
+      </ProductBrand>
+
+
+      {/* <BlockText>
         Material : <InlineText color="primary">Artificial Leather</InlineText>{" "}
-      </BlockText>
+      </BlockText> */}
+
+
+      {/* Variants Tension  */}
       <ColorBox>
         <InlineText>Color : </InlineText>
-        <SelectBox list={colorList} />
+        <SelectBox>
+
+          {variants.map((item , index ) => ( 
+            <label htmlFor= {item.id} key={index} >
+              <input onChange={() => variantsTensionReliefer(index , '🥵')} checked={pointedVariantIndex==index? true : false} name="😟" id={item.id} type="radio" /> 
+              {item.color}
+            </label>
+        
+          ))}
+
+        </SelectBox>
       </ColorBox>
       <ActionButtonGroup>
         <Button fontSize="md" bg="primary">
           Add to Cart <FaCartPlus />
-        </Button>
-        <Button fontSize="md">
-          Add to Wishlist <FaHeart />
         </Button>
       </ActionButtonGroup>
       <BlockText>Share on : </BlockText>

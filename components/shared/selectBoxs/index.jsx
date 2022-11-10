@@ -18,19 +18,10 @@ const SelectStyle = styled.div`
   }
 `;
 
-const SelectBox = ({ list }) => {
+const SelectBox = ({ children }) => {
   return (
     <SelectStyle>
-      <select required="required">
-        <option value="" disabled="disabled" selected="selected">
-          Select option
-        </option>
-        {list.map((item) => (
-          <option key={item} value={item}>
-            {item}
-          </option>
-        ))}
-      </select>
+      {children}
     </SelectStyle>
   );
 };

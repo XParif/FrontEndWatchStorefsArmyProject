@@ -1,22 +1,16 @@
 import styled from "styled-components";
-import Button from "../../buttons";
-import { FaCartPlus, FaInfo } from "react-icons/fa";
 
 const ButtonGroupStyle = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0.5rem 0;
+  padding : 0.5rem;
 `;
 
-const CardButtonGroup = () => {
+const CardButtonGroup = ({children}) => {
   return (
     <ButtonGroupStyle>
-      <Button bg="primary">
-        Add Card <FaCartPlus />{" "}
-      </Button>
-      <Button>
-        Details <FaInfo />{" "}
-      </Button>
+      {children}
     </ButtonGroupStyle>
   );
 };
