@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { FaMinus, FaPlus } from "react-icons/fa";
+import { FaMinus, FaPlus, FaTrashAlt } from "react-icons/fa";
 import Button from "./../shared/buttons";
 import BlockText from "./../shared/texts/BlockText";
 import {
@@ -64,7 +64,7 @@ const CartItem = ({
 
       <BlockText size="md">${Total}</BlockText>
       <DeletItem onClick={() => removeItemHandler(id)}>
-        x{/* <FaTrashAlt /> */}
+        <FaTrashAlt />
       </DeletItem>
     </CartItemContainer>
   );
