@@ -186,3 +186,17 @@ export const getSingleProduct = (id) =>{
     }
   }`)
 }
+
+export const getExtraCost = gql`
+  query {
+    extraCost
+    {
+      data{
+        attributes{
+          vat,
+          shipingCost
+        }
+      }
+    }
+  }
+`

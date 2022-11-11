@@ -1,6 +1,7 @@
 import {  Reference, makeVar, ApolloClient, HttpLink, ApolloLink, InMemoryCache, concat } from '@apollo/client';
 
 export const cartItemsVar = makeVar([]);
+export const extraCost = makeVar({});
 
 
 

@@ -8,8 +8,8 @@ import { useEffect , useState } from 'react'
 import LoadingCompunent from '../components/loading/Loading';
 
 
-
 function MyApp({ Component, pageProps }) {
+  
   const router = useRouter()
   const [loading,setLoading] = useState(false)
   useEffect(() => {

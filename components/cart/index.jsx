@@ -9,17 +9,28 @@ import {
 import CartInfo from "./CartInfo";
 import CartPrising from "./CartPrising";
 import CheckoutForm from "./checkout";
-import { cartItemsVar } from '../../apolloClient/index';
-import { useReactiveVar } from '@apollo/client';
+import { cartItemsVar, extraCost } from '../../apolloClient/index';
+import { useReactiveVar, useQuery } from '@apollo/client';
+import { getExtraCost } from '../../graphql/index';
+
 
 const CartBody = () => {
+
+  const { data } =  useQuery(getExtraCost)
+  const forextraCost = data?.extraCost
+  extraCost({ 
+    vat : forextraCost ? forextraCost?.vat : 5,
+    shipingCost : forextraCost ? forextraCost?.shipingCost : 20,
+  })
+  
   const [checkout, setCheckout] = useState(false);
   const cartData = useReactiveVar(cartItemsVar)
-  console.log(cartData)
-
-
-  // const [cartData, setCartData] = useState(data);
-  // const [subTotal, setSubTotal] = useState(0);
+  const {vat  , shipingCost} = useReactiveVar(extraCost)
+  
+  const subTotal =  cartData.reduce((acc , cu)=>{
+     acc += (cu.product_quantity * cu.price)
+    return acc
+  },0)
 
   const quantityHandler = (action, index) => {
     if(action == "+"){
@@ -49,10 +60,10 @@ const CartBody = () => {
             /> 
     
           <CartPrising
-            // subTotal={subTotal}
-            // vatRate={5}
-            // checkout={checkout}
-            // setCheckout={setCheckout}
+            subTotal={subTotal}
+            vatRate={vat}
+            checkout={checkout}
+            setCheckout={setCheckout}
           />
         </InfoContainer>
       </CartContainer>
