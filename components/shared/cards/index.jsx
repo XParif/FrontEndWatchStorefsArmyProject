@@ -5,6 +5,7 @@ import CardButtonGroup from './textBlock/CardButtonGroup';
 import { FaCartPlus } from 'react-icons/fa';
 import { FaInfo } from 'react-icons/fa';
 import Button from "../buttons";
+import Link from 'next/link'
 
 const BaseCard = styled.div`
   margin: 1rem 0.5rem;
@@ -18,19 +19,22 @@ const BaseCard = styled.div`
   }
 `;
 
-const Card = ({item}) => {
-  const ImgUrl = typeof item.productImage.url == "string" ? item.productImage.url : item.productImage[0].url
+const Card = ({item , ImgUrl , addtoCardhandeler}) => {
+ 
+  const detailsLink = `/product/${item.id}`
   return (
     <BaseCard>
       <ImageBlock url={ImgUrl} alterTag= {item?.productName} />
       <TextBlock item={item} />
       <CardButtonGroup >
-        <Button bg="primary">
+        <Button onClick={addtoCardhandeler} bg="primary">
           Add Card <FaCartPlus />{" "}
         </Button>
-        <Button>
-          Details <FaInfo />{" "}
-        </Button>
+        < Link  href={detailsLink}>
+          <Button> 
+            Details <FaInfo />{" "}
+          </Button>
+        </Link>
       </CardButtonGroup >
     </BaseCard>
   );

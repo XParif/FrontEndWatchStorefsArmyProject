@@ -23,6 +23,19 @@ a {
   text-decoration: none;
   color: ${({ theme }) => theme?.color?.text};
 }
+#nprogress .bar {
+  background: #fff !important;
+  // height : 15px;
+  // border-radius : 4px;
+}
 
+#nprogress .peg {
+  box-shadow: 0 0 10px #FFF, 0 0 5px #FFF;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #FFF;
+  border-left-color: #FFF;
+}
 `;
 export default GlobalStyle;

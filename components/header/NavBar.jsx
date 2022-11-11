@@ -17,6 +17,7 @@ const NavContainer = styled.div`
 
 const MyNavLink = styled.div`
   color: ${({ theme }) => theme?.color?.white};
+  position : relative;
   text-decoration: none;
   cursor: pointer;
   border-radius: 5px;
@@ -32,8 +33,8 @@ const MyNavLink = styled.div`
   }*/
 `;
 
-const NavBar = ({ modalController }) => {
-  const [login, setLogin] = useState(true);
+const NavBar = ({ modalController , CartItemCount }) => {
+  const [login, setLogin] = useState(false);
   return (
     <NavContainer>
       <Link href="/collections">
@@ -43,6 +44,9 @@ const NavBar = ({ modalController }) => {
       </Link>
       <Link href="/cart">
         <MyNavLink>
+          <span style={{position : "absolute", top: 0, right : 0 , color : "red" }}>
+              {CartItemCount}
+          </span>
           <NavList title="Cart" logo={<FaCartPlus />} />
         </MyNavLink>
       </Link>

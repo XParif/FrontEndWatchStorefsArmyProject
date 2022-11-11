@@ -27,7 +27,7 @@ const theme = {
     lg: "1rem 2rem",
   },
   color: {
-    primary: "#7678ed",
+    primary: "#60C3D8",
     primaryDarkShade: "#47488e",
     secondary: "#eaeaff",
     hover: "#3B3B3B",

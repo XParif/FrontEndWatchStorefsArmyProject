@@ -8,11 +8,12 @@ import WeeklyProducts from '../components/home/weeklyProducts/index';
 import MostPremiumWatch from '../components/home/mostPremiumWatch/index';
 import OurHappyCustomer from '../components/home/happyCustomer/index';
 import ProductReviewVideo from '../components/home/productReviewVideo/index';
-import client from '../apolloClient/index';
+import { client } from '../apolloClient/index';
 import {GetProduct} from '../graphql/index';
 
-const  Home = ({allProducts ,data})=> {
-  console.log(data)
+
+const  Home = ({allProducts})=> {
+
   return (
     <>
       {/* <Slider /> */}
@@ -30,7 +31,7 @@ const  Home = ({allProducts ,data})=> {
 }
 
 export async function getServerSideProps() {
-  const {data , loading , error} = await client
+  const {data , error} = await client
   .query({
     query: GetProduct,
   })
@@ -38,7 +39,6 @@ export async function getServerSideProps() {
   return {
     props: {
       allProducts,
-      data
     },
   }
 }

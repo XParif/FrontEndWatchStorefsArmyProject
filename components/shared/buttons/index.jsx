@@ -33,9 +33,9 @@ export const BaseButton = styled.button`
   }
 `;
 
-const Button = ({ children, bg, fontSize, shape }) => {
+const Button = ({ children, bg, fontSize, shape, onClick }) => {
   return (
-    <BaseButton bg={bg} fontSize={fontSize} shape={shape}>
+    <BaseButton bg={bg} fontSize={fontSize} shape={shape} onClick={onClick}>
       {children}
     </BaseButton>
   );
