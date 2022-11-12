@@ -36,25 +36,15 @@ const RegisterForm = () => {
         <SectionWrapper>
           <Section>
             <InputLabel>
-              {"Name : "}
+              {"UserName : "}
               <InputField
                 type="text"
                 id="name"
                 name="name"
-                placeholder="Your Full Name"
+                placeholder="UserName"
                 onChange={handleChange}
                 required
               />
-            </InputLabel>
-            <InputLabel>
-              {"Phone : "}
-              <InputField
-                type="number"
-                id="phone"
-                name="phone"
-                placeholder="Your Phone Number"
-                onChange={handleChange}
-              ></InputField>
             </InputLabel>
             <InputLabel>
               {"Email : "}
@@ -80,6 +70,16 @@ const RegisterForm = () => {
             </InputLabel>
           </Section>
           <Section>
+          <InputLabel>
+              {"Phone : "}
+              <InputField
+                type="number"
+                id="phone"
+                name="phone"
+                placeholder="Your Phone Number"
+                onChange={handleChange}
+              ></InputField>
+            </InputLabel>
             <InputLabel>
               {"Address : "}
               <InputField

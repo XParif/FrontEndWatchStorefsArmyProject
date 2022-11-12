@@ -1,5 +1,6 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
+import { isLogin, LookupJwt } from "../../apolloClient";
 import {
   FaBullhorn,
   FaCartPlus,
@@ -9,7 +10,9 @@ import {
   FaUserCircle,
 } from "react-icons/fa";
 import styled from "styled-components";
+
 import NavList from "./NavList";
+import { useReactiveVar } from "@apollo/client";
 const NavContainer = styled.div`
   display: flex;
   justify-content: space-around;
@@ -34,7 +37,10 @@ const MyNavLink = styled.div`
 `;
 
 const NavBar = ({ modalController , CartItemCount }) => {
-  const [login, setLogin] = useState(false);
+  const login = useReactiveVar(isLogin)
+  useEffect(()=>{
+     isLogin((LookupJwt() == undefined ? false : true  ))
+  },[login])
   return (
     <NavContainer>
       <Link href="/collections">
@@ -63,7 +69,13 @@ const NavBar = ({ modalController , CartItemCount }) => {
             </MyNavLink>
           </Link>
           <MyNavLink href="">
+            <div onClick={()=> {
+               localStorage.removeItem('jwt_token');
+               localStorage.removeItem('logedInUserId');
+               isLogin(false)
+            }}>
             <NavList title="LogOut" logo={<FaSignOutAlt />} />
+            </div>
           </MyNavLink>
         </NavContainer>
       ) : (

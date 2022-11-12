@@ -31,7 +31,7 @@ const Modal = ({ modalController }) => {
           <ModalBody>
             {loginPart ? (
               <>
-                <LoginForm />
+                <LoginForm modalController={modalController} />
                 <ModalFooter onClick={() => setLoginPart(false)}>
                   Don't you have id? Register here
                 </ModalFooter>

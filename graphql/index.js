@@ -200,3 +200,18 @@ export const getExtraCost = gql`
     }
   }
 `
+
+export const getLogIn = (identifier , password)=>{
+  return (
+    gql`mutation {
+      login( input : {identifier : "${identifier}", password : "${password}"}){
+        jwt,
+        user{
+          id,
+          username,
+          email,  
+        }
+      }
+    }`
+  )
+}
