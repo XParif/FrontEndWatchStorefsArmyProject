@@ -21,6 +21,7 @@ const theme = {
     sm: "1.2",
     md: "1.4",
     lg: "1.6",
+    custom: "26px"
   },
   gap: {
     sm: "0.6rem 1.2rem",
