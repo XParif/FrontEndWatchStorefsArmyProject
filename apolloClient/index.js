@@ -6,6 +6,8 @@ export const message = makeVar(null);
 
 export const isLogin = makeVar(false)
 export const Loading2 = makeVar(false)
+export const modalController = makeVar(false)
+export const pocketKhali = makeVar(false)
 
 
 export const LookupJwt = () =>{
