@@ -1,6 +1,9 @@
+import { useReactiveVar } from "@apollo/client";
+import { isLogin, message, modalController } from "../../apolloClient";
 import Bar from "../shared/texts/Bar";
 import BlockText from "../shared/texts/BlockText";
 import Button from "./../shared/buttons";
+
 import {
   CartPrisingContainer,
   CheckOutBtn,
@@ -8,7 +11,9 @@ import {
   TagName,
 } from "./CartComponents";
 
-const CartPrising = ({ subTotal, vatRate, checkout, setCheckout }) => {
+const CartPrising = ({ subTotal, vatRate, setCheckout }) => {
+  const logInChecked = useReactiveVar(isLogin)
+  const forLogInModal = useReactiveVar(modalController)
   const vat = (subTotal / 100) * vatRate;
   const grandTotal = subTotal + vat;
 
@@ -34,13 +39,13 @@ const CartPrising = ({ subTotal, vatRate, checkout, setCheckout }) => {
         <TagName>{grandTotal}</TagName>
       </BlockText>
       <CheckOutBtn>
-        {checkout ? (
-          <Button bg="primary" fontSize="md" onClick={() => setCheckout(true)}>
-            Confirm My Order
+        {logInChecked ? (
+          <Button onClick={()=> setCheckout(true)} bg="primary" fontSize="md">
+            CheckOut
           </Button>
         ) : grandTotal > 0 ? (
-          <Button bg="primary" fontSize="md" onClick={() => setCheckout(true)}>
-            Checkout
+          <Button bg="primary" fontSize="md" onClick={() => {modalController(true) ; message({type : "alert" , body : "Plz LogIn First"}) }}>
+            CheckOut
           </Button>
         ) : (
           ""

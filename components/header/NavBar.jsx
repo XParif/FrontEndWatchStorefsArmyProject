@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useState ,useEffect } from "react";
-import { isLogin, LookupJwt } from "../../apolloClient";
+import { isLogin, LookupJwt , pocketKhali} from "../../apolloClient";
 import {
   FaBullhorn,
   FaCartPlus,
@@ -48,7 +48,7 @@ const NavBar = ({ modalController , CartItemCount }) => {
           <NavList title="Collections" logo={<FaItchIo />} />
         </MyNavLink>
       </Link>
-      <Link href="/cart">
+      <Link href="/cart" onClick={() => pocketKhali(false)}>
         <MyNavLink>
           <span style={{position : "absolute", top: 0, right : 0 , color : "red" }}>
               {CartItemCount}

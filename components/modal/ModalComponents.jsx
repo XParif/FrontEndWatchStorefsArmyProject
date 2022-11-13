@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ModalWrapper = styled.div`
+  z-index : 100000;
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -13,7 +14,7 @@ export const ModalWrapper = styled.div`
   align-items: center;
 `;
 export const ModalUnfocused= styled.div`
-  z-index: 50;
+  z-index: 100000;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -22,7 +23,7 @@ export const ModalUnfocused= styled.div`
 `;
 
 export const ModalBackground = styled.div`
-  z-index: 100;
+  z-index: 100003;
   display: flex;
   justify-content: center;
   align-items: center;

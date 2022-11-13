@@ -9,10 +9,9 @@ import {
 import CartInfo from "./CartInfo";
 import CartPrising from "./CartPrising";
 import CheckoutForm from "./checkout";
-import { cartItemsVar, extraCost } from '../../apolloClient/index';
+import { cartItemsVar, extraCost, pocketKhali } from '../../apolloClient/index';
 import { useReactiveVar, useQuery } from '@apollo/client';
 import { getExtraCost } from '../../graphql/index';
-
 
 const CartBody = () => {
 
@@ -23,7 +22,7 @@ const CartBody = () => {
     shipingCost : forextraCost ? forextraCost?.shipingCost : 20,
   })
   
-  const [checkout, setCheckout] = useState(false);
+  const checkout = useReactiveVar(pocketKhali)
   const cartData = useReactiveVar(cartItemsVar)
   const {vat  , shipingCost} = useReactiveVar(extraCost)
   
@@ -46,12 +45,21 @@ const CartBody = () => {
     cartData.splice(index , 1)
     cartItemsVar([...cartData])
   };
+  if(checkout){
+    return (
+      <>
+      <button onClick={()=> pocketKhali(false)} >Back To Cart</button>
+        <CheckoutForm  />
+      </>
+    )
+  }
 
   return (
     <>
+       
       <CartContainer>
         <InfoContainer>
-        {/* <CheckoutForm /> */}
+       
 
            <CartInfo
               cartData={cartData}
@@ -62,8 +70,7 @@ const CartBody = () => {
           <CartPrising
             subTotal={subTotal}
             vatRate={vat}
-            checkout={checkout}
-            setCheckout={setCheckout}
+            setCheckout={pocketKhali}
           />
         </InfoContainer>
       </CartContainer>
