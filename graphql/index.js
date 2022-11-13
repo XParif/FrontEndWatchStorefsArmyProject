@@ -257,3 +257,44 @@ export const getRegister = (userState , addressState) =>{
     }`
   )
 }
+
+export const getAddress = (user_id)=>{
+  return (
+    gql`
+    query{
+      addresses(filters : {user_ref : {id : {eq : ${user_id}}}} ){
+        data{
+          id,
+          attributes{
+            address,
+            streetAddress,
+            city,
+            state_Province_Region,
+            zipCode,
+            country
+          }
+        }
+      }
+    }
+    `
+  )
+}
+
+export const mutatedAddress = (addressInfo , user_id )=>{
+  const addressStr =  objToGqlString(addressInfo);
+  return (
+    gql`
+    mutation{
+      createAddress(data : {user_ref : ${user_id} ,${addressStr}
+      }){
+        data{
+          id,
+          attributes{
+            address
+          }
+        }
+      }
+    }
+    `
+  )
+}

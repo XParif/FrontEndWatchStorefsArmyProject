@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import BlockText from "../shared/texts/BlockText";
 import { InputField, InputForm, InputLabel } from "./common";
 
 const RegisterFormContainer = styled.div`
@@ -19,6 +20,9 @@ const Section = styled.div`
 const AddressForm = ({handleChange}) => {
   return (
           <Section>
+            <BlockText style={{textAlign : "center"}} >
+                {`তর বাড়ি কই? তর নাম , ঠিকানা দে >>>  `}
+            </BlockText>
             <InputLabel>
               {"Address : "}
               <InputField

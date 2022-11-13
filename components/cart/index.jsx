@@ -49,7 +49,14 @@ const CartBody = () => {
     return (
       <>
       <button onClick={()=> pocketKhali(false)} >Back To Cart</button>
-        <CheckoutForm  />
+        <CheckoutForm>
+          <CartPrising
+              subTotal={subTotal}
+              vatRate={vat}
+              setCheckout={pocketKhali}
+              shippingCost = {shipingCost}
+            />
+        </CheckoutForm>
       </>
     )
   }
@@ -65,12 +72,14 @@ const CartBody = () => {
               cartData={cartData}
               quantityHandler={quantityHandler}
               removeItemHandler={removeItemHandler}
+              cartItemsVar= {cartItemsVar}
             /> 
     
           <CartPrising
             subTotal={subTotal}
             vatRate={vat}
             setCheckout={pocketKhali}
+            isCartValied = {true}
           />
         </InfoContainer>
       </CartContainer>
