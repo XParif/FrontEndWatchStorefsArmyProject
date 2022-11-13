@@ -2,14 +2,27 @@ import styled from "styled-components";
 
 export const ModalWrapper = styled.div`
   position: absolute;
-  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(200, 200, 200 , 0.6);
+  position: fixed;
+  top : 0;
+  left : 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const ModalUnfocused= styled.div`
+  z-index: 50;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top : 0;
+  left : 0;
 `;
 
 export const ModalBackground = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(200, 200, 200);
-  position: fixed;
+  z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;

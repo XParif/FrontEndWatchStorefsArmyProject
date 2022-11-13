@@ -1,5 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { client, isLogin, Loading2 , message } from "../../apolloClient";
+import { getRegister } from "../../graphql";
+import AddressForm from "./address";
 import { InputField, InputForm, InputLabel } from "./common";
 
 const RegisterFormContainer = styled.div`
@@ -16,15 +19,46 @@ const Section = styled.div`
   margin: 5px;
 `;
 
-const RegisterForm = () => {
+const RegisterForm = ({modalController}) => {
   const [formInput, setFormInput] = useState({});
-  const regHandler = (e) => {
+  const [addressInput , setAddressInput] = useState({});
+  const [putAddress,setPutAddress] = useState(false)
+  const regHandler = async(e) => {
     e.preventDefault();
-    console.log(formInput);
+    try {
+      Loading2(true)
+      let query ;
+      if(putAddress){
+        query = getRegister(formInput , addressInput)
+      }else{
+        query = getRegister(formInput)
+      }
+      const {data , error} = await client.mutate({
+        mutation : query
+      })
+      const jwt = data?.userReg?.jwt
+      localStorage.setItem('jwt_token', `Bearer ${jwt}`);
+      localStorage.setItem('logedInUserId', data?.userReg?.user?.id);
+      isLogin(true)
+      Loading2(false)
+      modalController(false)
+      message({type : "success" ,body : data?.userReg?.message})
+    } catch (error) {
+      message({type : "failed" ,body : "SomeThing Went Worng , Plz Type Correctly"})
+      Loading2(false)
+      console.log(error)
+    }
+    
   };
 
   const handleChange = (e) => {
     setFormInput((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const handleAddressInputChange = (e) => {
+    setAddressInput((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
@@ -39,9 +73,9 @@ const RegisterForm = () => {
               {"UserName : "}
               <InputField
                 type="text"
-                id="name"
-                name="name"
-                placeholder="UserName"
+                id="username"
+                name="username"
+                placeholder="username"
                 onChange={handleChange}
                 required
               />
@@ -58,6 +92,17 @@ const RegisterForm = () => {
               />
             </InputLabel>
             <InputLabel>
+              {"Phone : "}
+              <InputField
+                type="number"
+                id="phoneNumber"
+                name="phoneNumber"
+                placeholder="Your Phone Number"
+                onChange={handleChange}
+                required
+              ></InputField>
+            </InputLabel>
+            <InputLabel>
               {"Password : "}
               <InputField
                 type="password"
@@ -69,62 +114,10 @@ const RegisterForm = () => {
               />
             </InputLabel>
           </Section>
-          <Section>
-          <InputLabel>
-              {"Phone : "}
-              <InputField
-                type="number"
-                id="phone"
-                name="phone"
-                placeholder="Your Phone Number"
-                onChange={handleChange}
-              ></InputField>
-            </InputLabel>
-            <InputLabel>
-              {"Address : "}
-              <InputField
-                type="text"
-                id="Address"
-                name="Address"
-                placeholder="Your Address"
-                onChange={handleChange}
-                required
-              />
-            </InputLabel>
-            <InputLabel>
-              {"Street : "}
-              <InputField
-                type="text"
-                id="street"
-                name="street"
-                placeholder="Street"
-                onChange={handleChange}
-                required
-              />
-            </InputLabel>
-            <InputLabel>
-              {"City : "}
-              <InputField
-                type="text"
-                id="city"
-                name="city"
-                placeholder="City"
-                required
-                onChange={handleChange}
-              />
-            </InputLabel>
-            <InputLabel>
-              {"Country : "}
-              <InputField
-                type="text"
-                id="country"
-                name="country"
-                placeholder="Country"
-                onChange={handleChange}
-                required
-              />
-            </InputLabel>
-          </Section>
+          <div  onClick={()=> setPutAddress(prv => (prv? false : true)) } >
+          <InputField type="button" value={(putAddress? "Skip For Now" : "Put Address" )} />
+          </div>
+          {putAddress? <AddressForm handleChange={handleAddressInputChange} /> : ""}
         </SectionWrapper>
         <InputField type="submit" value="Register" />
       </InputForm>

@@ -5,6 +5,8 @@ export const extraCost = makeVar({});
 export const message = makeVar(null);
 
 export const isLogin = makeVar(false)
+export const Loading2 = makeVar(false)
+
 
 export const LookupJwt = () =>{
   if(typeof window !== "undefined"){

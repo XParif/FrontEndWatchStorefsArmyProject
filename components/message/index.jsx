@@ -44,7 +44,7 @@ const Message = ()=>{
      
     return (
         <div style={{position : 'fixed' ,top : 100 , right : 0, zIndex : 100000}}>
-             {state.map(v => <MsgShow text = {v} type={Msg.type} />)}
+             {state.map((v,index) => <MsgShow key={index} text = {v} type={Msg.type} />)}
         </div>)
 }
 

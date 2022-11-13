@@ -11,6 +11,7 @@ import {
   ModalTitleLogo,
   ModalTitleText,
   ModalWrapper,
+  ModalUnfocused
 } from "./ModalComponents";
 import RegisterForm from "./RegisterForm";
 
@@ -19,6 +20,7 @@ const Modal = ({ modalController }) => {
 
   return (
     <ModalWrapper>
+      <ModalUnfocused onClick={() => modalController(false)} />
       <ModalBackground>
         <ModalContainer>
           <ModalClose onClick={() => modalController(false)}> X </ModalClose>
@@ -38,7 +40,7 @@ const Modal = ({ modalController }) => {
               </>
             ) : (
               <>
-                <RegisterForm setLoginPart={setLoginPart} />
+                <RegisterForm modalController={modalController}  setLoginPart={setLoginPart} />
                 <ModalFooter onClick={() => setLoginPart(true)}>
                   Already Registered? Login here
                 </ModalFooter>
