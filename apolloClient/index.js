@@ -2,14 +2,23 @@ import {  Reference, makeVar, ApolloClient, HttpLink, ApolloLink, InMemoryCache,
 
 export const cartItemsVar = makeVar([]);
 export const extraCost = makeVar({});
+export const message = makeVar(null);
+
+export const isLogin = makeVar(false)
+export const Loading2 = makeVar(false)
 
 
-
-const LookupJwt = () =>{
+export const LookupJwt = () =>{
   if(typeof window !== "undefined"){
     return localStorage.getItem('jwt_token');
   }
 }
+
+
+
+
+
+
 const httpLink = new HttpLink({ uri: 'https://fs-army-teamf-clockstore.herokuapp.com/graphql' });
 
 const Middleware = new ApolloLink((operation, forward) => {
