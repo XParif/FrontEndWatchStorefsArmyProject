@@ -9,7 +9,8 @@ const TextBlockStyle = styled.div`
 `;
 
 const TextBlock = ({item}) => {
-  const productTittle = item.productName.slice(0,20) + "...."
+  const productTittle = item.productName
+  // .slice(0,20) + "...."
   return (
     <TextBlockStyle>
       <BlockText size="md" weight="semiBold">{productTittle}</BlockText>

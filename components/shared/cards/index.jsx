@@ -23,20 +23,25 @@ const Card = ({item , ImgUrl , addtoCardhandeler}) => {
  
   const detailsLink = `/product/${item.id}`
   return (
-    <BaseCard>
-      <ImageBlock url={ImgUrl} alterTag= {item?.productName} />
-      <TextBlock item={item} />
-      <CardButtonGroup >
-        <Button onClick={addtoCardhandeler} bg="primary">
-          Add Card <FaCartPlus />{" "}
-        </Button>
+    
+        <BaseCard>
         < Link  href={detailsLink}>
-          <Button> 
-            Details <FaInfo />{" "}
-          </Button>
+          <ImageBlock url={ImgUrl} alterTag= {item?.productName} />
+          <TextBlock item={item} />
         </Link>
-      </CardButtonGroup >
-    </BaseCard>
+        <CardButtonGroup >
+          <Button onClick={addtoCardhandeler} bg="primary">
+            Add Card <FaCartPlus />{" "}
+          </Button>
+          {/* < Link  href={detailsLink}>
+            <Button> 
+              Details <FaInfo />{" "}
+            </Button>
+          </Link> */}
+        </CardButtonGroup >
+      </BaseCard>
+
+
   );
 };
 

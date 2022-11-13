@@ -16,10 +16,10 @@ import { message } from "../../apolloClient"
 */
 const MsgShow = ({text ,type})=>{
     return(
-    <div style={{ borderRadius : 20, transition: '2s linear',  display : 'flex' ,margin : '10px', background : '#1976D2' ,padding : '4px' ,color : '#ffff'}}>
-        <div style={{ height : "100%" ,background : '#ffff', marginLeft : '20px'}}><h3>a</h3></div>
-        <h3 style={{marginRight: '10px' , marginLeft : '20px'}}>Message:    </h3>
-        <h4 style={{marginRight: '10px'}}>{text}</h4>
+    <div style={{ borderRadius : 20, transition: '2s linear',margin : '10px', background : '#1976D2' ,padding : '4px' ,color : '#ffff'}}>
+        {/* <div style={{ height : "100%" ,background : '#ffff', marginLeft : '20px'}}><h3>a</h3></div> */}
+        {/* <h3 style={{marginRight: '10px' , marginLeft : '20px'}}>Message:    </h3> */}
+        <p style={{marginRight: '10px' , fontSize  : "12px"}}>{text}</p>
     </div>
     )
 }
@@ -43,7 +43,7 @@ const Message = ()=>{
     
      
     return (
-        <div style={{position : 'fixed' ,top : 100 , right : 0, zIndex : 100000}}>
+        <div style={{position : 'fixed'  , top : 14 , right : 0, zIndex : 100000}}>
              {state.map((v,index) => <MsgShow key={index} text = {v} type={Msg.type} />)}
         </div>)
 }
