@@ -46,7 +46,6 @@ const RegisterForm = ({modalController}) => {
     } catch (error) {
       message({type : "failed" ,body : "SomeThing Went Worng , Plz Type Correctly"})
       Loading2(false)
-      console.log(error)
     }
     
   };

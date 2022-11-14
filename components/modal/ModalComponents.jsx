@@ -64,6 +64,9 @@ export const ModalTitleText = styled.div`
   font-weight: bold;
 `;
 export const ModalBody = styled.div`
+  width : 80vw;
+  height : 80vh;
+  box-sizing : border-box;
   flex: 50%;
   display: flex;
   justify-content: center;

@@ -11,12 +11,36 @@ import {
   TagName,
 } from "./CartComponents";
 
-const CartPrising = ({ subTotal, vatRate, setCheckout }) => {
+const CartPrising = ({ shippingCost, subTotal, vatRate, setCheckout , isCartValied}) => {
   const logInChecked = useReactiveVar(isLogin)
-  const forLogInModal = useReactiveVar(modalController)
   const vat = (subTotal / 100) * vatRate;
-  const grandTotal = subTotal + vat;
+  let grandTotal = subTotal + vat;
+  if(shippingCost){
+    grandTotal+=shippingCost
+  }
 
+  const emptyCartChecked = () =>{
+      if(subTotal === 0){
+        message({type : "alert" , body : "You Cart Is Empty ,Plz Add Some Item in this Cart"})
+        return
+      }
+      setCheckout(true)
+  }
+  const ChekOutButton = (
+    <CheckOutBtn>
+      {logInChecked ? (
+        <Button onClick={emptyCartChecked} bg="primary" fontSize="md">
+          CheckOut
+        </Button>
+      ) : grandTotal > 0 ? (
+        <Button  bg="primary" fontSize="md" onClick={() => {modalController(true) ; message({type : "alert" , body : "Plz LogIn First"}) }}>
+          CheckOut
+        </Button>
+      ) : (
+        ""
+      )}
+    </CheckOutBtn>
+  )
   return (
     <CartPrisingContainer>
       <PrisingTitle>Pricing Summary</PrisingTitle>
@@ -33,24 +57,21 @@ const CartPrising = ({ subTotal, vatRate, setCheckout }) => {
         {" $"}
         <TagName>{vat}</TagName>
       </BlockText>
+      {shippingCost && (<BlockText size="md">
+        <TagName>Shipping Cost</TagName> <TagName>:</TagName>
+        {" $"}
+        <TagName>{shippingCost}</TagName>
+      </BlockText>)}
+      
       <BlockText size="md" weight="semiBold">
         <TagName>Grand Total</TagName> <TagName>:</TagName>
         {" $"}
         <TagName>{grandTotal}</TagName>
       </BlockText>
-      <CheckOutBtn>
-        {logInChecked ? (
-          <Button onClick={()=> setCheckout(true)} bg="primary" fontSize="md">
-            CheckOut
-          </Button>
-        ) : grandTotal > 0 ? (
-          <Button bg="primary" fontSize="md" onClick={() => {modalController(true) ; message({type : "alert" , body : "Plz LogIn First"}) }}>
-            CheckOut
-          </Button>
-        ) : (
-          ""
-        )}
-      </CheckOutBtn>
+      {
+        isCartValied && ChekOutButton 
+      }
+      
     </CartPrisingContainer>
   );
 };

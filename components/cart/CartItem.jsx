@@ -13,8 +13,6 @@ import {
 } from "./CartComponents";
 
 const CartItem = ({
-  product_ref,
-  variantsId,
   productBrand,
   product_quantity,
   productImage,
@@ -23,9 +21,36 @@ const CartItem = ({
   quantityHandler,
   removeItemHandler,
   index,
-  price
+  price,
+  isActionButton
 }) => {
+  if(isActionButton){
+    return(
+      <CartItemContainer>
+      <ProdInfo>
+        <ProdImage style={{display : "flex" , justifyContent: "center" , alignItems : "center"}}>
+          <img style={{width : 60, height : 60 , boxSizing: "border-box"}} src={productImage} alt={productName} />
+        </ProdImage>
+        <ProdDetails>
+          <span> Name : {productName.slice(0,20)}</span>
+          <span> Brand : {productBrand}</span>
+          {/* {/* <span> Category : Smart</span> */}
+          <span> Color : {color}</span> 
+        </ProdDetails>
+      </ProdInfo>
 
+      <ProdQty>
+
+        <BlockText size="lg">{product_quantity}</BlockText>
+     
+      </ProdQty>
+
+      <BlockText size="md">${price}</BlockText>
+
+      <BlockText size="md">${product_quantity * price}</BlockText>
+    </CartItemContainer>
+    )
+  }
   return (
     <CartItemContainer>
       <ProdInfo>

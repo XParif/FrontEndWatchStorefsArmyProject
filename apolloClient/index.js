@@ -12,7 +12,7 @@ export const pocketKhali = makeVar(false)
 
 export const LookupJwt = () =>{
   if(typeof window !== "undefined"){
-    return localStorage.getItem('jwt_token');
+    return (localStorage.getItem('jwt_token'));
   }
 }
 
@@ -28,7 +28,7 @@ const Middleware = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => ({
     headers: {
       ...headers,
-      authorization: jwt ? `Bearer ${jwt}` : "",
+      authorization: jwt ? `${jwt}` : "",
       "normalize" : true
     }
   }));

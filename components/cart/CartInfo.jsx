@@ -3,24 +3,18 @@ import Button from "../shared/buttons";
 import Bar from "../shared/texts/Bar";
 import BlockText from "../shared/texts/BlockText";
 import CartItem from "./CartItem";
-
+import ItemTittle from './ItemTittle';
 import {
   CartInfoWrap,
-  CartItemCount,
   CartItemList,
   CartTitle,
   ClearAllContainer,
   Hader,
-  ItemTitle,
-  ProductDetailTitle,
-  ProductPriceTitle,
-  ProductQuantityTitle,
-  ProductTotalTitle,
 } from "./CartComponents";
 
 const CartInfo = ({
   cartData,
-  // setCartData,
+  cartItemsVar,
   quantityHandler,
   removeItemHandler,
 }) => {
@@ -30,20 +24,11 @@ const CartInfo = ({
     <CartInfoWrap>
       <Hader>
         <CartTitle>Shopping Cart - Watch Store</CartTitle>
-        {/* <CartItemCount>
-          {" "}
-          {count > 1 ? `${count} Items` : `${count} Item`}{" "}
-        </CartItemCount> */}
       </Hader>
 
       <Bar width="full" height="sm" />
 
-      <ItemTitle>
-        <ProductDetailTitle>Product Details</ProductDetailTitle>
-        <ProductQuantityTitle>Quantity</ProductQuantityTitle>
-        <ProductPriceTitle>Rate</ProductPriceTitle>
-        <ProductTotalTitle>Total</ProductTotalTitle>
-      </ItemTitle>
+      <ItemTittle/>
 
       <CartItemList>
         {cartData.map((item , index) => (
@@ -63,10 +48,10 @@ const CartInfo = ({
           />
         ))}
       </CartItemList>
-      {/* <ClearAllContainer>
+      <ClearAllContainer>
         {" "}
         {count > 0 ? (
-          <Button fontSize={"md"} onClick={() => setCartData([])}>
+          <Button fontSize={"md"} onClick={() => cartItemsVar([])}>
             Clear All <FaTrash />
           </Button>
         ) : (
@@ -75,7 +60,7 @@ const CartInfo = ({
             <h3> Your Cart is Empty !</h3>
           </BlockText>
         )}
-      </ClearAllContainer> */}
+      </ClearAllContainer>
     </CartInfoWrap>
   );
 };
