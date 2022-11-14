@@ -89,6 +89,17 @@ const AddressForm = ({handleChange}) => {
                 required
               />
             </InputLabel>
+            <InputLabel>
+              {"Country : "}
+              <InputField
+                type="number"
+                id="phoneNumber"
+                name="phoneNumber"
+                placeholder="phoneNumber"
+                onChange={handleChange}
+                required
+              />
+            </InputLabel>
           </Section>
 
   );
