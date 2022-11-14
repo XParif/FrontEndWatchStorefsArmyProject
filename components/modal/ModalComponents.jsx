@@ -1,25 +1,25 @@
 import styled from "styled-components";
 
 export const ModalWrapper = styled.div`
-  z-index : 100000;
+  z-index: 100000;
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(200, 200, 200 , 0.6);
+  background-color: rgba(200, 200, 200, 0.6);
   position: fixed;
-  top : 0;
-  left : 0;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-export const ModalUnfocused= styled.div`
+export const ModalUnfocused = styled.div`
   z-index: 100000;
   width: 100vw;
   height: 100vh;
   position: fixed;
-  top : 0;
-  left : 0;
+  top: 0;
+  left: 0;
 `;
 
 export const ModalBackground = styled.div`
@@ -64,9 +64,7 @@ export const ModalTitleText = styled.div`
   font-weight: bold;
 `;
 export const ModalBody = styled.div`
-  width : 80vw;
-  height : 80vh;
-  box-sizing : border-box;
+  box-sizing: border-box;
   flex: 50%;
   display: flex;
   justify-content: center;
@@ -76,10 +74,14 @@ export const ModalBody = styled.div`
 `;
 
 export const ModalFooter = styled.div`
-  flex: 20%;
+  font-size: ${({ theme }) => theme?.fontSizes?.default};
+  margin-top: 1rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
+  gap: 0.5rem;
+`;
+
+export const ClickableLink = styled.div`
+  font-weight: ${({ theme }) => theme?.fontWeight?.semiBold};
   cursor: pointer;
+  color: ${({ theme }) => theme?.color?.primary};
 `;
