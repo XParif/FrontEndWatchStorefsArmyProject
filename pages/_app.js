@@ -6,21 +6,22 @@ import 'nprogress/nprogress.css'
 import { useRouter } from 'next/router'
 import { useEffect , useState } from 'react'
 import LoadingCompunent from '../components/loading/Loading';
-
+import AnotherLoading from "../components/loading/anotherLoading";
+import { Loading2 } from "../apolloClient";
 
 
 function MyApp({ Component, pageProps }) {
+  
   const router = useRouter()
-  const [loading,setLoading] = useState(false)
   useEffect(() => {
     const handleStart = () => {
-      setLoading(true)
+      Loading2(true)
       NProgress.start()
     }
 
     const handleStop = () => {
       NProgress.done()
-      setLoading(false)
+      Loading2(false)
     }
 
     router.events.on('routeChangeStart', handleStart)
@@ -36,7 +37,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-    {loading && <LoadingCompunent />}
+    <AnotherLoading />
       <Layout>
         <Component {...pageProps} />
       </Layout>

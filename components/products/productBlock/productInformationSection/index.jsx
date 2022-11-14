@@ -52,7 +52,7 @@ const ProductBrand= ({children}) =>{
 //   )
 // }
 
-const ProductInformationSection = ({ pointedVariantIndex ,productInfo , variantsTensionReliefer , variants , price}) => {
+const ProductInformationSection = ({ addtoCardhandeler,pointedVariantIndex ,productInfo , variantsTensionReliefer , variants , price}) => {
     
   return (
     <InformationStyle>
@@ -110,7 +110,7 @@ const ProductInformationSection = ({ pointedVariantIndex ,productInfo , variants
         </SelectBox>
       </ColorBox>
       <ActionButtonGroup>
-        <Button fontSize="md" bg="primary">
+        <Button onClick={addtoCardhandeler} fontSize="md" bg="primary">
           Add to Cart <FaCartPlus />
         </Button>
       </ActionButtonGroup>

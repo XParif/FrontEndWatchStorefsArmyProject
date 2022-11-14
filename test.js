@@ -1,2 +1,5 @@
-const a = ["dasfsa" , "sadfsf"]
-console.log(typeof a)
+function a(){
+
+}
+
+console.log(a())

@@ -16,7 +16,7 @@ export const BaseButton = styled.button`
   padding: ${({ shape, theme }) =>
     shape === "square" ? "0.5rem" : "0.5rem 0.85rem"};
 
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   text-transform: capitalize;
   transition: 0.5s;

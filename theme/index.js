@@ -6,6 +6,7 @@ const theme = {
   },
   fontSizes: {
     sm: "0.8rem",
+    default: "1rem",
     md: "1.2rem",
     lg: "1.65rem",
     xl: "3.75rem",
@@ -20,6 +21,7 @@ const theme = {
     sm: "1.2",
     md: "1.4",
     lg: "1.6",
+    custom: "26px"
   },
   gap: {
     sm: "0.6rem 1.2rem",

@@ -17,7 +17,7 @@ const SectionHeading = ({ title , slug , size, weight, children }) => {
       <Title size={size} weight={weight}>
         {title}
       </Title>
-      {slug ? (<Slug size="sm" weight="medium">
+      {slug ? (<Slug size="default" weight="medium">
         {slug}
       </Slug>) : ""}
       {children}

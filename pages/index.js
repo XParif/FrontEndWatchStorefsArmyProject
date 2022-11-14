@@ -8,8 +8,9 @@ import WeeklyProducts from '../components/home/weeklyProducts/index';
 import MostPremiumWatch from '../components/home/mostPremiumWatch/index';
 import OurHappyCustomer from '../components/home/happyCustomer/index';
 import ProductReviewVideo from '../components/home/productReviewVideo/index';
-import client from '../apolloClient/index';
+import { client } from '../apolloClient/index';
 import {GetProduct} from '../graphql/index';
+
 
 const  Home = ({allProducts})=> {
 

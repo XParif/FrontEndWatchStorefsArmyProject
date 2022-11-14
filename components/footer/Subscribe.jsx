@@ -9,13 +9,20 @@ const SubscribeStyle = styled.div`
     color: ${({ theme }) => theme?.color?.white};
   }
 `;
+
+const TitleContainer = styled.div`
+  margin-bottom: 10px;
+`;
+
 const Subscribe = (props) => {
   return (
     <SubscribeStyle>
-      <Title size="md" weight="medium">
-        {" "}
-        {props.title}
-      </Title>
+      <TitleContainer>
+        <Title size="md" weight="medium">
+          {" "}
+          {props.title}
+        </Title>
+      </TitleContainer>
       <Search placeholder="Subcribe for special discount">
         Subscribe &nbsp;
         <FaRegPaperPlane />

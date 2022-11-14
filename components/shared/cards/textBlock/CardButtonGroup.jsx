@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const ButtonGroupStyle = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   margin: 0.5rem 0;
   padding : 0.5rem;
 `;

@@ -1,4 +1,6 @@
 import {  gql } from '@apollo/client';
+import objToGqlString from '../utils/objectToGqlString';
+
 export const GetProduct = gql`
 query GetProduct{
   allProducts {
@@ -185,4 +187,73 @@ export const getSingleProduct = (id) =>{
       }
     }
   }`)
+}
+
+export const getExtraCost = gql`
+  query {
+    extraCost
+    {
+      data{
+        attributes{
+          vat,
+          shipingCost
+        }
+      }
+    }
+  }
+`
+
+export const getLogIn = (identifier , password)=>{
+  return (
+    gql`mutation {
+      login( input : {identifier : "${identifier}", password : "${password}"}){
+        jwt,
+        user{
+          id,
+          username,
+          email,  
+        }
+      }
+    }`
+  )
+}
+
+export const getRegister = (userState , addressState) =>{
+  const userInfo =  objToGqlString(userState)
+
+  if(addressState){
+    const addresinfo = objToGqlString(addressState)
+    console.log(addresinfo)
+    return(
+      gql`mutation{
+        userReg(input : {${userInfo},  addressLine : {${addresinfo}}}
+        ){
+         jwt,
+          user{
+            id,
+            username,
+            email,
+            gender
+          },
+          message 
+        }
+      }`
+    )
+  }
+
+  return(
+    gql`mutation{
+      userReg(input : {${userInfo}}
+        ){
+       jwt,
+        user{
+          id,
+          username,
+          email,
+          gender
+        },
+        message 
+      }
+    }`
+  )
 }
