@@ -7,6 +7,7 @@ const NavItem = styled.h3`
   margin: 0 7px;
   padding: 5px;
   font-weight: ${({ theme }) => theme?.fontWeight?.medium};
+  font-size: ${({theme}) => theme?.fontSizes?.default};
 `;
 
 const NavList = (props) => {

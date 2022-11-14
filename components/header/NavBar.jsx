@@ -24,6 +24,8 @@ const MyNavLink = styled.div`
   text-decoration: none;
   cursor: pointer;
   border-radius: 5px;
+  padding: 5px 0px;
+  margin-right: 10px !important;
   &:hover {
     color: ${({ bg = "primary", theme }) =>
       theme.color[bg] ?? theme?.color?.secondary};
@@ -50,8 +52,8 @@ const NavBar = ({ modalController , CartItemCount }) => {
       </Link>
       <Link href="/cart" onClick={() => pocketKhali(false)}>
         <MyNavLink>
-          <span style={{position : "absolute", top: 0, right : 0 , color : "red" }}>
-              {CartItemCount}
+          <span style={{position : "absolute", top: 0, right : -3 , color : "red", backgroundColor:"#fff", color: "#60C3D8" , fontSize:"12px", padding: "0px 2px", borderRadius: "5px", border:"1px solid #60C3D8" }}>
+          {CartItemCount}
           </span>
           <NavList title="Cart" logo={<FaCartPlus />} />
         </MyNavLink>

@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   border: none;
 }
+
 body {
   font-family: ${({ theme }) => theme?.typography} , sans-serif;
 }
@@ -14,6 +15,11 @@ body {
 span{
   display: inline-block;
 }
+
+input {
+  font-family: ${({ theme }) => theme?.typography} , sans-serif;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

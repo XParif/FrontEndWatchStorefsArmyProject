@@ -13,13 +13,13 @@ const TextBlock = ({item}) => {
   // .slice(0,20) + "...."
   return (
     <TextBlockStyle>
-      <BlockText size="md" weight="semiBold">{productTittle}</BlockText>
-      {/* <Rating rates={item.rating} /> */}
+      <BlockText size="md" weight="medium" line="custom">{productTittle}</BlockText>
       <PriceBlock>
-        <InlineText color="primary" size="md" weight="bold">
-          ${item.defualtPrice}
-        </InlineText>
-      </PriceBlock>
+          <InlineText color="primary" size="md" weight="bold">
+            ${item.defualtPrice}
+          </InlineText>
+        </PriceBlock>
+      {/* <Rating rates={item.rating} /> */}
     </TextBlockStyle>
   );
 };

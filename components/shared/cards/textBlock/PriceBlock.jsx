@@ -1,6 +1,6 @@
 import styled from "styled-components";
 const PriceStyle = styled.div`
-  margin-top : .34rem;
+  margin-top : .75rem;
   display: flex;
   justify-content: space-between;
 `;

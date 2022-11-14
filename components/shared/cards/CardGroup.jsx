@@ -4,9 +4,15 @@ import addtoCardhandeler from '../../../utils/addToCartFun';
 
 
 const BaseCardGroup = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 430px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const CardGroup = ({ list }) => {
