@@ -1,39 +1,46 @@
-import Link from "next/link";
-import styled from "styled-components";
+import { useReactiveVar } from "@apollo/client";
+import { isLogin, message, modalController } from "../../apolloClient";
 import Bar from "../shared/texts/Bar";
 import BlockText from "../shared/texts/BlockText";
 import Button from "./../shared/buttons";
 
-const CartPrisingContainer = styled.div`
-  flex: 1;
-  padding: 2%;
-  background-color: #f6f6f6;
-  text-align: center;
-`;
+import {
+  CartPrisingContainer,
+  CheckOutBtn,
+  PrisingTitle,
+  TagName,
+} from "./CartComponents";
 
-const PrisingTitle = styled.h3`
-  text-align: center;
-  color: ${({ theme }) => theme?.color?.text};
-  font-weight: ${({ theme }) => theme?.fontWeight?.semiBold};
-`;
-const TagContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-`;
-const TagName = styled.span`
-  margin: 3px 0;
-`;
-
-const CheckOutBtn = styled.div`
-  margin-top: 20px;
-`;
-
-const CartPrising = (props) => {
-  const subTotal = props.subTotal;
-  const vatRate = props.vatRate;
+const CartPrising = ({ shippingCost, subTotal, vatRate, setCheckout , isCartValied}) => {
+  const logInChecked = useReactiveVar(isLogin)
   const vat = (subTotal / 100) * vatRate;
-  const grandTotal = subTotal + vat;
+  let grandTotal = subTotal + vat;
+  if(shippingCost){
+    grandTotal+=shippingCost
+  }
 
+  const emptyCartChecked = () =>{
+      if(subTotal === 0){
+        message({type : "alert" , body : "You Cart Is Empty ,Plz Add Some Item in this Cart"})
+        return
+      }
+      setCheckout(true)
+  }
+  const ChekOutButton = (
+    <CheckOutBtn>
+      {logInChecked ? (
+        <Button onClick={emptyCartChecked} bg="primary" fontSize="md">
+          CheckOut
+        </Button>
+      ) : grandTotal > 0 ? (
+        <Button  bg="primary" fontSize="md" onClick={() => {modalController(true) ; message({type : "alert" , body : "Plz LogIn First"}) }}>
+          CheckOut
+        </Button>
+      ) : (
+        ""
+      )}
+    </CheckOutBtn>
+  )
   return (
     <CartPrisingContainer>
       <PrisingTitle>Pricing Summary</PrisingTitle>
@@ -50,18 +57,21 @@ const CartPrising = (props) => {
         {" $"}
         <TagName>{vat}</TagName>
       </BlockText>
+      {shippingCost && (<BlockText size="md">
+        <TagName>Shipping Cost</TagName> <TagName>:</TagName>
+        {" $"}
+        <TagName>{shippingCost}</TagName>
+      </BlockText>)}
+      
       <BlockText size="md" weight="semiBold">
         <TagName>Grand Total</TagName> <TagName>:</TagName>
         {" $"}
         <TagName>{grandTotal}</TagName>
       </BlockText>
-      <CheckOutBtn>
-        <Link href="/checkout">
-          <Button bg="primary" fontSize="md">
-            Checkout
-          </Button>
-        </Link>
-      </CheckOutBtn>
+      {
+        isCartValied && ChekOutButton 
+      }
+      
     </CartPrisingContainer>
   );
 };

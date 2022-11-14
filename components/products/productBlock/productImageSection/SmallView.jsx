@@ -19,18 +19,17 @@ const SingleImage = styled.div`
   }
 `;
 
-const SmallView = () => {
+const SmallView = ({variants , variantsTensionReliefer}) => {
   return (
     <SmallViewStyle>
-      <SingleImage bg="primary">
-        <Image src="/demo.png" alt="watch" width="160" height="160" />
-      </SingleImage>
-      <SingleImage>
-        <Image src="/demo.png" alt="watch" width="160" height="160" />
-      </SingleImage>
-      <SingleImage>
-        <Image src="/demo.png" alt="watch" width="160" height="160" />
-      </SingleImage>
+
+      {variants.map((item , index)=>{
+        return (
+          <SingleImage key={index} onClick={()=> variantsTensionReliefer(index , '🥵')} bg="primary">
+            <Image src={item.variantsImage} alt="watch" width="160" height="160" />
+          </SingleImage>
+        )
+      })}
     </SmallViewStyle>
   );
 };

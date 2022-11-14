@@ -1,5 +1,8 @@
-import PageHead from "../components/Collection/pageHead";
+import PageHead from '../components/collection/pageHead/index';
 import PageBody from '../components/collection/pageBody/index';
+
+
+
 
 const Collections = () => {
   return (

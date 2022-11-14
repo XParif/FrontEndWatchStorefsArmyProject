@@ -3,9 +3,13 @@ import SearchButton from "./SearchButton";
 import SearchInput from "./SearchInput";
 
 const SearchStyle = styled.div`
-  border-radius: 10px;
+  font-family: ${({ theme }) => theme?.typography};
+  border-radius: 5px;
   display: flex;
-  align-items: center;
+  align-items: top;
+  & input {
+    font-size: ${({ theme }) => theme?.fontSizes?.sm};
+  }
 `;
 
 const Search = ({ placeholder, children }) => {

@@ -1,96 +1,86 @@
 import Image from "next/image";
-import { FaMinus, FaPlus } from "react-icons/fa";
-import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { FaMinus, FaPlus, FaTrashAlt } from "react-icons/fa";
 import Button from "./../shared/buttons";
 import BlockText from "./../shared/texts/BlockText";
+import {
+  CartItemContainer,
+  DeletItem,
+  ProdDetails,
+  ProdImage,
+  ProdInfo,
+  ProdQty,
+} from "./CartComponents";
 
-const CartItemContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 3px 5px;
-  /* border: 1px black solid; */
-`;
-
-const ProdInfo = styled.div`
-  display: flex;
-  align-items: center;
-`;
-const ProdImage = styled.div`
-  height: 70px;
-  width: 70px;
-  background-color: ${({ bg, theme }) =>
-    theme.color[bg] ?? theme?.color?.secondary};
-`;
-const ProdDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-`;
-
-const ProdQty = styled.div`
-  margin: 0 10px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-`;
-const AmountText = styled.h3``;
-
-const DeletItem = styled.button`
-  display: flex;
-  justify-content: flex-end;
-  background-color: transparent;
-  border: none;
-  /* color: ${({ theme }) => theme?.color?.text}; */
-  color: ${({ theme }) => theme?.color?.red};
-  font-size: 25px;
-  transition: 0.5s;
-  opacity: 0.5;
-  /* font-weight: bold; */
-  cursor: pointer;
-  &:hover {
-    opacity: 1;
-  }
-`;
-
-const CartItem = (props) => {
-  console.log("hi");
-  // const qty = props.quantity;
-  // [quantity, setQuantity] = useState(0);
-  const qtyDec = () => {
-    // setQuantity--;
-  };
-  const qtyInc = () => {
-    // setQuantity++;
-  };
-  return (
-    <CartItemContainer>
+const CartItem = ({
+  productBrand,
+  product_quantity,
+  productImage,
+  productName,
+  color,
+  quantityHandler,
+  removeItemHandler,
+  index,
+  price,
+  isActionButton
+}) => {
+  if(isActionButton){
+    return(
+      <CartItemContainer>
       <ProdInfo>
-        <ProdImage>
-          <Image />
+        <ProdImage style={{display : "flex" , justifyContent: "center" , alignItems : "center"}}>
+          <img style={{width : 60, height : 60 , boxSizing: "border-box"}} src={productImage} alt={productName} />
         </ProdImage>
         <ProdDetails>
-          <span> Name : {props.name}</span>
-          <span> Brand : {props.brand}</span>
-          {/* <span> Category : Smart</span>
-          <span> Sub Category : Smart</span> */}
+          <span> Name : {productName.slice(0,20)}</span>
+          <span> Brand : {productBrand}</span>
+          {/* {/* <span> Category : Smart</span> */}
+          <span> Color : {color}</span> 
         </ProdDetails>
       </ProdInfo>
 
       <ProdQty>
-        <Button bg="primary" shape="square" onClick={qtyDec}>
+
+        <BlockText size="lg">{product_quantity}</BlockText>
+     
+      </ProdQty>
+
+      <BlockText size="md">${price}</BlockText>
+
+      <BlockText size="md">${product_quantity * price}</BlockText>
+    </CartItemContainer>
+    )
+  }
+  return (
+    <CartItemContainer>
+      <ProdInfo>
+        <ProdImage style={{display : "flex" , justifyContent: "center" , alignItems : "center"}}>
+          <img style={{width : 60, height : 60 , boxSizing: "border-box"}} src={productImage} alt={productName} />
+        </ProdImage>
+        <ProdDetails>
+          <span> Name : {productName.slice(0,20)}</span>
+          <span> Brand : {productBrand}</span>
+          {/* {/* <span> Category : Smart</span> */}
+          <span> Color : {color}</span> 
+        </ProdDetails>
+      </ProdInfo>
+
+      <ProdQty>
+        <Button bg="primary" shape="square" onClick={()=>quantityHandler("-" , index)}>
           <FaMinus />
         </Button>
-        <BlockText size="lg">{props.quantity}</BlockText>
-        <Button bg="primary" shape="square" onClick={qtyInc}>
+        <BlockText size="lg">{product_quantity}</BlockText>
+        <Button bg="primary" shape="square" onClick={()=>quantityHandler("+" , index)} >
           <FaPlus />
         </Button>
       </ProdQty>
 
-      <BlockText size="md">{props.unitePrice}</BlockText>
+      <BlockText size="md">${price}</BlockText>
 
-      <BlockText size="md">{props.total}</BlockText>
-      <DeletItem>x{/* <FaTrashAlt /> */}</DeletItem>
+      <BlockText size="md">${product_quantity * price}</BlockText>
+      <DeletItem onClick={() => removeItemHandler(index)}>
+        <FaTrashAlt />
+      </DeletItem>
     </CartItemContainer>
   );
 };

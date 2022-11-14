@@ -16,7 +16,7 @@ export const BaseButton = styled.button`
   padding: ${({ shape, theme }) =>
     shape === "square" ? "0.5rem" : "0.5rem 0.85rem"};
 
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   text-transform: capitalize;
   transition: 0.5s;
@@ -33,9 +33,9 @@ export const BaseButton = styled.button`
   }
 `;
 
-const Button = ({ children, bg, fontSize, shape }) => {
+const Button = ({ children, bg, fontSize, shape, onClick }) => {
   return (
-    <BaseButton bg={bg} fontSize={fontSize} shape={shape}>
+    <BaseButton bg={bg} fontSize={fontSize} shape={shape} onClick={onClick}>
       {children}
     </BaseButton>
   );
