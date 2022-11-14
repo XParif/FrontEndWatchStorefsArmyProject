@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {RedButton} from '../shared/buttons'
 
 export const ModalWrapper = styled.div`
   z-index: 100000;
@@ -38,15 +39,10 @@ export const ModalContainer = styled.div`
   padding: 25px;
 `;
 
-export const ModalClose = styled.button`
+export const ModalClose = styled(RedButton)`
   display: flex;
   justify-content: flex-end;
   background-color: transparent;
-  border: none;
-  color: ${({ theme }) => theme?.color?.red};
-  font-size: 25px;
-  font-weight: bold;
-  cursor: pointer;
 `;
 
 export const ModalTitle = styled.div`

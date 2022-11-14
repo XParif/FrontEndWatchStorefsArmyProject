@@ -67,8 +67,6 @@ export const ProductTotalTitle = styled.span`
 `;
 
 export const CartItemList = styled.div`
-  /* display: flex;
-  justify-content: space-between; */
 `;
 export const ClearAllContainer = styled.div`
   text-align: center;
@@ -126,23 +124,6 @@ export const ProdQty = styled.div`
 `;
 
 export const AmountText = styled.h3``;
-
-export const DeletItem = styled.button`
-  display: flex;
-  justify-content: flex-end;
-  background-color: transparent;
-  border: none;
-  /* color: ${({ theme }) => theme?.color?.text}; */
-  color: ${({ theme }) => theme?.color?.red};
-  font-size: 25px;
-  transition: 0.5s;
-  opacity: 0.5;
-  /* font-weight: bold; */
-  cursor: pointer;
-  &:hover {
-    opacity: 1;
-  }
-`;
 
 export const CartPrisingContainer = styled.div`
   flex: 1;
