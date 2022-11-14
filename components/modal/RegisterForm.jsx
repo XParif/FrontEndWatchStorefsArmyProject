@@ -4,6 +4,8 @@ import { client, isLogin, Loading2 , message } from "../../apolloClient";
 import { getRegister } from "../../graphql";
 import AddressForm from "./address";
 import { InputField, InputForm, InputLabel } from "./common";
+import Button from '../shared/buttons/index'
+
 
 const RegisterFormContainer = styled.div`
   width: 900px;
@@ -46,7 +48,6 @@ const RegisterForm = ({modalController}) => {
     } catch (error) {
       message({type : "failed" ,body : "SomeThing Went Worng , Plz Type Correctly"})
       Loading2(false)
-      console.log(error)
     }
     
   };
@@ -119,7 +120,9 @@ const RegisterForm = ({modalController}) => {
           </div>
           {putAddress? <AddressForm handleChange={handleAddressInputChange} /> : ""}
         </SectionWrapper>
-        <InputField type="submit" value="Register" />
+        <Button bg="primary" type="submit">
+          Register
+        </Button>
       </InputForm>
     </RegisterFormContainer>
   );

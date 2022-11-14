@@ -23,6 +23,7 @@ const theme = {
     lg: "1.6",
     custom: "26px"
   },
+  borderRadius: '5px',
   gap: {
     sm: "0.6rem 1.2rem",
     md: "0.8rem 1.6rem",

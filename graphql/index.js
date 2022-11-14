@@ -257,3 +257,108 @@ export const getRegister = (userState , addressState) =>{
     }`
   )
 }
+
+export const getAddress = (user_id)=>{
+  return (
+    gql`
+    query{
+      addresses(filters : {user_ref : {id : {eq : ${user_id}}}} ){
+        data{
+          id,
+          attributes{
+            address,
+            streetAddress,
+            city,
+            state_Province_Region,
+            zipCode,
+            country
+          }
+        }
+      }
+    }
+    `
+  )
+}
+
+export const mutatedAddress = (addressInfo , user_id )=>{
+  const addressStr =  objToGqlString(addressInfo);
+  return (
+    gql`
+    mutation{
+      createAddress(data : {user_ref : ${user_id} ,${addressStr}
+      }){
+        data{
+          id,
+          attributes{
+            address
+          }
+        }
+      }
+    }
+    `
+  )
+}
+
+export const mutationOrder = (ordersItem , delivaryAddressRef , paymentMethod) =>{
+  const ordersItemStr =  (JSON.stringify(ordersItem)).replace( /"/g ,"")
+  console.log(ordersItemStr)
+
+  return(
+    gql`
+    mutation{
+      MakeOrder(ordersItem: ${ordersItemStr}  , delivaryAddress : ${delivaryAddressRef} ,paymentMethod : "${paymentMethod}"){
+        isSuccesfull,
+        ordersInformation{
+          data{
+            id,
+            attributes{
+              totalPrice,
+              totalVat,
+              shipingCost,
+              user_ref{
+                data{
+                  id,
+                  attributes{
+                    username,
+                  }
+                }
+              }
+              delivaryAddress{
+                data{
+                  id,
+                  attributes{
+                    zipCode,
+                    phoneNumber,
+                    city,
+                    country,
+                    address,
+                    streetAddress,
+                    state_Province_Region
+                  }
+                }
+              }
+              vatInPercentages,
+              ordersItem{
+                id,
+                itemsTotalPrice,
+                unitPrice,
+                productId,
+                variantsId,
+                variantCode,
+                variantColor,
+                product_quantity,
+                productName,
+              }
+              paymentMethod
+            }
+          }
+        }
+      }
+    }
+    `
+  )
+
+  
+} 
+
+
