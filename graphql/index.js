@@ -233,7 +233,8 @@ export const getRegister = (userState , addressState) =>{
             id,
             username,
             email,
-            gender
+            gender,
+            password
           },
           message 
         }
@@ -250,7 +251,8 @@ export const getRegister = (userState , addressState) =>{
           id,
           username,
           email,
-          gender
+          gender,
+          password
         },
         message 
       }
