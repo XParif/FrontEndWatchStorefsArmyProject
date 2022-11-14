@@ -1,5 +1,6 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
+import { isLogin, LookupJwt , pocketKhali} from "../../apolloClient";
 import {
   FaBullhorn,
   FaCartPlus,
@@ -9,7 +10,9 @@ import {
   FaUserCircle,
 } from "react-icons/fa";
 import styled from "styled-components";
+
 import NavList from "./NavList";
+import { useReactiveVar } from "@apollo/client";
 const NavContainer = styled.div`
   display: flex;
   justify-content: space-around;
@@ -17,9 +20,12 @@ const NavContainer = styled.div`
 
 const MyNavLink = styled.div`
   color: ${({ theme }) => theme?.color?.white};
+  position : relative;
   text-decoration: none;
   cursor: pointer;
   border-radius: 5px;
+  padding: 5px 0px;
+  margin-right: 10px !important;
   &:hover {
     color: ${({ bg = "primary", theme }) =>
       theme.color[bg] ?? theme?.color?.secondary};
@@ -32,8 +38,11 @@ const MyNavLink = styled.div`
   }*/
 `;
 
-const NavBar = ({ modalController }) => {
-  const [login, setLogin] = useState(false);
+const NavBar = ({ modalController , CartItemCount }) => {
+  const login = useReactiveVar(isLogin)
+  useEffect(()=>{
+     isLogin((LookupJwt() == undefined ? false : true  ))
+  },[login])
   return (
     <NavContainer>
       <Link href="/collections">
@@ -41,8 +50,11 @@ const NavBar = ({ modalController }) => {
           <NavList title="Collections" logo={<FaItchIo />} />
         </MyNavLink>
       </Link>
-      <Link href="/cart">
+      <Link href="/cart" onClick={() => pocketKhali(false)}>
         <MyNavLink>
+          <span style={{position : "absolute", top: 0, right : -3 , color : "red", backgroundColor:"#fff", color: "#60C3D8" , fontSize:"12px", padding: "0px 2px", borderRadius: "5px", border:"1px solid #60C3D8" }}>
+          {CartItemCount}
+          </span>
           <NavList title="Cart" logo={<FaCartPlus />} />
         </MyNavLink>
       </Link>
@@ -59,7 +71,13 @@ const NavBar = ({ modalController }) => {
             </MyNavLink>
           </Link>
           <MyNavLink href="">
+            <div onClick={()=> {
+               localStorage.removeItem('jwt_token');
+               localStorage.removeItem('logedInUserId');
+               isLogin(false)
+            }}>
             <NavList title="LogOut" logo={<FaSignOutAlt />} />
+            </div>
           </MyNavLink>
         </NavContainer>
       ) : (

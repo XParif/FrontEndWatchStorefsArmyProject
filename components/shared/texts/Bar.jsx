@@ -7,7 +7,7 @@ const Bar = styled.div`
     theme?.bar.width[width] ?? theme?.bar?.width.normal};
   height: ${({ height, theme }) =>
     theme?.bar.height[height] ?? theme?.bar?.height?.md};
-  margin: 0.37rem 0 1.6rem 0;
+  margin: 0.37rem 0 0.2rem 0;
   display: inline-block;
 `;
 

@@ -9,10 +9,10 @@ const ImageContainer = styled.div`
   margin: 0.5rem;
 `;
 
-const MainView = () => {
+const MainView = ({ProductimageUrl , alterForImage}) => {
   return (
     <ImageContainer>
-      <Image src="/demo.png" alt="watch" width="500" height="500" />
+      <Image src={ProductimageUrl} alt={alterForImage} width="500" height="500" />
     </ImageContainer>
   );
 };

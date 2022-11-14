@@ -1,13 +1,10 @@
 import TitleGroup from "./TitleGroup";
-import SingleTitle from "./SingleTitle";
 
-const TitleBar = () => {
+
+const TitleBar = ({children}) => {
   return (
     <TitleGroup>
-      <SingleTitle>Description</SingleTitle>
-      <SingleTitle>Product Details</SingleTitle>
-      <SingleTitle>Reviews</SingleTitle>
-      <SingleTitle>Policy</SingleTitle>
+      {children}
     </TitleGroup>
   );
 };

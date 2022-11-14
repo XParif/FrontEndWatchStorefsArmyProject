@@ -1,60 +1,39 @@
-import styled from "styled-components";
+import { FaTrash } from "react-icons/fa";
 import Button from "../shared/buttons";
 import Bar from "../shared/texts/Bar";
+import BlockText from "../shared/texts/BlockText";
 import CartItem from "./CartItem";
 
-const CartInfoWrap = styled.div`
-  flex: 3;
-  padding: 2%;
-  background-color: ${({ theme }) => theme?.color?.white};
-`;
+import {
+  CartInfoWrap,
+  CartItemCount,
+  CartItemList,
+  CartTitle,
+  ClearAllContainer,
+  Hader,
+  ItemTitle,
+  ProductDetailTitle,
+  ProductPriceTitle,
+  ProductQuantityTitle,
+  ProductTotalTitle,
+} from "./CartComponents";
 
-const Hader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-`;
-const CartTitle = styled.h3``;
-const CartItemCount = styled.h3``;
+const CartInfo = ({
+  cartData,
+  // setCartData,
+  quantityHandler,
+  removeItemHandler,
+}) => {
+  const count = cartData.length ? cartData.length : 0;
 
-const ItemTitle = styled.div`
-  color: ${({ theme }) => theme?.color?.primary};
-  font-weight: bold;
-  display: flex;
-`;
-const ProductDetailTitle = styled.span`
-  margin: 10px 70px;
-`;
-const ProductQuantityTitle = styled.span`
-  margin: 10px;
-  margin-left: 70px;
-`;
-const ProductPriceTitle = styled.span`
-  margin: 10px 80px;
-`;
-const ProductTotalTitle = styled.span`
-  margin: 10px;
-`;
-
-const CartItemList = styled.div`
-  /* display: flex;
-  justify-content: space-between; */
-`;
-const ClearAll = styled.div`
-  text-align: center;
-`;
-const CartInfo = () => {
-  const data = [{ ann: "1" }, { sadjk: 3 }];
-
-  const count = data.length;
   return (
     <CartInfoWrap>
       <Hader>
         <CartTitle>Shopping Cart - Watch Store</CartTitle>
-        <CartItemCount>
+        {/* <CartItemCount>
           {" "}
           {count > 1 ? `${count} Items` : `${count} Item`}{" "}
-        </CartItemCount>
+        </CartItemCount> */}
       </Hader>
 
       <Bar width="full" height="sm" />
@@ -62,20 +41,41 @@ const CartInfo = () => {
       <ItemTitle>
         <ProductDetailTitle>Product Details</ProductDetailTitle>
         <ProductQuantityTitle>Quantity</ProductQuantityTitle>
-        <ProductPriceTitle>Price</ProductPriceTitle>
+        <ProductPriceTitle>Rate</ProductPriceTitle>
         <ProductTotalTitle>Total</ProductTotalTitle>
       </ItemTitle>
 
       <CartItemList>
-        <CartItem />
-        <CartItem />
-        <CartItem />
+        {cartData.map((item , index) => (
+          <CartItem
+            key={index}
+            variantsId= {item.variantsId}
+            product_ref={item.product_ref}
+            productImage = {item.productImage}
+            productName={item.productName}
+            productBrand={item.productBrand}
+            color = {item.color}
+            price={item.price}
+            product_quantity={item.product_quantity}
+            quantityHandler={quantityHandler}
+            removeItemHandler={removeItemHandler}
+            index = {index}
+          />
+        ))}
       </CartItemList>
-      <ClearAll>
-        <Button bg="red" fontSize="lg">
-          Clear All
-        </Button>
-      </ClearAll>
+      {/* <ClearAllContainer>
+        {" "}
+        {count > 0 ? (
+          <Button fontSize={"md"} onClick={() => setCartData([])}>
+            Clear All <FaTrash />
+          </Button>
+        ) : (
+          <BlockText size="lg" weight="bold">
+            <br />
+            <h3> Your Cart is Empty !</h3>
+          </BlockText>
+        )}
+      </ClearAllContainer> */}
     </CartInfoWrap>
   );
 };

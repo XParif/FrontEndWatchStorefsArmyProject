@@ -1,40 +1,25 @@
-import Link from "next/link";
-import styled from "styled-components";
+import { useReactiveVar } from "@apollo/client";
+import { isLogin, message, modalController } from "../../apolloClient";
 import Bar from "../shared/texts/Bar";
 import BlockText from "../shared/texts/BlockText";
 import Button from "./../shared/buttons";
 
-const CartPrisingContainer = styled.div`
-  flex: 1;
-  padding: 2%;
-  background-color: #f6f6f6;
-  text-align: center;
-`;
+import {
+  CartPrisingContainer,
+  CheckOutBtn,
+  PrisingTitle,
+  TagName,
+} from "./CartComponents";
 
-const PrisingTitle = styled.h3`
-  text-align: center;
-`;
-const TagContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-`;
-const TagName = styled.span`
-  margin: 3px 0;
-`;
-
-const CheckOutBtn = styled.div`
-  margin-top: 20px;
-`;
-
-const CartPrising = (props) => {
-  const subTotal = 250; // get from props
-  const vatRate = 3; // get from props
+const CartPrising = ({ subTotal, vatRate, setCheckout }) => {
+  const logInChecked = useReactiveVar(isLogin)
+  const forLogInModal = useReactiveVar(modalController)
   const vat = (subTotal / 100) * vatRate;
   const grandTotal = subTotal + vat;
 
   return (
     <CartPrisingContainer>
-      <PrisingTitle>Prising Summery</PrisingTitle>
+      <PrisingTitle>Pricing Summary</PrisingTitle>
       <Bar width="full" height="sm" />
 
       <BlockText size="md">
@@ -48,17 +33,23 @@ const CartPrising = (props) => {
         {" $"}
         <TagName>{vat}</TagName>
       </BlockText>
-      <BlockText size="md" weight="bold">
+      <BlockText size="md" weight="semiBold">
         <TagName>Grand Total</TagName> <TagName>:</TagName>
         {" $"}
         <TagName>{grandTotal}</TagName>
       </BlockText>
       <CheckOutBtn>
-        <Link href="/checkout">
-          <Button bg="primary" fontSize="md">
-            Checkout
+        {logInChecked ? (
+          <Button onClick={()=> setCheckout(true)} bg="primary" fontSize="md">
+            CheckOut
           </Button>
-        </Link>
+        ) : grandTotal > 0 ? (
+          <Button bg="primary" fontSize="md" onClick={() => {modalController(true) ; message({type : "alert" , body : "Plz LogIn First"}) }}>
+            CheckOut
+          </Button>
+        ) : (
+          ""
+        )}
       </CheckOutBtn>
     </CartPrisingContainer>
   );
