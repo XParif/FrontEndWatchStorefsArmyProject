@@ -19,8 +19,8 @@ export const MessageBody = styled.div`
 
 export const MessageStyle = styled.div`
   position: fixed;
-  top: 14;
+  top: 4rem;
   right: 0;
-  z-index: 100000;
+  z-index: 10;
 `;
 
