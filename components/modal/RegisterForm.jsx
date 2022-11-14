@@ -36,6 +36,7 @@ const RegisterForm = ({modalController}) => {
       const {data , error} = await client.mutate({
         mutation : query
       })
+      console.log(data)
       const jwt = data?.userReg?.jwt
       localStorage.setItem('jwt_token', `Bearer ${jwt}`);
       localStorage.setItem('logedInUserId', data?.userReg?.user?.id);

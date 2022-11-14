@@ -223,7 +223,6 @@ export const getRegister = (userState , addressState) =>{
 
   if(addressState){
     const addresinfo = objToGqlString(addressState)
-    console.log(addresinfo)
     return(
       gql`mutation{
         userReg(input : {${userInfo},  addressLine : {${addresinfo}}}
@@ -233,7 +232,7 @@ export const getRegister = (userState , addressState) =>{
             id,
             username,
             email,
-            gender
+            gender,
           },
           message 
         }
@@ -250,7 +249,7 @@ export const getRegister = (userState , addressState) =>{
           id,
           username,
           email,
-          gender
+          gender,
         },
         message 
       }

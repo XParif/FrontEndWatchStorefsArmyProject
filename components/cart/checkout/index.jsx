@@ -79,6 +79,11 @@ const CheckoutForm = ({children}) => {
   }
 
   const placeOrder = async() =>{
+    const userID = localStorage.getItem("logedInUserId")
+    if(!addressId){
+      message({type : "alert" ,body : "Plz Select an Address"})
+      return
+    }
     try {
       Loading2(true)
       const RefinedCartData = cartData.map((v)=>{
@@ -111,7 +116,7 @@ const CheckoutForm = ({children}) => {
       <div style={{position : "fixed" , top: "0" , backgroundColor : "white" , left : 0 ,width :  "100vw" , height : "100vh"}}>
       <Button onClick={()=> {setArektaOrderKor(false) ; router.push('/')}}> Continue Shopping </Button>
         <h1> 
-          ধুর ও ফকিন্নি এত কম টাকা অর্ডার করলে তোর গালফ্রেন্ডকে স্কিনশট পাঠাই দিব
+          ধুর ও ফকিন্নি এত কম টাকা অর্ডার করলে হয় !!!!!!!!
         </h1>
         <h3>
         ধন্যবাদ অর্ডার করার জন্য । জীবনে টাকা পয়সা দিয়ে কি হবে ?এত কম টাকার অর্ডার করলে চলে? আরেকটা অর্ডার কর তাইলে খুশি হবো ।
@@ -166,7 +171,7 @@ const CheckoutForm = ({children}) => {
         <Button onClick={()=>setModalcontroleModal(true)} bg="primary"> Add New Address </Button>
         {controleModal && (
             <Modal2 modalController = {setModalcontroleModal} >
-              <AddressForm handleChange = {handleChange}  />
+              <AddressForm handleChange = {handleChange} isFromCheckOut= {true}  />
               <Button onClick={addressSubmitHandle}>Submit</Button>
           </Modal2>
         )}

@@ -13,6 +13,7 @@ import styled from "styled-components";
 
 import NavList from "./NavList";
 import { useReactiveVar } from "@apollo/client";
+import { useRouter } from "next/router";
 const NavContainer = styled.div`
   display: flex;
   justify-content: space-around;
@@ -39,6 +40,7 @@ const MyNavLink = styled.div`
 `;
 
 const NavBar = ({ modalController , CartItemCount }) => {
+  const router = useRouter()  
   const login = useReactiveVar(isLogin)
   useEffect(()=>{
      isLogin((LookupJwt() == undefined ? false : true  ))
@@ -74,7 +76,9 @@ const NavBar = ({ modalController , CartItemCount }) => {
             <div onClick={()=> {
                localStorage.removeItem('jwt_token');
                localStorage.removeItem('logedInUserId');
-               isLogin(false)
+               isLogin(false);
+               router.push("/")
+
             }}>
             <NavList title="LogOut" logo={<FaSignOutAlt />} />
             </div>
