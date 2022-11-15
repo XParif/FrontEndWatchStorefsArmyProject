@@ -21,6 +21,24 @@ const FooterBody = styled.div`
   justify-content: space-between;
   background-color: ${({ bg, theme }) =>
     theme.color[bg] ?? theme?.color?.secondary};
+
+  @media screen and (min-width: 720px) and (max-width: 976px) {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  @media screen and (min-width: 420px) and (max-width: 480px) {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    padding: 1rem;
+  }
 `;
 
 const Footer = () => {

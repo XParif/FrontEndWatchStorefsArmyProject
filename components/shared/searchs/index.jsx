@@ -10,6 +10,12 @@ const SearchStyle = styled.div`
   & input {
     font-size: ${({ theme }) => theme?.fontSizes?.sm};
   }
+
+  @media screen and (min-width: 720px) and (max-width: 976px) {
+    input {
+      font-size: ${({ theme }) => theme?.fontSizes?.md};
+    }
+  }
 `;
 
 const Search = ({ placeholder, children }) => {
