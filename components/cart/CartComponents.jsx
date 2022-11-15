@@ -17,6 +17,11 @@ export const InfoContainer = styled.div`
   width: 100%;
   padding: 1rem;
   margin: 0 auto;
+
+  @media screen and (min-width: 420px) and (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const BackButtonContainer = styled.div`
