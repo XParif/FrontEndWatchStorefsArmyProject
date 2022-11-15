@@ -31,7 +31,7 @@ const theme = {
   },
   color: {
     primary: "#60C3D8",
-    primaryDarkShade: "#47488e",
+    primaryDarkShade: "#8DDBB8",
     secondary: "#eaeaff",
     hover: "#3B3B3B",
     text: "#333333",

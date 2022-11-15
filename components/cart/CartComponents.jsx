@@ -4,7 +4,8 @@ export const CartContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 3% auto;
-  width: 90%;
+  /* width: 90%; */
+  border-radius: ${({ theme }) => theme?.borderRadius};
   background-color: ${({ bg, theme }) =>
     theme.color[bg] ?? theme?.color?.secondary};
   min-height: 500px;
@@ -14,19 +15,21 @@ export const CartContainer = styled.div`
 export const InfoContainer = styled.div`
   display: flex;
   width: 100%;
-  padding: 5%;
+  padding: 1rem;
   margin: 0 auto;
 `;
 
 export const BackButtonContainer = styled.div`
-  text-align: center;
-  margin: 20px;
+  text-align: left;
+  margin: 1rem 0 0 1rem;
 `;
 
 export const CartInfoWrap = styled.div`
   flex: 3;
   padding: 2%;
   background-color: ${({ theme }) => theme?.color?.white};
+  border-top-left-radius: ${({ theme }) => theme?.borderRadius};
+  border-bottom-left-radius: ${({ theme }) => theme?.borderRadius};
 `;
 
 export const Hader = styled.div`
@@ -66,26 +69,23 @@ export const ProductTotalTitle = styled.span`
   /* margin: 10px 45px; */
 `;
 
-export const CartItemList = styled.div`
-  /* display: flex;
-  justify-content: space-between; */
-`;
+export const CartItemList = styled.div``;
 export const ClearAllContainer = styled.div`
   text-align: center;
 `;
-export const ClearAllButton = styled.button`
-  border: 2px red solid;
-  font-size: 2rem;
-  color: ${({ theme }) => theme?.color?.red};
-  border-radius: 10px;
-  padding: 10px;
-  opacity: calc() 0.5;
-  transition: 0.5s;
-  :hover {
-    color: ${({ theme }) => theme?.color?.white};
-    background-color: ${({ theme }) => theme?.color?.red};
-  }
-`;
+// export const ClearAllButton = styled.button`
+//   border: 2px red solid;
+//   font-size: 2rem;
+//   color: ${({ theme }) => theme?.color?.red};
+//   border-radius: 10px;
+//   padding: 10px;
+//   opacity: calc() 0.5;
+//   transition: 0.5s;
+//   :hover {
+//     color: ${({ theme }) => theme?.color?.white};
+//     background-color: ${({ theme }) => theme?.color?.red};
+//   }
+// `;
 
 export const CartItemContainer = styled.div`
   /* display: flex;
@@ -127,28 +127,13 @@ export const ProdQty = styled.div`
 
 export const AmountText = styled.h3``;
 
-export const DeletItem = styled.button`
-  display: flex;
-  justify-content: flex-end;
-  background-color: transparent;
-  border: none;
-  /* color: ${({ theme }) => theme?.color?.text}; */
-  color: ${({ theme }) => theme?.color?.red};
-  font-size: 25px;
-  transition: 0.5s;
-  opacity: 0.5;
-  /* font-weight: bold; */
-  cursor: pointer;
-  &:hover {
-    opacity: 1;
-  }
-`;
-
 export const CartPrisingContainer = styled.div`
   flex: 1;
   padding: 2%;
   background-color: #f6f6f6;
   text-align: center;
+  border-top-right-radius: ${({ theme }) => theme?.borderRadius};
+  border-bottom-right-radius: ${({ theme }) => theme?.borderRadius};
 `;
 
 export const PrisingTitle = styled.h3`
@@ -169,3 +154,50 @@ export const TagName = styled.span`
 export const CheckOutBtn = styled.div`
   margin-top: 20px;
 `;
+
+export const UserAddressGroup = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* flex: 2; */
+`;
+
+export const AddressHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1rem;
+  align-items: center;
+`;
+
+export const UserAddress = styled.p`
+  /* flex-basis: 50%; */
+  font-size: ${({ theme }) => theme?.fontSizes?.md};
+  flex-basis: auto;
+  margin: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: ${({ theme }) => theme?.borderRadius};
+  width: 30%;
+  background-color: ${({ primary, theme }) =>
+    primary ? theme?.color?.primary : theme?.color?.white};
+  color: ${({ primary, theme }) =>
+    primary ? theme?.color?.white : theme?.color?.text};
+  outline: 1px solid
+    ${({ primary, theme }) =>
+      primary ? theme?.color?.primary : theme?.color?.white};
+  border: 2px solid
+    ${({ primary, theme }) =>
+      primary ? theme?.color?.white : theme?.color?.primary};
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
+export const Key = styled.span`
+  font-weight: ${({ theme }) => theme?.fontWeight?.medium};
+  margin-right: 0.5rem;
+`;
+
+export const Value = styled.span``;

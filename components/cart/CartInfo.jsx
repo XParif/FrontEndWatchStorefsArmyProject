@@ -11,6 +11,7 @@ import {
   ClearAllContainer,
   Hader,
 } from "./CartComponents";
+import { RedButton } from "../shared/buttons";
 
 const CartInfo = ({
   cartData,

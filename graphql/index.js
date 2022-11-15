@@ -271,7 +271,8 @@ export const getAddress = (user_id)=>{
             city,
             state_Province_Region,
             zipCode,
-            country
+            country,
+            phoneNumber
           }
         }
       }
