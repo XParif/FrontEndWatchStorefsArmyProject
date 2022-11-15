@@ -103,7 +103,7 @@ const getProductByCatagoryFiterText = (selectedCatagory) =>{
   });
   return orStr.slice(0 , -1)
 }
-export const getProductByCatagory = (selectedCatagory ,page , pageSize , sorting ) =>{
+export const getProductByCatagory = (selectedCatagory ,page , sorting , pageSize  ) =>{
   if(!page){
     page = 1
   }

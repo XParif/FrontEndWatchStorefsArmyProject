@@ -13,7 +13,7 @@ const CategoryStyle = styled.div`
   margin-bottom: 2rem;
 `;
 
-const Category = ({ title, list , qureParamsArray }) => {
+const Category = ({sorting , title, list , qureParamsArray }) => {
   const [qureObj , setqureObj] = useState({})
   
   useEffect(()=>{
@@ -37,7 +37,7 @@ const Category = ({ title, list , qureParamsArray }) => {
           }
 
           return(
-            <Link key={index} href={{ pathname: '/collections', query: { catagories: refineArray }}}>
+            <Link key={index} href={{ pathname: '/collections', query: { catagories: refineArray , sorting : sorting}}}>
               <Checkbox  defaultChecked = {qureObj[`${item}`]}  text={item} />
             </Link>
           )

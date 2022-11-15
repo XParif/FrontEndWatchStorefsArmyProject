@@ -9,15 +9,16 @@ const PaginationStyle = styled.div`
   margin: 1rem 0.5rem;
 `;
 
-const Pagination = ({qureParamsArray, totalPage }) => {
+const Pagination = ({page ,qureParamsArray, totalPage , sorting }) => {
   if(totalPage == undefined){
     totalPage = 1
   }
   const pages = [];
   for (let i = 1; i <= totalPage; i++) {
     pages.push(
-      <Link key={i} href={{ pathname: '/collections', query: { catagories: qureParamsArray , page : i }}}>
-        <Button>{i}</Button>
+      <Link key={i} href={{ pathname: '/collections', query: { catagories: qureParamsArray , page : i , sorting : sorting}}}>
+        {page == i ?<Button bg="primary" >{i}</Button> : <Button>{i}</Button> }
+        
       </Link>
     )
   }

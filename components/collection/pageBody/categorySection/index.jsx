@@ -54,11 +54,11 @@ const CategorySectionStyle = styled.div`
 // }
 
 
-const CategorySection = ({qureParamsArray , list  }) => {
+const CategorySection = ({qureParamsArray , list  , sorting }) => {
   // const [qureParamsArray , setqureParamsArray] = useState([])
   return (
     <CategorySectionStyle>
-      <Category qureParamsArray={qureParamsArray}  title="Categories" list={list} />
+      <Category sorting= {sorting} qureParamsArray={qureParamsArray}  title="Categories" list={list} />
       {/* <Category title="Brands" list={categoryList.brands} />
       <Category title="Price" list={categoryList.price} />
       <Category title="Color" list={categoryList.color} />

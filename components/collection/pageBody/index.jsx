@@ -10,12 +10,12 @@ const PageBodyStyle = styled.div`
   }
 `;
 
-const PageBody = ({qureParamsArray , list , filteredProduct , pagiNationINfo }) => {
+const PageBody = ({sorting ,qureParamsArray , list , filteredProduct , pagiNationINfo }) => {
   return (
     <PageBodyStyle>
       <Container>
-        <CategorySection list={list} qureParamsArray={qureParamsArray} />
-        <ProductSection qureParamsArray={qureParamsArray} pagiNationINfo ={pagiNationINfo}  filteredProduct= {filteredProduct} />
+        <CategorySection sorting = {sorting} list={list} qureParamsArray={qureParamsArray} />
+        <ProductSection sorting = {sorting} qureParamsArray={qureParamsArray} pagiNationINfo ={pagiNationINfo}  filteredProduct= {filteredProduct} />
       </Container>
     </PageBodyStyle>
   );
