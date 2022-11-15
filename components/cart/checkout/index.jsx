@@ -57,7 +57,7 @@ const CheckoutForm = ({ children, pocketKhali }) => {
     if (loading) {
       Loading2(true);
     } else {
-      setAddressID(data?.addresses[0]?.id);
+      setAddressID(data.addresses[0].id);
       Loading2(false);
     }
   }, [loading]);

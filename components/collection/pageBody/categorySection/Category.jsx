@@ -22,7 +22,7 @@ const Category = ({sorting , title, list , qureParamsArray }) => {
         return acc
     },{})
     setqureObj(qureObj)
-  },[qureParamsArray])
+  },[])
   console.log(qureObj)
   return (
     <CategoryStyle>

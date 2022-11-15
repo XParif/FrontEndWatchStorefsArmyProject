@@ -93,8 +93,8 @@ const WeeklyProducts = () => {
           <div className="viewProducts">
             <Title content="Weekly Top 5 View Products" />
 
-            {weeklyFiveViewProducts.map((item) => (
-              <div>
+            {weeklyFiveViewProducts.map((item ,index) => (
+              <div key = {index}>
                 <ProductItems
                   title={item.title}
                   rating={item.rating}
@@ -108,8 +108,8 @@ const WeeklyProducts = () => {
           <div className="bestSellerProducts">
             <Title content="Weekly 5 Bestseller Products" />
 
-            {weeklyFiveBestSellerProducts.map((item) => (
-              <div>
+            {weeklyFiveBestSellerProducts.map((item , index) => (
+              <div key = {index}>
                 <ProductItems
                   title={item.title}
                   rating={item.rating}

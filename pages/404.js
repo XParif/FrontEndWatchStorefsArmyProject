@@ -4,6 +4,8 @@ import ErrorCode from "./../components/404/ErrorCode";
 import BlockText from "./../components/shared/texts/BlockText";
 import CustomButton from "./../components/404/CustomButton";
 import { FaHome } from "react-icons/fa";
+import Link from "next/link";
+
 
 const NotFound = () => {
   return (
@@ -15,7 +17,7 @@ const NotFound = () => {
         </BlockText>
         <CustomButton bg="primary" color="white">
           <FaHome />
-          <a href="/">Return To Homepage </a>
+          <Link href="/">Return To Homepage </Link>
         </CustomButton>
       </NotFoundContainer>
     </Container>
