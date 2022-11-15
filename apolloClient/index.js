@@ -21,7 +21,7 @@ export const LookupJwt = () =>{
 
 
 
-const httpLink = new HttpLink({ uri: 'https://fs-army-teamf-clockstore.herokuapp.com/graphql' });
+const httpLink = new HttpLink({ uri: process.env.BACKEND_API_END_POINT  });
 
 const Middleware = new ApolloLink((operation, forward) => {
   const jwt = LookupJwt()
