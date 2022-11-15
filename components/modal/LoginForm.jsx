@@ -22,10 +22,10 @@ const LoginForm = ({modalController}) => {
         mutation : getLogIn(formInput.email , formInput.password)
       })
       const jwt = data?.login?.jwt
-      if(typeof window !== undefined){
+      // if(typeof window !== undefined){
         localStorage.setItem('jwt_token', `Bearer ${jwt}`);
         localStorage.setItem('logedInUserId', data?.login?.user?.id);
-    }
+    // }
       isLogin(true)
       Loading2(false)
       modalController(false)

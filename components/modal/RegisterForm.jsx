@@ -41,10 +41,10 @@ const RegisterForm = ({modalController}) => {
       })
       console.log(data)
       const jwt = data?.userReg?.jwt
-      if(typeof window !== undefined){
+      // if(typeof window !== undefined){
         localStorage.setItem('jwt_token', `Bearer ${jwt}`);
         localStorage.setItem('logedInUserId', data?.userReg?.user?.id);
-    }
+    // }
       isLogin(true)
       Loading2(false)
       modalController(false)
