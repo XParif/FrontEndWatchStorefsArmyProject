@@ -7,10 +7,10 @@ const CheckboxStyle = styled.div`
   }
 `;
 
-const Checkbox = ({ text }) => {
+const Checkbox = ({ text , defaultChecked }) => {
   return (
     <CheckboxStyle>
-      <input type="checkbox" id={text} name={text} value={text} />
+      <input defaultChecked={defaultChecked} type="checkbox" id={text} name={text} value={text} />
       <label for={text}>{text}</label>
     </CheckboxStyle>
   );

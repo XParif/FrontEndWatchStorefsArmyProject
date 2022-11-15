@@ -67,9 +67,9 @@ const NavBar = ({ modalController , CartItemCount }) => {
       </Link>
       {login ? (
         <NavContainer>
-          <Link href="/profile">
+          <Link href="/dashboard">
             <MyNavLink>
-              <NavList title="Profile" logo={<FaUserCircle />} />
+              <NavList title="Dashboard" logo={<FaUserCircle />} />
             </MyNavLink>
           </Link>
           <MyNavLink href="">

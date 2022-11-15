@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import InlineText from "./../../../shared/texts/InlineText";
 import Button from "./../../../shared/buttons";
+import Link from "next/link";
+
 const Dropdown = styled.span`
   position: relative;
   padding: 16px;
@@ -38,18 +40,32 @@ const DropDownContent = styled.div`
   }
 `;
 
-const ProductSorting = () => {
+const ProductSorting = ({sorting , qureParamsArray}) => {
+
+
+
   return (
     <InlineText>
       Sort by :{" "}
       <Dropdown>
         <Button bg="primary" shape="square">
-          price low to high
+          {sorting == "asc" ? `price low to high`  :  `price High to Low<`}
+          
         </Button>
         <DropDownContent>
-          <a href="#">price high to low</a>
-          <a href="#">latest product</a>
-          <a href="#">most top rated</a>
+        {sorting === "asc" ? "" :
+          <Link key={1} href={{ pathname: '/collections', query: { catagories: qureParamsArray ,  sorting : `asc`}}}>
+                price Low to High
+          </Link>
+        }
+        
+        {sorting === "desc" ? "" : 
+          <Link key={2} href={{ pathname: '/collections', query: { catagories: qureParamsArray ,  sorting : `desc`}}}>
+            price Hgh to Low
+          </Link>
+        }
+        
+
         </DropDownContent>
       </Dropdown>
     </InlineText>
