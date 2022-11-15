@@ -14,6 +14,7 @@ import {
   ModalUnfocused,
   ClickableLink,
 } from "./ModalComponents";
+import { FaWindowClose } from "react-icons/fa";
 import RegisterForm from "./RegisterForm";
 
 const Modal = ({ modalController }) => {
@@ -24,7 +25,9 @@ const Modal = ({ modalController }) => {
       <ModalUnfocused onClick={() => modalController(false)} />
       <ModalBackground>
         <ModalContainer>
-          <ModalClose onClick={() => modalController(false)}> X </ModalClose>
+          <ModalClose onClick={() => modalController(false)}>
+            <FaWindowClose />
+          </ModalClose>
           <ModalTitle>
             <ModalTitleLogo>
               <BsWatch />
