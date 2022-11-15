@@ -13,7 +13,7 @@ const NotFound = () => {
       <NotFoundContainer>
         <ErrorCode>404</ErrorCode>
         <BlockText size="lg">
-          Oops, The Page you are looking for can't be found!
+          {`Oops, The Page you are looking for can't be found!`}
         </BlockText>
         <CustomButton bg="primary" color="white">
           <FaHome />
