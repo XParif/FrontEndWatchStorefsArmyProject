@@ -14,15 +14,10 @@ const CategoryStyle = styled.div`
 `;
 
 const Category = ({sorting , title, list , qureParamsArray }) => {
-  const [qureObj , setqureObj] = useState({})
-  
-  useEffect(()=>{
-      const qureObj = list.reduce((acc , cu)=>{
-        acc[`${cu}`] =  qureParamsArray.find(v => v == cu) ? true : false;
-        return acc
-    },{})
-    setqureObj(qureObj)
-  },[qureParamsArray])
+  const qureObj = list.reduce((acc , cu)=>{
+    acc[`${cu}`] =  qureParamsArray.find(v => v == cu) ? true : false;
+    return acc
+},{})
   return (
     <CategoryStyle>
       <Title size="md" weight="semiBold">
