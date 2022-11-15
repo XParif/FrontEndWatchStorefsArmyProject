@@ -1,16 +1,19 @@
 import styled from "styled-components";
 
 const CheckboxStyle = styled.div`
+  display: flex;
+  align-items: baseline;
   & > input {
     margin-right: 1rem;
     margin-bottom: 0.5rem;
+    background-color: ${({ theme }) => theme?.color?.primary};
   }
 `;
 
-const Checkbox = ({ text }) => {
+const Checkbox = ({ text , defaultChecked , onClick}) => {
   return (
     <CheckboxStyle>
-      <input type="checkbox" id={text} name={text} value={text} />
+      <input onClick={onClick} defaultChecked={defaultChecked} type="checkbox" id={text} name={text} value={text} />
       <label for={text}>{text}</label>
     </CheckboxStyle>
   );

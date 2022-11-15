@@ -1,6 +1,8 @@
-import { useReactiveVar } from "@apollo/client"
-import { useEffect , useState } from "react"
-import { message } from "../../apolloClient"
+import { useReactiveVar } from "@apollo/client";
+import { useEffect, useState } from "react";
+import { message } from "../../apolloClient";
+import { MessageContainer, MessageBody, MessageStyle } from "./Message.styled";
+import {FaRegCheckCircle, FaRegTimesCircle, FaInfoCircle} from 'react-icons/fa'
 
 /*
 {
@@ -14,38 +16,53 @@ import { message } from "../../apolloClient"
     failed
 ]
 */
-const MsgShow = ({text ,type})=>{
-    return(
-    <div style={{ borderRadius : 20, transition: '2s linear',margin : '10px', background : '#1976D2' ,padding : '4px' ,color : '#ffff'}}>
-        {/* <div style={{ height : "100%" ,background : '#ffff', marginLeft : '20px'}}><h3>a</h3></div> */}
-        {/* <h3 style={{marginRight: '10px' , marginLeft : '20px'}}>Message:    </h3> */}
-        <p style={{marginRight: '10px' , fontSize  : "12px"}}>{text}</p>
-    </div>
-    )
-}
-const Message = ()=>{
-    const [state , setState] = useState([])
-    const Msg =  useReactiveVar(message)
-    useEffect(()=>{
-        if(Msg){
-            setState(prv => {
-                prv.push(Msg.body)
-                return [...prv] 
-            })
-            setTimeout(() => {
-                setState(prv => {
-                    prv.shift()
-                    return [...prv] 
-                })
-            }, 5000);
-        }
-    },[Msg])
-    
-     
-    return (
-        <div style={{position : 'fixed'  , top : 14 , right : 0, zIndex : 100000}}>
-             {state.map((v,index) => <MsgShow key={index} text = {v} type={Msg.type} />)}
-        </div>)
+const getIcon = (type) => {
+    switch (type) {
+        case 'primary':
+            return(<FaInfoCircle/>);
+        case 'success':
+            return(<FaRegCheckCircle/>);
+        case 'failed':
+            return(<FaRegTimesCircle/>);
+        default:
+            break;
+    }
 }
 
-export default Message
+const MsgShow = ({ text, type }) => {
+  return (
+    <MessageContainer>
+        {getIcon(type)}
+      <MessageBody>{text}</MessageBody>
+    </MessageContainer>
+  );
+};
+
+const Message = () => {
+  const [state, setState] = useState([]);
+  const Msg = useReactiveVar(message);
+  useEffect(() => {
+    if (Msg) {
+      setState((prv) => {
+        prv.push(Msg.body);
+        return [...prv];
+      });
+      setTimeout(() => {
+        setState((prv) => {
+          prv.shift();
+          return [...prv];
+        });
+      }, 5000);
+    }
+  }, [Msg]);
+
+  return (
+    <MessageStyle>
+      {state.map((value, index) => (
+        <MsgShow key={index} text={value} type={Msg.type} />
+      ))}
+    </MessageStyle>
+  );
+};
+
+export default Message;

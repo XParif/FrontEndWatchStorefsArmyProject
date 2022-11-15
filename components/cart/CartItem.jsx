@@ -11,6 +11,7 @@ import {
   ProdInfo,
   ProdQty,
 } from "./CartComponents";
+import { RedButton } from "./../shared/buttons";
 
 const CartItem = ({
   productBrand,
@@ -78,9 +79,9 @@ const CartItem = ({
       <BlockText size="md">${price}</BlockText>
 
       <BlockText size="md">${product_quantity * price}</BlockText>
-      <DeletItem onClick={() => removeItemHandler(index)}>
+      <RedButton onClick={() => removeItemHandler(index)}>
         <FaTrashAlt />
-      </DeletItem>
+      </RedButton>
     </CartItemContainer>
   );
 };
