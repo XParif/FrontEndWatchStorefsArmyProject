@@ -33,9 +33,22 @@ export const BaseButton = styled.button`
   }
 `;
 
-const Button = ({ children, bg, fontSize, shape, onClick }) => {
+export const RedButton = styled.button`
+background-color: transparent;
+border: none;
+color: ${({ theme }) => theme?.color?.red};
+font-size: 25px;
+transition: 0.5s;
+opacity: 0.5;
+cursor: pointer;
+&:hover {
+  opacity: 1;
+}
+`;
+
+const Button = ({ children, bg, fontSize, shape, onClick, type }) => {
   return (
-    <BaseButton bg={bg} fontSize={fontSize} shape={shape} onClick={onClick}>
+    <BaseButton bg={bg} fontSize={fontSize} shape={shape} onClick={onClick} type={type}>
       {children}
     </BaseButton>
   );

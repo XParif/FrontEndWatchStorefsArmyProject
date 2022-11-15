@@ -4,6 +4,9 @@ import { client, isLogin, Loading2 , message } from "../../apolloClient";
 import { getRegister } from "../../graphql";
 import AddressForm from "./address";
 import { InputField, InputForm, InputLabel } from "./common";
+import Button from '../shared/buttons/index'
+import Checkbox from './../shared/checkboxes/index';
+
 
 const RegisterFormContainer = styled.div`
   width: 900px;
@@ -12,7 +15,7 @@ const RegisterFormContainer = styled.div`
 const SectionWrapper = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 `;
 
 const Section = styled.div`
@@ -114,12 +117,15 @@ const RegisterForm = ({modalController}) => {
               />
             </InputLabel>
           </Section>
-          <div  onClick={()=> setPutAddress(prv => (prv? false : true)) } >
-          <InputField type="button" value={(putAddress? "Skip For Now" : "Put Address" )} />
-          </div>
+          {/* <div  onClick={()=> setPutAddress(prv => (prv? false : true)) } > */}
+          {/* <InputField type="button" value={(putAddress? "Skip For Now" : "Put Address" )} /> */}
+          {/* </div> */}
+          <Checkbox text="I want to add my address now" onClick={()=> setPutAddress(prv => (prv? false : true)) } />
           {putAddress? <AddressForm handleChange={handleAddressInputChange} /> : ""}
         </SectionWrapper>
-        <InputField type="submit" value="Register" />
+        <Button bg="primary" type="submit">
+          Register
+        </Button>
       </InputForm>
     </RegisterFormContainer>
   );

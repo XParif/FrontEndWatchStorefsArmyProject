@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { client, isLogin, Loading2, message  } from "../../apolloClient";
 import { getLogIn } from "../../graphql";
 import { InputField, InputForm, InputLabel } from "./common";
+import Button from '../shared/buttons/index'
 
 // import buttonLoading from "../../buttonLoading.svg"
 const LoginFormContainer = styled.div`
@@ -52,7 +53,7 @@ const LoginForm = ({modalController}) => {
             type="email"
             name="email"
             id="email"
-            placeholder="Email"
+            placeholder="example@email.com"
             onChange={handleChange}
             required
           />
@@ -63,12 +64,14 @@ const LoginForm = ({modalController}) => {
             type="password"
             id="password"
             name="password"
-            placeholder="Password"
+            placeholder="enter your password"
             onChange={handleChange}
             required
           />
         </InputLabel>
-        <InputField type="submit" value="LogIn..."/>
+        <Button bg="primary" type="submit">
+          Log In
+        </Button>
       </InputForm>
     </LoginFormContainer>
   );

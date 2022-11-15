@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useState ,useEffect } from "react";
-import { isLogin, LookupJwt , pocketKhali} from "../../apolloClient";
+import { isLogin, message, LookupJwt , pocketKhali} from "../../apolloClient";
 import {
   FaBullhorn,
   FaCartPlus,
@@ -76,8 +76,12 @@ const NavBar = ({ modalController , CartItemCount }) => {
             <div onClick={()=> {
                localStorage.removeItem('jwt_token');
                localStorage.removeItem('logedInUserId');
-               isLogin(false);
+
+               isLogin(false)
+               message({type: 'success', body: 'Successfully Logged Out'})
+
                router.push("/")
+
 
             }}>
             <NavList title="LogOut" logo={<FaSignOutAlt />} />
