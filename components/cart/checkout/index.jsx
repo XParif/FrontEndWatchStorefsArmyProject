@@ -42,15 +42,10 @@ const Hader = styled.div`
 `;
 const CartTitle = styled.h3``;
 
-const CheckoutForm = ({ children, pocketKhali }) => {
+const CheckoutForm = ({ userID, children, pocketKhali }) => {
   const router = useRouter();
   const cartData = useReactiveVar(cartItemsVar);
-  let userID ;
-  useEffect(()=>{
-    if(typeof window !== undefined){
-      userID = localStorage.getItem("logedInUserId");
-    }
-  },[])
+  
 
 
   const [addressId, setAddressID] = useState("");
@@ -110,7 +105,6 @@ const CheckoutForm = ({ children, pocketKhali }) => {
           variantsId: v.variantsId,
         };
       });
-      console.log("is here");
       const { data, error } = await client.mutate({
         mutation: mutationOrder(RefinedCartData, addressId, "cashon"),
       });
@@ -254,7 +248,7 @@ const CheckoutForm = ({ children, pocketKhali }) => {
       </UserAddressGroup>
       {controleModal && (
         <Modal2 modalController={setModalcontroleModal}>
-          <AddressForm handleChange={handleChange} />
+          <AddressForm handleChange={handleChange} isFromCheckOut = {true}  />
           <Button onClick={addressSubmitHandle}>Submit</Button>
         </Modal2>
       )}
