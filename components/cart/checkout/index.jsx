@@ -45,7 +45,14 @@ const CartTitle = styled.h3``;
 const CheckoutForm = ({ children, pocketKhali }) => {
   const router = useRouter();
   const cartData = useReactiveVar(cartItemsVar);
-  const userID = localStorage.getItem("logedInUserId");
+  let userID ;
+  useEffect(()=>{
+    if(typeof window !== undefined){
+      userID = localStorage.getItem("logedInUserId");
+    }
+  },[])
+
+
   const [addressId, setAddressID] = useState("");
   const { data, loading, refetch } = useQuery(getAddress(userID));
   const [controleModal, setModalcontroleModal] = useState(false);

@@ -23,7 +23,6 @@ const Category = ({sorting , title, list , qureParamsArray }) => {
     },{})
     setqureObj(qureObj)
   },[qureParamsArray])
-  console.log(qureObj)
   return (
     <CategoryStyle>
       <Title size="md" weight="semiBold">
