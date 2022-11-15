@@ -48,6 +48,7 @@ const NavBar = ({ modalController , CartItemCount }) => {
   return (
     <NavContainer>
       <Link href="/collections">
+      {/* <Link href={{ pathname: '/collections', query: { catagories: ["a" , "b"] }}}> */}
         <MyNavLink>
           <NavList title="Collections" logo={<FaItchIo />} />
         </MyNavLink>

@@ -14,101 +14,101 @@ const ProductController = styled.div`
   align-items: center;
 `;
 
-const allProduct = [
-  {
-    id: 1,
-    title: "Watch 1",
-    rating: 5,
-    price: 200,
-    offerPrice: 100,
-  },
-  {
-    id: 2,
-    title: "Watch 2",
-    rating: 4,
-    price: 250,
-    offerPrice: 230,
-  },
-  {
-    id: 3,
-    title: "Watch 3",
-    rating: 5,
-    price: 150,
-    offerPrice: 145,
-  },
-  {
-    id: 4,
-    title: "Watch 4",
-    rating: 3,
-    price: 120,
-    offerPrice: 99,
-  },
-  {
-    id: 5,
-    title: "watch 5",
-    rating: 2,
-    price: 120,
-    offerPrice: 100,
-  },
-  {
-    id: 6,
-    title: "watch 6",
-    rating: 5,
-    price: 100,
-    offerPrice: 99,
-  },
-  {
-    id: 7,
-    title: "watch 7",
-    rating: 3,
-    price: 150,
-    offerPrice: 120,
-  },
-  {
-    id: 8,
-    title: "watch 8",
-    rating: 4,
-    price: 250,
-    price: 210,
-  },
-  {
-    id: 6,
-    title: "watch 6",
-    rating: 5,
-    price: 100,
-    offerPrice: 99,
-  },
-  {
-    id: 7,
-    title: "watch 7",
-    rating: 3,
-    price: 150,
-    offerPrice: 120,
-  },
-  {
-    id: 8,
-    title: "watch 8",
-    rating: 4,
-    price: 250,
-    price: 210,
-  },
-  {
-    id: 8,
-    title: "watch 8",
-    rating: 4,
-    price: 250,
-    price: 210,
-  },
-];
+// const allProduct = [
+//   {
+//     id: 1,
+//     title: "Watch 1",
+//     rating: 5,
+//     price: 200,
+//     offerPrice: 100,
+//   },
+//   {
+//     id: 2,
+//     title: "Watch 2",
+//     rating: 4,
+//     price: 250,
+//     offerPrice: 230,
+//   },
+//   {
+//     id: 3,
+//     title: "Watch 3",
+//     rating: 5,
+//     price: 150,
+//     offerPrice: 145,
+//   },
+//   {
+//     id: 4,
+//     title: "Watch 4",
+//     rating: 3,
+//     price: 120,
+//     offerPrice: 99,
+//   },
+//   {
+//     id: 5,
+//     title: "watch 5",
+//     rating: 2,
+//     price: 120,
+//     offerPrice: 100,
+//   },
+//   {
+//     id: 6,
+//     title: "watch 6",
+//     rating: 5,
+//     price: 100,
+//     offerPrice: 99,
+//   },
+//   {
+//     id: 7,
+//     title: "watch 7",
+//     rating: 3,
+//     price: 150,
+//     offerPrice: 120,
+//   },
+//   {
+//     id: 8,
+//     title: "watch 8",
+//     rating: 4,
+//     price: 250,
+//     price: 210,
+//   },
+//   {
+//     id: 6,
+//     title: "watch 6",
+//     rating: 5,
+//     price: 100,
+//     offerPrice: 99,
+//   },
+//   {
+//     id: 7,
+//     title: "watch 7",
+//     rating: 3,
+//     price: 150,
+//     offerPrice: 120,
+//   },
+//   {
+//     id: 8,
+//     title: "watch 8",
+//     rating: 4,
+//     price: 250,
+//     price: 210,
+//   },
+//   {
+//     id: 8,
+//     title: "watch 8",
+//     rating: 4,
+//     price: 250,
+//     price: 210,
+//   },
+// ];
 
-const ProductSection = () => {
+const ProductSection = ({filteredProduct}) => {
   return (
     <ProductSectionStyle>
       <ProductController>
         <ProductSorting />
         <BlockText size="md">Showing 1-12 of 50 item(s)</BlockText>
       </ProductController>
-      <CardGroup list={allProduct} />
+      <CardGroup list={filteredProduct} />
       <ProductController>
         <Pagination totalPage="5" />
         <BlockText size="md">Showing 1-12 of 50 item(s)</BlockText>

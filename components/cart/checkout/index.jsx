@@ -79,7 +79,6 @@ const CheckoutForm = ({children}) => {
   }
 
   const placeOrder = async() =>{
-    const userID = localStorage.getItem("logedInUserId")
     if(!addressId){
       message({type : "alert" ,body : "Plz Select an Address"})
       return

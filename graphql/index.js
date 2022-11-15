@@ -1,100 +1,137 @@
 import {  gql } from '@apollo/client';
 import objToGqlString from '../utils/objectToGqlString';
 
-export const GetProduct = gql`
-query GetProduct{
-  allProducts {
-   	data {
-      id,
-      attributes {
-      	productName,
-        productCode,
-        warrenty,
-        youtubeReviewLInkSingle,
-        description,
-        defualtPrice,
-        
-        ...productImage,
-        ...variants,
-        ...catagories,
-        ...sub_catgories,
-        ...brand
-      }
-    }
-    meta {
-      pagination {
-        page
-        pageSize
-        total
-        pageCount
-      }
-    } 
-  }
+const productgqlString = `{
+  data {
+   id,
+   attributes {
+     productName,
+     productCode,
+     warrenty,
+     youtubeReviewLInkSingle,
+     description,
+     defualtPrice,
+     
+     ...productImage,
+     ...variants,
+     ...catagories,
+     ...sub_catgories,
+     ...brand
+   }
+ }
+ meta {
+   pagination {
+     page
+     pageSize
+     total
+     pageCount
+   }
+ } 
+}
 }
 fragment variants on AllProduct{
-  variants{
-    id,
-    variantCode,
-    color,
-    InStock,
-    variantPrice,
-    ImageOfVariant{
-      data {
-        id,
-        attributes{
-          formats
-          url,
-        }
-      }
-    }
-  }
+variants{
+ id,
+ variantCode,
+ color,
+ InStock,
+ variantPrice,
+ ImageOfVariant{
+   data {
+     id,
+     attributes{
+       formats
+       url,
+     }
+   }
+ }
+}
 }
 fragment catagories on AllProduct{
-  catagories{
-    data{
-      attributes{
-        name
-      }
-    }
-  }
+catagories{
+ data{
+   attributes{
+     name
+   }
+ }
+}
 }
 fragment brand on AllProduct{
-  brand{
-    data{
-      attributes{
-        brandName,
-        brandDetails,
-        brandLogo{
-          data{
-            attributes{
-              formats,
-              url
-            }
-          }
-        }
-      }
-    }
-  }
+brand{
+ data{
+   attributes{
+     brandName,
+     brandDetails,
+     brandLogo{
+       data{
+         attributes{
+           formats,
+           url
+         }
+       }
+     }
+   }
+ }
+}
 }
 fragment sub_catgories on AllProduct{
-  sub_catagories{
-    data{
-      attributes{
-        name
-      }
-    }
-  }
+sub_catagories{
+ data{
+   attributes{
+     name
+   }
+ }
+}
 }
 fragment productImage on AllProduct{
-  productImage{
-    data{
-      attributes{
-        formats,
-        url
-      }
-    }
-  }
+productImage{
+ data{
+   attributes{
+     formats,
+     url
+   }
+ }
 }
+}`
+
+
+
+const getProductByCatagoryFiterText = (selectedCatagory) =>{
+  let orStr = ``
+  selectedCatagory.forEach(v => {
+    orStr+= `{catagories : {name : {eqi : "${v}"}}},`
+  });
+  return orStr.slice(0 , -1)
+}
+export const getProductByCatagory = (selectedCatagory ,page , pageSize , sorting ) =>{
+  if(!page){
+    page = 1
+  }
+  if(!pageSize){
+    pageSize = 10
+  }
+  if(!sorting){
+    sorting = `asc`
+  }
+
+  return(
+    gql`
+    query GetProductByFilter{
+      allProducts(filters : {or:[
+        ${getProductByCatagoryFiterText(selectedCatagory)}
+      ]},pagination : {page : ${page}, pageSize : ${pageSize} } , 
+       sort : ["defualtPrice:${sorting}"]        
+       ) 
+
+      ${productgqlString}
+    `
+  )
+}
+
+
+export const GetProduct = gql`
+query GetProduct{
+  allProducts ${productgqlString}
 `;
 
 
@@ -361,3 +398,20 @@ export const mutationOrder = (ordersItem , delivaryAddressRef , paymentMethod) =
 } 
 
 
+export const getCategories = () => {
+ 
+  return(
+    gql`
+    query{
+      catagories{
+        data{
+          id,
+          attributes{
+            name
+          }
+        }
+      }
+    }
+    `
+  )
+}
