@@ -13,6 +13,7 @@ import styled from "styled-components";
 
 import NavList from "./NavList";
 import { useReactiveVar } from "@apollo/client";
+import { useRouter } from "next/router";
 const NavContainer = styled.div`
   display: flex;
   justify-content: space-around;
@@ -39,6 +40,7 @@ const MyNavLink = styled.div`
 `;
 
 const NavBar = ({ modalController , CartItemCount }) => {
+  const router = useRouter()  
   const login = useReactiveVar(isLogin)
   useEffect(()=>{
      isLogin((LookupJwt() == undefined ? false : true  ))
@@ -65,17 +67,22 @@ const NavBar = ({ modalController , CartItemCount }) => {
       </Link>
       {login ? (
         <NavContainer>
-          <Link href="/profile">
+          <Link href="/dashboard">
             <MyNavLink>
-              <NavList title="Profile" logo={<FaUserCircle />} />
+              <NavList title="Dashboard" logo={<FaUserCircle />} />
             </MyNavLink>
           </Link>
           <MyNavLink href="">
             <div onClick={()=> {
                localStorage.removeItem('jwt_token');
                localStorage.removeItem('logedInUserId');
+
                isLogin(false)
                message({type: 'success', body: 'Successfully Logged Out'})
+
+               router.push("/")
+
+
             }}>
             <NavList title="LogOut" logo={<FaSignOutAlt />} />
             </div>

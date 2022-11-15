@@ -88,7 +88,12 @@ const CheckoutForm = ({ children, pocketKhali }) => {
     }
   };
 
-  const placeOrder = async () => {
+  const placeOrder = async() =>{
+    if(!addressId){
+      message({type : "alert" ,body : "Plz Select an Address"})
+      return
+    }
+
     try {
       Loading2(true);
       const RefinedCartData = cartData.map((v) => {
@@ -114,6 +119,7 @@ const CheckoutForm = ({ children, pocketKhali }) => {
       setArektaOrderKor(false);
       console.log(error);
     }
+
   };
   if (arektaOrderKor) {
     return (
@@ -245,6 +251,7 @@ const CheckoutForm = ({ children, pocketKhali }) => {
           <Button onClick={addressSubmitHandle}>Submit</Button>
         </Modal2>
       )}
+
 
       <BlockText>Only CashOn Delivary is Available</BlockText>
 

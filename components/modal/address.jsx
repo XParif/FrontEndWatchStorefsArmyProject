@@ -17,7 +17,7 @@ const Section = styled.div`
   margin: 5px;
 `;
 
-const AddressForm = ({handleChange}) => {
+const AddressForm = ({handleChange , isFromCheckOut}) => {
   return (
           <Section>
             <BlockText style={{textAlign : "center"}} >
@@ -89,8 +89,8 @@ const AddressForm = ({handleChange}) => {
                 required
               />
             </InputLabel>
-            <InputLabel>
-              {"Country : "}
+            {isFromCheckOut && <InputLabel>
+              {"Phone Number : "}
               <InputField
                 type="number"
                 id="phoneNumber"
@@ -99,7 +99,9 @@ const AddressForm = ({handleChange}) => {
                 onChange={handleChange}
                 required
               />
-            </InputLabel>
+            </InputLabel>}
+            
+            
           </Section>
 
   );
