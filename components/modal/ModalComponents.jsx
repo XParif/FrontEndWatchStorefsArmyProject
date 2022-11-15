@@ -5,6 +5,8 @@ export const ModalWrapper = styled.div`
   z-index: 100000;
   width: 100vw;
   height: 100vh;
+  top: 0;
+  left: 0;
   background-color: rgba(200, 200, 200, 0.6);
   position: fixed;
   display: flex;
@@ -25,6 +27,7 @@ export const ModalBackground = styled.div`
 
 export const ModalContainer = styled.div`
   max-height: 85vh;
+  max-width: 60vw;
   border-radius: ${({theme}) => theme?.borderRadius};
   background-color: ${({ theme }) => theme?.color?.white};
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

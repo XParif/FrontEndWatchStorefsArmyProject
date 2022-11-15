@@ -3,6 +3,7 @@ import { isLogin, message, modalController } from "../../apolloClient";
 import Bar from "../shared/texts/Bar";
 import BlockText from "../shared/texts/BlockText";
 import Button from "./../shared/buttons";
+import {FaHourglassEnd} from 'react-icons/fa'
 
 import {
   CartPrisingContainer,
@@ -29,8 +30,8 @@ const CartPrising = ({ shippingCost, subTotal, vatRate, setCheckout , isCartVali
   const ChekOutButton = (
     <CheckOutBtn>
       {logInChecked ? (
-        <Button onClick={emptyCartChecked} bg="primary" fontSize="md">
-          CheckOut
+        <Button onClick={emptyCartChecked} bg="primary" fontSize="default">
+        <FaHourglassEnd/>  Check Out
         </Button>
       ) : grandTotal > 0 ? (
         <Button  bg="primary" fontSize="md" onClick={() => {modalController(true) ; message({type : "alert" , body : "Plz LogIn First"}) }}>
