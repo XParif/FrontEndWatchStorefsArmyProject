@@ -101,17 +101,19 @@ const ProductController = styled.div`
 //   },
 // ];
 
-const ProductSection = ({filteredProduct}) => {
+const ProductSection = ({qureParamsArray,filteredProduct , pagiNationINfo}) => {
+ 
+  const { pageCount , page , pageSize , total } = pagiNationINfo
   return (
     <ProductSectionStyle>
       <ProductController>
         <ProductSorting />
-        <BlockText size="md">Showing 1-12 of 50 item(s)</BlockText>
+        <BlockText size="md">Showing page-{!!page? page : 1} of {!!pageCount ? pageCount : 1 } item(s)</BlockText>
       </ProductController>
       <CardGroup list={filteredProduct} />
       <ProductController>
-        <Pagination totalPage="5" />
-        <BlockText size="md">Showing 1-12 of 50 item(s)</BlockText>
+        <Pagination qureParamsArray={qureParamsArray} totalPage={pageCount} page={page} />
+        <BlockText size="md">Showing page-{!!page? page : 1} of {!!pageCount ? pageCount : 1 } item(s)</BlockText>
       </ProductController>
     </ProductSectionStyle>
   );

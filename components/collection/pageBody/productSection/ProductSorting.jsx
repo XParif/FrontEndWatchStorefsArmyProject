@@ -49,7 +49,6 @@ const ProductSorting = () => {
         <DropDownContent>
           <a href="#">price high to low</a>
           <a href="#">latest product</a>
-          <a href="#">most top rated</a>
         </DropDownContent>
       </Dropdown>
     </InlineText>

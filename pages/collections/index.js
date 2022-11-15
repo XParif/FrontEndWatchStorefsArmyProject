@@ -7,17 +7,18 @@ import { client } from '../../apolloClient';
 
 
 
-const Collections = ({fiterQuery , listOFCagories , filteredProduct}) => {
+const Collections = ({fiterQuery , listOFCagories , filteredProduct , pagiNationINfo}) => {
   return (
     <>
       <PageHead   title="Our All Collections" />
-      <PageBody filteredProduct={filteredProduct} list = {listOFCagories}  qureParamsArray={fiterQuery}  />
+      <PageBody pagiNationINfo={pagiNationINfo} filteredProduct={filteredProduct} list = {listOFCagories}  qureParamsArray={fiterQuery}  />
     </>
   );
 };
 
 export async function getServerSideProps(context) {
   const queryData = context.query
+  const page = queryData["page"]
   let catagories;
   if(Array.isArray(queryData["catagories"])){
     catagories = queryData["catagories"]
@@ -35,7 +36,7 @@ export async function getServerSideProps(context) {
   //Product Sections
   const { data : filteredProduct}  = await client
   .query({
-    query: getProductByCatagory(catagories),
+    query: getProductByCatagory(catagories , page),
   })
 
   let midifiedFilteredproduct;
@@ -44,11 +45,20 @@ export async function getServerSideProps(context) {
   }else{
     midifiedFilteredproduct = filteredProduct["allProducts"];
   }
+  let pagiNation;
+  if(filteredProduct?.meta?.pagination){
+    pagiNation = filteredProduct?.meta?.pagination
+  }else{
+    pagiNation = {}
+  }
+
   return {
     props: {
       fiterQuery : catagories,
       listOFCagories : listOFCagories.catagories,
-      filteredProduct : midifiedFilteredproduct
+      filteredProduct : midifiedFilteredproduct,
+      pagiNationINfo :  pagiNation,
+      
 
    
     }, // will be passed to the page component as props
