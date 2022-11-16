@@ -14,6 +14,7 @@ const CategoryStyle = styled.div`
 `;
 
 const Category = ({sorting , title, list , qureParamsArray }) => {
+  const [uiState , setUiState] = useState(false);
   const qureObj = list.reduce((acc , cu)=>{
     acc[`${cu}`] =  qureParamsArray.find(v => v == cu) ? true : false;
     return acc
@@ -31,8 +32,8 @@ const Category = ({sorting , title, list , qureParamsArray }) => {
           }
 
           return(
-            <Link key={index} href={{ pathname: '/collections', query: { catagories: refineArray , sorting : sorting}}}>
-              <Checkbox  defaultChecked = {qureObj[`${item}`]}  text={item} />
+            <Link   key={index} href={{ pathname: '/collections', query: { catagories: refineArray , sorting : sorting}}}>
+              <Checkbox onClick={()=> setUiState( uiState ? false : true)}  defaultChecked={qureObj[`${item}`]}  text={item} />
             </Link>
           )
 
