@@ -21,6 +21,9 @@ const Category = ({sorting , title, list , qureParamsArray }) => {
     acc[`${cu}`] =  qureParamsArray.find(v => v == cu) ? true : false;
     return acc
 },{}))
+
+  console.log(qureObj)
+
   const reFIneUiStateQureParamsArray = (item)=>{
     if(!qureObj[`${item}`]){
 
@@ -83,9 +86,10 @@ const Category = ({sorting , title, list , qureParamsArray }) => {
 
           reFinequreParamsArray[index] = reFinequreParamsArray[index].slice(1)
           // if(!Array.isArray(reFinequreParamsArray[index])){
+            
           return(
             <Link onClick={()=> reFIneUiStateQureParamsArray(item)}  key={index} href={{ pathname: '/collections', query: { catagories: reFinequreParamsArray[index] , sorting : sorting}}}>
-              <Checkbox   defaultChecked={qureObj[`${item}`]}  text={item} />
+              <Checkbox   defaultChecked={( -1 !== uiStateQureParamsArray.findIndex(v => v == item))}  text={item} />
             </Link>
           )
 
