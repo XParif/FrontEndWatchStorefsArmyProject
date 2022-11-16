@@ -22,25 +22,28 @@ const LoginForm = ({ modalController }) => {
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    try{
-      Loading2(true)
-      const {data , error} = await client.mutate({
-        mutation : getLogIn(formInput.email , formInput.password)
-      })
-      const jwt = data?.login?.jwt
-      if(typeof window !== undefined){
-        localStorage.setItem('jwt_token', `Bearer ${jwt}`);
-        localStorage.setItem('logedInUserId', data?.login?.user?.id);
-    }
-      isLogin(true)
-      Loading2(false)
-      modalController(false)
-      message({type : "success" ,body : "Loged In Success"})
-      setFormInput({})
-    }catch(error){
-      Loading2(false)
-      message({type : "failed" ,body : "UserEmail/UserName OR PassWord dosen't Match"})
-      setFormInput({})
+    try {
+      Loading2(true);
+      const { data, error } = await client.mutate({
+        mutation: getLogIn(formInput.email, formInput.password),
+      });
+      const jwt = data?.login?.jwt;
+      if (typeof window !== undefined) {
+        localStorage.setItem("jwt_token", `Bearer ${jwt}`);
+        localStorage.setItem("logedInUserId", data?.login?.user?.id);
+      }
+      isLogin(true);
+      Loading2(false);
+      modalController(false);
+      message({ type: "success", body: "Loged In Success" });
+      setFormInput({});
+    } catch (error) {
+      Loading2(false);
+      message({
+        type: "failed",
+        body: "UserEmail/UserName OR PassWord dosen't Match",
+      });
+      setFormInput({});
     }
   };
 

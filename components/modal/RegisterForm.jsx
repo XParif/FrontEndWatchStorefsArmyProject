@@ -49,6 +49,7 @@ const RegisterForm = ({ modalController }) => {
         query = getRegister(formInput);
       }
 
+
       const {data , error} = await client.mutate({
         mutation : query
       })
@@ -62,6 +63,7 @@ const RegisterForm = ({ modalController }) => {
       Loading2(false)
       modalController(false)
       message({type : "success" ,body : data?.userReg?.message})
+
 
     } catch (error) {
       message({
@@ -139,10 +141,11 @@ const RegisterForm = ({ modalController }) => {
           {/* <InputField type="button" value={(putAddress? "Skip For Now" : "Put Address" )} /> */}
           {/* </div> */}
 
-          <Checkbox
-            text="I want to add my address now"
-            onClick={() => setPutAddress((prv) => (prv ? false : true))}
-          />
+          <div onClick={() => setPutAddress((prv) => (prv ? false : true))}>
+            <Checkbox text="I want to add my address now" />
+          </div>
+
+
           {putAddress ? (
             <AddressForm handleChange={handleAddressInputChange} />
           ) : (

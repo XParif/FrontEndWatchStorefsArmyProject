@@ -11,10 +11,18 @@ const CheckboxStyle = styled.div`
 `;
 
 
+
 const Checkbox = ({ text , defaultChecked }) => {
+
   return (
     <CheckboxStyle>
-      <input defaultChecked={defaultChecked} type="checkbox" id={text} name={text} value={text} />
+      <input
+        defaultChecked={defaultChecked}
+        type="checkbox"
+        id={text}
+        name={text}
+        value={text}
+      />
       <label for={text}>{text}</label>
     </CheckboxStyle>
   );
