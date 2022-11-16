@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const CategorySectionStyle = styled.div`
   margin-top: 1rem;
-  width: 20%;
+  width: 15%;
   text-transform: capitalize;
 `;
 

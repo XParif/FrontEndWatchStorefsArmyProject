@@ -207,9 +207,11 @@ export const CompleteOrder = styled.div`
   ${justifyAlignCenter}
   flex-direction: column;
   margin: 5rem 0;
+  gap: .5rem;
 `
 
 export const OrderList = styled.div`
+width: 80%;
   display: flex;
   flex-direction: column;
   margin: 2rem 0;

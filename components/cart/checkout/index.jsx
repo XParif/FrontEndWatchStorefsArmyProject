@@ -136,7 +136,8 @@ const CheckoutForm = ({ userID, children, pocketKhali }) => {
           Thank you
         </BlockText>
         <BlockText size="lg">You order has been completed !</BlockText>
-        <OrderList>
+        <BlockText size="md">You order id is #{createOrderResponse.MakeOrder.ordersInformation.id} </BlockText>
+        {/* <OrderList>
           <SingleOrder>
             <OrderState>
               <BlockText size="md" weight="semiBold">
@@ -158,11 +159,8 @@ const CheckoutForm = ({ userID, children, pocketKhali }) => {
               </SingleOrder>
             )
           )}
-        </OrderList>
+        </OrderList> */}
         <br />
-        {console.log(
-          createOrderResponse.MakeOrder.ordersInformation.user_ref.username
-        )}
         <CompleteButton>
           <Button
             onClick={() => {
