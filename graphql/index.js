@@ -338,7 +338,6 @@ export const mutatedAddress = (addressInfo , user_id )=>{
 
 export const mutationOrder = (ordersItem , delivaryAddressRef , paymentMethod) =>{
   const ordersItemStr =  (JSON.stringify(ordersItem)).replace( /"/g ,"")
-  console.log(ordersItemStr)
 
   return(
     gql`

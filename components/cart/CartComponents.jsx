@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { justifySpaceBetween, justifySpaceEvenly } from "../../utils/display.styled";
+import { alignItemsCenter, justifyAlignCenter } from './../../utils/display.styled';
 
 export const CartContainer = styled.div`
   display: flex;
@@ -10,6 +12,12 @@ export const CartContainer = styled.div`
     theme.color[bg] ?? theme?.color?.secondary};
   min-height: 500px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  @media screen and (min-width: 420px) and (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+    font-size: ${({ theme }) => theme?.fontSizes?.md};
+  }
 `;
 
 export const InfoContainer = styled.div`
@@ -17,6 +25,11 @@ export const InfoContainer = styled.div`
   width: 100%;
   padding: 1rem;
   margin: 0 auto;
+
+  @media screen and (min-width: 420px) and (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const BackButtonContainer = styled.div`
@@ -33,8 +46,7 @@ export const CartInfoWrap = styled.div`
 `;
 
 export const Hader = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${justifySpaceBetween}
   width: 100%;
 `;
 export const CartTitle = styled.h3`
@@ -99,8 +111,7 @@ export const CartItemContainer = styled.div`
 `;
 
 export const ProdInfo = styled.div`
-  display: flex;
-  align-items: center;
+  ${alignItemsCenter}
 `;
 
 export const ProdImage = styled.div`
@@ -120,8 +131,7 @@ export const ProdDetails = styled.div`
 
 export const ProdQty = styled.div`
   margin: 0 auto;
-  display: flex;
-  align-items: center;
+  ${alignItemsCenter}
   gap: 0.5rem;
 `;
 
@@ -143,8 +153,7 @@ export const PrisingTitle = styled.h3`
 `;
 
 export const TagContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
+  ${justifySpaceEvenly}
 `;
 
 export const TagName = styled.span`
@@ -156,15 +165,12 @@ export const CheckOutBtn = styled.div`
 `;
 
 export const UserAddressGroup = styled.div`
-  display: flex;
+  ${justifyAlignCenter}
   flex-wrap: wrap;
-  justify-content: center;
-  /* flex: 2; */
 `;
 
 export const AddressHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${justifySpaceBetween}
   margin: 0 1rem;
   align-items: center;
 `;
@@ -190,8 +196,14 @@ export const UserAddress = styled.p`
       primary ? theme?.color?.white : theme?.color?.primary};
 
   & > div {
+    ${justifySpaceBetween}
+  }
+
+  @media screen and (min-width: 420px) and (max-width: 480px) {
     display: flex;
-    justify-content: space-between;
+    width: 80%;
+    flex-direction: column;
+    font-size: ${({ theme }) => theme?.fontSizes?.md};
   }
 `;
 
@@ -203,31 +215,28 @@ export const Key = styled.span`
 export const Value = styled.span``;
 
 export const PlaceOrder = styled.div`
-display: flex;
+${justifyAlignCenter}
 flex-direction: column;
-justify-content: center;
-align-items: center;
 margin: 1rem 0;
 gap: 1rem;
 `
 
 export const CompleteOrder = styled.div`
-  display: flex;
+  ${justifyAlignCenter}
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin: 5rem 0;
+  gap: .5rem;
 `
 
 export const OrderList = styled.div`
+width: 80%;
   display: flex;
   flex-direction: column;
   margin: 2rem 0;
 `
 
 export const SingleOrder = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${justifySpaceBetween}
   margin: .5rem 0;
 `
 
@@ -237,8 +246,7 @@ export const OrderState = styled.div`
 `
 
 export const CompleteButton = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${justifySpaceBetween}
   gap: 1rem;
   margin-bottom: 2rem;
 `

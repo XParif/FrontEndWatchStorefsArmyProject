@@ -1,15 +1,19 @@
-import styled from "styled-components";
-import BlockText from "./../../shared/texts/BlockText";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import styled from "styled-components";
+import * as yup from "yup";
+import BlockText from "./../../shared/texts/BlockText";
+
+import { useState } from "react";
+
+import { alignItemsCenter } from './../../../utils/display.styled';
 
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+
 
 const FormStyle = styled.form``;
 
 const Field = styled.div`
-  width: 100%;
+  width: 600px;
 
   & > p {
     margin: 0 0 10px;
@@ -19,7 +23,7 @@ const Field = styled.div`
     outline: none;
     /* display: block; */
     background: ${({ theme }) => theme?.color?.secondary};
-    width: 100%;
+    width: 40%;
     border: 0;
     border-radius: 4px;
     color: ${({ theme }) => theme?.color?.text};
@@ -66,15 +70,29 @@ const Input = ({
 };
 
 const MultipleColumn = styled.div`
-  display: flex;
+  ${alignItemsCenter}
+  justify-content: space-between;
   margin: 1rem;
   gap: 1rem;
-  justify-content: space-between;
-  align-items: center;
+
+
+  @media screen and (min-width: 420px) and (max-width: 480px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+  }
+
 `;
 
 const SingleColumn = styled.div`
   margin: 1rem;
+  @media screen and (min-width: 420px) and (max-width: 480px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 const CheckBox = styled.div`

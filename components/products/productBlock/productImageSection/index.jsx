@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-const ImageStyle = styled.div``;
+const ImageStyle = styled.div`
+  @media screen and (min-width: 420px) and (max-width: 480px) {
+    position: relative;
+  }
+`;
 
-const ProductImageSection = ({children}) => {
-  return (
-    <ImageStyle>
-      { children }
-    </ImageStyle>
-  );
+const ProductImageSection = ({ children }) => {
+  return <ImageStyle>{children}</ImageStyle>;
 };
 
 export default ProductImageSection;
