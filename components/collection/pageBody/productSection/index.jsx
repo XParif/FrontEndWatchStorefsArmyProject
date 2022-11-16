@@ -15,7 +15,7 @@ const ProductController = styled.div`
   align-items: center;
   background-color: ${({theme}) => theme?.color?.white};
   position: sticky;
-  top: 0;
+  top: 4rem;
   z-index: 1;
 `;
 
