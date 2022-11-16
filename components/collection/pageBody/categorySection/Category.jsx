@@ -14,16 +14,48 @@ const CategoryStyle = styled.div`
 `;
 
 const Category = ({sorting , title, list , qureParamsArray }) => {
-  const [qureObj , setqureObj] = useState({})
+  qureParamsArray = qureParamsArray.split('+')
+  const [uiStateQureParamsArray , setUiStateQureParamsArray] = useState([...qureParamsArray]);
   
-  useEffect(()=>{
-      const qureObj = list.reduce((acc , cu)=>{
-        acc[`${cu}`] =  qureParamsArray.find(v => v == cu) ? true : false;
-        return acc
-    },{})
-    setqureObj(qureObj)
-  },[qureParamsArray])
+  const [qureObj , setQureObj] =   useState(list.reduce((acc , cu)=>{
+    acc[`${cu}`] =  qureParamsArray.find(v => v == cu) ? true : false;
+    return acc
+},{}))
+
   console.log(qureObj)
+
+  const reFIneUiStateQureParamsArray = (item)=>{
+    if(!qureObj[`${item}`]){
+
+      setUiStateQureParamsArray((prv)=>{
+        return [...prv , item]
+      })
+
+      setQureObj((prv) => {
+        prv[`${item}`] = true;
+        return {
+        ...prv,
+      }
+      })
+
+    }else{
+
+      setUiStateQureParamsArray((prv)=>{
+        prv = prv.filter(v=> v !== item)
+        return [...prv]
+      })
+
+      setQureObj((prv) => {
+        prv[`${item}`] = false;
+        return {
+        ...prv,
+      }
+      })
+
+    }
+  }
+
+
   return (
     <CategoryStyle>
       <Title size="md" weight="semiBold">
@@ -31,14 +63,34 @@ const Category = ({sorting , title, list , qureParamsArray }) => {
       </Title>
       <CheckboxGroupStyle>
         {list.map((item ,index) => {
-          const refineArray = qureParamsArray.filter(v=> v !== item) ;
+
+          const reFinequreParamsArray = []; 
+
+
           if(!qureObj[`${item}`]){
-            refineArray.push(item)
+            reFinequreParamsArray[index] = reFinequreParamsArray[index] = uiStateQureParamsArray.reduce((acc , cu)=>{
+              acc =  acc + "+" + cu   
+              return acc
+            });
+            reFinequreParamsArray[index]+= `+${item}`
+          }else{
+            reFinequreParamsArray[index] = uiStateQureParamsArray.reduce((acc , cu)=>{
+              if(cu == item){
+                return acc
+              }
+              acc =  acc + "+" +cu  
+              return acc
+            }); 
+            
           }
 
+          reFinequreParamsArray[index] = reFinequreParamsArray[index].slice(1)
+          // if(!Array.isArray(reFinequreParamsArray[index])){
+            
           return(
-            <Link key={index} href={{ pathname: '/collections', query: { catagories: refineArray , sorting : sorting}}}>
-              <Checkbox  defaultChecked = {qureObj[`${item}`]}  text={item} />
+            <Link onClick={()=> reFIneUiStateQureParamsArray(item)}  key={index} href={{ pathname: '/collections', query: { catagories: reFinequreParamsArray[index] , sorting : sorting}}}>
+              <Checkbox   defaultChecked={( -1 !== uiStateQureParamsArray.findIndex(v => v == item))}  text={item} />
+               {qureObj[item] && <h1>AME Active</h1>  }
             </Link>
           )
 

@@ -10,11 +10,10 @@ const CheckboxStyle = styled.div`
   }
 `;
 
-const Checkbox = ({ text, defaultChecked, onClick }) => {
+const Checkbox = ({ text, defaultChecked }) => {
   return (
     <CheckboxStyle>
       <input
-        onClick={onClick}
         defaultChecked={defaultChecked}
         type="checkbox"
         id={text}

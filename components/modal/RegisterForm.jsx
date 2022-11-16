@@ -53,8 +53,10 @@ const RegisterForm = ({ modalController }) => {
       });
       console.log(data);
       const jwt = data?.userReg?.jwt;
-      localStorage.setItem("jwt_token", `Bearer ${jwt}`);
-      localStorage.setItem("logedInUserId", data?.userReg?.user?.id);
+      if (typeof window !== undefined) {
+        localStorage.setItem("jwt_token", `Bearer ${jwt}`);
+        localStorage.setItem("logedInUserId", data?.userReg?.user?.id);
+      }
       isLogin(true);
       Loading2(false);
       modalController(false);
@@ -134,10 +136,9 @@ const RegisterForm = ({ modalController }) => {
           {/* <div  onClick={()=> setPutAddress(prv => (prv? false : true)) } > */}
           {/* <InputField type="button" value={(putAddress? "Skip For Now" : "Put Address" )} /> */}
           {/* </div> */}
-          <Checkbox
-            text="I want to add my address now"
-            onClick={() => setPutAddress((prv) => (prv ? false : true))}
-          />
+          <div onClick={() => setPutAddress((prv) => (prv ? false : true))}>
+            <Checkbox text="I want to add my address now" />
+          </div>
           {putAddress ? (
             <AddressForm handleChange={handleAddressInputChange} />
           ) : (
