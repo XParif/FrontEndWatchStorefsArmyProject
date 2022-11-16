@@ -10,7 +10,10 @@ const CheckboxStyle = styled.div`
   }
 `;
 
-const Checkbox = ({ text, defaultChecked }) => {
+
+
+const Checkbox = ({ text , defaultChecked }) => {
+
   return (
     <CheckboxStyle>
       <input

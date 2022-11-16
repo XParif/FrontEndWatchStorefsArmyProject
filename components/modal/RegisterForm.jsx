@@ -48,19 +48,23 @@ const RegisterForm = ({ modalController }) => {
       } else {
         query = getRegister(formInput);
       }
-      const { data, error } = await client.mutate({
-        mutation: query,
-      });
-      console.log(data);
-      const jwt = data?.userReg?.jwt;
-      if (typeof window !== undefined) {
-        localStorage.setItem("jwt_token", `Bearer ${jwt}`);
-        localStorage.setItem("logedInUserId", data?.userReg?.user?.id);
-      }
-      isLogin(true);
-      Loading2(false);
-      modalController(false);
-      message({ type: "success", body: data?.userReg?.message });
+
+
+      const {data , error} = await client.mutate({
+        mutation : query
+      })
+
+      const jwt = data?.userReg?.jwt
+      if(typeof window !== undefined){
+        localStorage.setItem('jwt_token', `Bearer ${jwt}`);
+        localStorage.setItem('logedInUserId', data?.userReg?.user?.id);
+    }
+      isLogin(true)
+      Loading2(false)
+      modalController(false)
+      message({type : "success" ,body : data?.userReg?.message})
+
+
     } catch (error) {
       message({
         type: "failed",
@@ -136,14 +140,18 @@ const RegisterForm = ({ modalController }) => {
           {/* <div  onClick={()=> setPutAddress(prv => (prv? false : true)) } > */}
           {/* <InputField type="button" value={(putAddress? "Skip For Now" : "Put Address" )} /> */}
           {/* </div> */}
+
           <div onClick={() => setPutAddress((prv) => (prv ? false : true))}>
             <Checkbox text="I want to add my address now" />
           </div>
+
+
           {putAddress ? (
             <AddressForm handleChange={handleAddressInputChange} />
           ) : (
             ""
           )}
+
         </SectionWrapper>
         <RegBtnWrapper>
           <Button bg="primary" type="submit">
