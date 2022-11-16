@@ -6,7 +6,7 @@ import Pagination from './../../../shared/paginations/index';
 import { useState } from "react";
 
 const ProductSectionStyle = styled.div`
-  width: 75%;
+  width: 100%;
 `;
 
 const ProductController = styled.div`

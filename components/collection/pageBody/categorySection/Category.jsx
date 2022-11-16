@@ -3,17 +3,40 @@ import styled from "styled-components";
 import Checkbox from "./../../../shared/checkboxes/index";
 import Title from "./../../../shared/texts/Title";
 import { useState, useEffect } from 'react';
+import BlockText from "../../../shared/texts/BlockText";
 
 const CheckboxGroupStyle = styled.div`
   display: flex;
   flex-direction: column;
-  gap: .25rem;
+  gap: .75rem;
   margin: 1rem 0;
 `;
 
 const CategoryStyle = styled.div`
   margin-bottom: 2rem;
 `;
+
+const CheckBoxDesign = styled.div`
+  display: flex;
+  gap: .75rem;
+`
+
+const CheckedBox = styled.div`
+  width: .75rem;
+  height: .75rem;
+  background-color: ${({theme}) => theme?.color?.primary};
+  border: 2px solid white;
+  border-radius: 15px;
+  outline: 2px solid ${({theme}) => theme?.color?.primary};
+`
+
+const Box = styled.div`
+  width: .75rem;
+  height: .75rem;
+  border: 2px solid white;
+  border-radius: 15px;
+  outline: 2px solid ${({theme}) => theme?.color?.primary};
+`
 
 const Category = ({sorting , title, list , qureParamsArray }) => {
   qureParamsArray = qureParamsArray.split('+')
@@ -91,8 +114,11 @@ const Category = ({sorting , title, list , qureParamsArray }) => {
             
           return(
             <Link onClick={()=> reFIneUiStateQureParamsArray(item)}  key={index} href={{ pathname: '/collections', query: { catagories: reFinequreParamsArray[index] , sorting : sorting}}}>
-              <Checkbox   defaultChecked={( -1 !== uiStateQureParamsArray.findIndex(v => v == item))}  text={item} />
-               {qureObj[item] && <h1>AME Active</h1>  }
+              <CheckBoxDesign>
+               {qureObj[item] ? <CheckedBox/> : <Box />  }
+              <BlockText>{item}</BlockText>
+              </CheckBoxDesign>
+              {/* <Checkbox   defaultChecked={( -1 !== uiStateQureParamsArray.findIndex(v => v == item))}  text={item} /> */}
             </Link>
           )
 
