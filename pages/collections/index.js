@@ -21,13 +21,16 @@ export async function getServerSideProps(context) {
   const page = queryData["page"]
   const sorting = queryData?.sorting
   let catagories;
-  if(Array.isArray(queryData["catagories"])){
-    catagories = queryData["catagories"]
-  }else if(!queryData["catagories"]){
-    catagories = []
+  if(queryData["catagories"] !== undefined && queryData["catagories"] !== ''  ){
+    
+    catagories = queryData["catagories"].split('+')
   }else{
-    catagories = [queryData.catagories]
+    catagories = []
   }
+  // console.log("Here is cata " +queryData["catagories"])
+
+
+
   const { data : listOFCagories , loading , error} = await client
   .query({
     query: getCategories(),
@@ -56,7 +59,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      fiterQuery : catagories,
+      fiterQuery : (queryData["catagories"] === undefined ? "" : queryData["catagories"]) ,
       listOFCagories : listOFCagories.catagories,
       filteredProduct : midifiedFilteredproduct,
       pagiNationINfo :  pagiNation,
