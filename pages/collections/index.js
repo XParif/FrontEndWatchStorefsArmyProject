@@ -27,7 +27,6 @@ export async function getServerSideProps(context) {
   }else{
     catagories = []
   }
-  // console.log("Here is cata " +queryData["catagories"])
 
 
 
