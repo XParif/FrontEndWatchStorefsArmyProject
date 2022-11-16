@@ -10,6 +10,12 @@ import {
   UserAddressGroup,
   Key,
   Value,
+  PlaceOrder,
+  CompleteOrder,
+  OrderList,
+  SingleOrder,
+  OrderState,
+  CompleteButton,
 } from "../CartComponents";
 import CartItem from "../CartItem";
 import ItemTittle from "../ItemTittle";
@@ -45,8 +51,6 @@ const CartTitle = styled.h3``;
 const CheckoutForm = ({ userID, children, pocketKhali }) => {
   const router = useRouter();
   const cartData = useReactiveVar(cartItemsVar);
-  
-
 
   const [addressId, setAddressID] = useState("");
   const { data, loading, refetch } = useQuery(getAddress(userID));
@@ -90,10 +94,10 @@ const CheckoutForm = ({ userID, children, pocketKhali }) => {
     }
   };
 
-  const placeOrder = async() =>{
-    if(!addressId){
-      message({type : "alert" ,body : "Plz Select an Address"})
-      return
+  const placeOrder = async () => {
+    if (!addressId) {
+      message({ type: "alert", body: "Plz Select an Address" });
+      return;
     }
 
     try {
@@ -120,41 +124,68 @@ const CheckoutForm = ({ userID, children, pocketKhali }) => {
       setArektaOrderKor(false);
       console.log(error);
     }
-
   };
   if (arektaOrderKor) {
     return (
-      <div
-        style={{
-          position: "fixed",
-          top: "0",
-          backgroundColor: "white",
-          left: 0,
-          width: "100vw",
-          height: "100vh",
-        }}
-      >
-        <Button
-          onClick={() => {
-            setArektaOrderKor(false);
-            router.push("/");
-          }}
-        >
-          {" "}
-          Continue Shopping{" "}
-        </Button>
-        <h1>
-          ধুর ও ফকিন্নি এত কম টাকা অর্ডার করলে তোর গালফ্রেন্ডকে স্কিনশট পাঠাই
-          দিব
-        </h1>
-        <h3>
-          ধন্যবাদ অর্ডার করার জন্য । জীবনে টাকা পয়সা দিয়ে কি হবে ?এত কম টাকার
-          অর্ডার করলে চলে? আরেকটা অর্ডার কর তাইলে খুশি হবো ।
-        </h3>
-
+      <CompleteOrder>
+        <BlockText size="lg">
+          Hey{" "}
+          {createOrderResponse.MakeOrder.ordersInformation.user_ref.username} !
+        </BlockText>
+        <BlockText size="xl" color="primary">
+          Thank you
+        </BlockText>
+        <BlockText size="lg">You order has been completed !</BlockText>
+        <OrderList>
+          <SingleOrder>
+            <OrderState>
+              <BlockText size="md" weight="semiBold">
+                Product Name and quantity
+              </BlockText>
+            </OrderState>
+            <BlockText weight="semiBold">Order Number</BlockText>
+          </SingleOrder>
+          {createOrderResponse.MakeOrder.ordersInformation.ordersItem.map(
+            (item) => (
+              <SingleOrder>
+                <OrderState>
+                  <BlockText size="md" weight="medium">
+                    {item.productName}
+                  </BlockText>
+                  <BlockText>x{item.product_quantity}</BlockText>
+                </OrderState>
+                <BlockText weight="medium">{item.id}</BlockText>
+              </SingleOrder>
+            )
+          )}
+        </OrderList>
         <br />
-        <BlockText>{JSON.stringify(createOrderResponse)}</BlockText>
-      </div>
+        {console.log(
+          createOrderResponse.MakeOrder.ordersInformation.user_ref.username
+        )}
+        <CompleteButton>
+          <Button
+            onClick={() => {
+              setArektaOrderKor(false);
+              router.push("/");
+            }}
+            bg="primary"
+            fontSize="md"
+            >
+            Go Back Home
+          </Button>
+          <Button
+            onClick={() => {
+              setArektaOrderKor(false);
+              router.push("/collections");
+            }}
+            fontSize="md"
+          >
+            Continue Shopping
+          </Button>
+        </CompleteButton>
+        {/* <BlockText>{JSON.stringify(createOrderResponse)}</BlockText> */}
+      </CompleteOrder>
     );
   }
 
@@ -192,7 +223,9 @@ const CheckoutForm = ({ userID, children, pocketKhali }) => {
         {children}
       </InfoContainer2>
       <AddressHeader>
-        <BlockText size="md" weight="medium">Select delivery location</BlockText>
+        <BlockText size="md" weight="medium">
+          Select delivery location
+        </BlockText>
         <Button onClick={() => setModalcontroleModal(true)} bg="primary">
           {" "}
           Add New Address{" "}
@@ -248,15 +281,17 @@ const CheckoutForm = ({ userID, children, pocketKhali }) => {
       </UserAddressGroup>
       {controleModal && (
         <Modal2 modalController={setModalcontroleModal}>
-          <AddressForm handleChange={handleChange} isFromCheckOut = {true}  />
+          <AddressForm handleChange={handleChange} isFromCheckOut={true} />
           <Button onClick={addressSubmitHandle}>Submit</Button>
         </Modal2>
       )}
 
-
-      <BlockText>Only CashOn Delivary is Available</BlockText>
-
-      <Button onClick={placeOrder}>Place Order</Button>
+      <PlaceOrder>
+        <BlockText size="md">Only CashOn Delivary is Available</BlockText>
+        <Button fontSize="lg" bg="primary" onClick={placeOrder}>
+          Place Order
+        </Button>
+      </PlaceOrder>
     </CartInfoWrap>
   );
 };

@@ -201,3 +201,44 @@ export const Key = styled.span`
 `;
 
 export const Value = styled.span``;
+
+export const PlaceOrder = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin: 1rem 0;
+gap: 1rem;
+`
+
+export const CompleteOrder = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem 0;
+`
+
+export const OrderList = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+`
+
+export const SingleOrder = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: .5rem 0;
+`
+
+export const OrderState = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+export const CompleteButton = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+`

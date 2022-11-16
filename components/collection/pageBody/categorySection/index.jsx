@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import Category from './Category'
-import { useState } from 'react';
-
+import Category from "./Category";
+import { useState } from "react";
 
 const CategorySectionStyle = styled.div`
+  margin-top: 1rem;
   width: 25%;
+  text-transform: capitalize;
 `;
 
 // const categoryList = {
@@ -39,7 +40,7 @@ const CategorySectionStyle = styled.div`
 //   "color": [
 //     "Red",
 //     "Blue",
-//     "White", 
+//     "White",
 //     "Gray",
 //     "Maroon",
 //     "Gold",
@@ -53,12 +54,16 @@ const CategorySectionStyle = styled.div`
 //   ]
 // }
 
-
-const CategorySection = ({qureParamsArray , list  , sorting }) => {
+const CategorySection = ({ qureParamsArray, list, sorting }) => {
   // const [qureParamsArray , setqureParamsArray] = useState([])
   return (
     <CategorySectionStyle>
-      <Category sorting= {sorting} qureParamsArray={qureParamsArray}  title="Categories" list={list} />
+      <Category
+        sorting={sorting}
+        qureParamsArray={qureParamsArray}
+        title="Categories"
+        list={list}
+      />
       {/* <Category title="Brands" list={categoryList.brands} />
       <Category title="Price" list={categoryList.price} />
       <Category title="Color" list={categoryList.color} />
