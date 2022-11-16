@@ -14,6 +14,7 @@ const CategoryStyle = styled.div`
 `;
 
 const Category = ({sorting , title, list , qureParamsArray }) => {
+  qureParamsArray = qureParamsArray.split('+')
   const [uiStateQureParamsArray , setUiStateQureParamsArray] = useState([...qureParamsArray]);
   
   const [qureObj , setQureObj] =   useState(list.reduce((acc , cu)=>{
@@ -64,13 +65,25 @@ const Category = ({sorting , title, list , qureParamsArray }) => {
 
 
           if(!qureObj[`${item}`]){
-            reFinequreParamsArray[index] = [ ...uiStateQureParamsArray , item]
+            reFinequreParamsArray[index] = reFinequreParamsArray[index] = uiStateQureParamsArray.reduce((acc , cu)=>{
+              acc =  acc + "+" + cu   
+              return acc
+            });
+            reFinequreParamsArray[index]+= `+${item}`
           }else{
-            reFinequreParamsArray[index] = uiStateQureParamsArray.filter(v => v !== item) ;
+            reFinequreParamsArray[index] = uiStateQureParamsArray.reduce((acc , cu)=>{
+              if(cu == item){
+                return acc
+              }
+              acc =  acc + "+" +cu  
+              return acc
+            }); 
+            
           }
-          if(!Array.isArray(reFinequreParamsArray[index])){
-            reFinequreParamsArray[index] = []
-          }
+
+          reFinequreParamsArray[index] = reFinequreParamsArray[index].slice(1)
+          // if(!Array.isArray(reFinequreParamsArray[index])){
+            console.log(reFinequreParamsArray[index])
 
           return(
             <Link onClick={()=> reFIneUiStateQureParamsArray(item)}  key={index} href={{ pathname: '/collections', query: { catagories: reFinequreParamsArray[index] , sorting : sorting}}}>
