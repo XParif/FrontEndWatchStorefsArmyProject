@@ -14,7 +14,7 @@ import { isLogin, LookupJwt, message, pocketKhali } from "../../apolloClient";
 import { useReactiveVar } from "@apollo/client";
 import { useRouter } from "next/router";
 import NavList from "./NavList";
-import { justifySpaceAround } from "../../utils/display.styled";
+import { justifySpaceAround, alignItemsCenter } from "../../utils/display.styled";
 
 const NavContainer = styled.div`
 ${justifySpaceAround}
