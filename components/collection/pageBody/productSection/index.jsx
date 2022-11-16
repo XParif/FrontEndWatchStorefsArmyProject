@@ -6,13 +6,17 @@ import Pagination from './../../../shared/paginations/index';
 import { useState } from "react";
 
 const ProductSectionStyle = styled.div`
-  width: 75%;
+  width: 100%;
 `;
 
 const ProductController = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: ${({theme}) => theme?.color?.white};
+  position: sticky;
+  top: 0;
+  z-index: 1;
 `;
 
 // const allProduct = [

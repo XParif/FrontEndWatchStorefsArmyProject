@@ -29,6 +29,8 @@ import {
 } from "../CartComponents";
 import CartItem from "../CartItem";
 import ItemTittle from "../ItemTittle";
+import { justifySpaceBetween } from "../../../utils/display.styled";
+
 
 const InfoContainer2 = styled.div`
   display: grid;
@@ -50,8 +52,7 @@ const CartInfoWrap = styled.div`
 `;
 
 const Hader = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${justifySpaceBetween}
   width: 100%;
 `;
 const CartTitle = styled.h3``;
@@ -144,7 +145,8 @@ const CheckoutForm = ({ userID, children, pocketKhali }) => {
           Thank you
         </BlockText>
         <BlockText size="lg">You order has been completed !</BlockText>
-        <OrderList>
+        <BlockText size="md">You order id is #{createOrderResponse.MakeOrder.ordersInformation.id} </BlockText>
+        {/* <OrderList>
           <SingleOrder>
             <OrderState>
               <BlockText size="md" weight="semiBold">
@@ -166,11 +168,8 @@ const CheckoutForm = ({ userID, children, pocketKhali }) => {
               </SingleOrder>
             )
           )}
-        </OrderList>
+        </OrderList> */}
         <br />
-        {console.log(
-          createOrderResponse.MakeOrder.ordersInformation.user_ref.username
-        )}
         <CompleteButton>
           <Button
             onClick={() => {

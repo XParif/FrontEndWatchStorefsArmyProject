@@ -4,7 +4,11 @@ import * as yup from "yup";
 import BlockText from "./../../shared/texts/BlockText";
 
 import { useState } from "react";
+
+import { alignItemsCenter } from './../../../utils/display.styled';
+
 import { useForm } from "react-hook-form";
+
 
 const FormStyle = styled.form``;
 
@@ -66,11 +70,11 @@ const Input = ({
 };
 
 const MultipleColumn = styled.div`
-  display: flex;
+  ${alignItemsCenter}
+  justify-content: space-between;
   margin: 1rem;
   gap: 1rem;
-  justify-content: space-between;
-  align-items: center;
+
 
   @media screen and (min-width: 420px) and (max-width: 480px) {
     display: grid;
@@ -78,6 +82,7 @@ const MultipleColumn = styled.div`
     justify-content: space-between;
     align-items: center;
   }
+
 `;
 
 const SingleColumn = styled.div`
