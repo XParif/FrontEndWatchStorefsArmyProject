@@ -7,6 +7,8 @@ import { useState, useEffect } from 'react';
 const CheckboxGroupStyle = styled.div`
   display: flex;
   flex-direction: column;
+  gap: .25rem;
+  margin: 1rem 0;
 `;
 
 const CategoryStyle = styled.div`
