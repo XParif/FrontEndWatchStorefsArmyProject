@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import {
   FaBullhorn,
   FaCartPlus,
@@ -9,17 +9,33 @@ import {
   FaUserCircle,
 } from "react-icons/fa";
 import styled from "styled-components";
+import { isLogin, LookupJwt, message, pocketKhali } from "../../apolloClient";
+
+import { useReactiveVar } from "@apollo/client";
+import { useRouter } from "next/router";
 import NavList from "./NavList";
 const NavContainer = styled.div`
   display: flex;
   justify-content: space-around;
+
+  @media screen and (min-width: 440px) and (max-width: 560px) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    font-weight: ${({ theme }) => theme?.fontWeight?.small};
+    font-size: ${({ theme }) => theme?.fontSizes?.default};
+  }
 `;
 
 const MyNavLink = styled.div`
   color: ${({ theme }) => theme?.color?.white};
+  position: relative;
   text-decoration: none;
   cursor: pointer;
   border-radius: 5px;
+  padding: 5px 0px;
+  margin-right: 10px !important;
   &:hover {
     color: ${({ bg = "primary", theme }) =>
       theme.color[bg] ?? theme?.color?.secondary};
@@ -32,8 +48,12 @@ const MyNavLink = styled.div`
   }*/
 `;
 
-const NavBar = ({ modalController }) => {
-  const [login, setLogin] = useState(false);
+const NavBar = ({ modalController, CartItemCount }) => {
+  const router = useRouter();
+  const login = useReactiveVar(isLogin);
+  useEffect(() => {
+    isLogin(LookupJwt() == undefined ? false : true);
+  }, [login]);
   return (
     <NavContainer>
       <Link href="/collections">
@@ -41,8 +61,24 @@ const NavBar = ({ modalController }) => {
           <NavList title="Collections" logo={<FaItchIo />} />
         </MyNavLink>
       </Link>
-      <Link href="/cart">
+      <Link href="/cart" onClick={() => pocketKhali(false)}>
         <MyNavLink>
+          <span
+            style={{
+              position: "absolute",
+              top: 0,
+              right: -3,
+              color: "red",
+              backgroundColor: "#fff",
+              color: "#60C3D8",
+              fontSize: "12px",
+              padding: "0px 2px",
+              borderRadius: "5px",
+              border: "1px solid #60C3D8",
+            }}
+          >
+            {CartItemCount}
+          </span>
           <NavList title="Cart" logo={<FaCartPlus />} />
         </MyNavLink>
       </Link>
@@ -53,13 +89,25 @@ const NavBar = ({ modalController }) => {
       </Link>
       {login ? (
         <NavContainer>
-          <Link href="/profile">
+          <Link href="/dashboard">
             <MyNavLink>
-              <NavList title="Profile" logo={<FaUserCircle />} />
+              <NavList title="Dashboard" logo={<FaUserCircle />} />
             </MyNavLink>
           </Link>
           <MyNavLink href="">
-            <NavList title="LogOut" logo={<FaSignOutAlt />} />
+            <div
+              onClick={() => {
+                localStorage.removeItem("jwt_token");
+                localStorage.removeItem("logedInUserId");
+
+                isLogin(false);
+                message({ type: "success", body: "Successfully Logged Out" });
+
+                router.push("/");
+              }}
+            >
+              <NavList title="LogOut" logo={<FaSignOutAlt />} />
+            </div>
           </MyNavLink>
         </NavContainer>
       ) : (

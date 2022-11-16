@@ -6,6 +6,7 @@ const theme = {
   },
   fontSizes: {
     sm: "0.8rem",
+    default: "1rem",
     md: "1.2rem",
     lg: "1.65rem",
     xl: "3.75rem",
@@ -20,15 +21,17 @@ const theme = {
     sm: "1.2",
     md: "1.4",
     lg: "1.6",
+    custom: "26px"
   },
+  borderRadius: '5px',
   gap: {
     sm: "0.6rem 1.2rem",
     md: "0.8rem 1.6rem",
     lg: "1rem 2rem",
   },
   color: {
-    primary: "#7678ed",
-    primaryDarkShade: "#47488e",
+    primary: "#60C3D8",
+    primaryDarkShade: "#8DDBB8",
     secondary: "#eaeaff",
     hover: "#3B3B3B",
     text: "#333333",

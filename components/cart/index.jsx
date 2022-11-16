@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Button from "../shared/buttons";
+import {FaArrowLeft} from 'react-icons/fa'
 import {
   BackButtonContainer,
   CartContainer,
@@ -9,85 +10,82 @@ import {
 import CartInfo from "./CartInfo";
 import CartPrising from "./CartPrising";
 import CheckoutForm from "./checkout";
+import { cartItemsVar, extraCost, pocketKhali } from "../../apolloClient/index";
+import { useReactiveVar, useQuery } from "@apollo/client";
+import { getExtraCost } from "../../graphql/index";
 
 const CartBody = () => {
-  const [checkout, setCheckout] = useState(false);
+  const { data } = useQuery(getExtraCost);
+  const forextraCost = data?.extraCost;
+  extraCost({
+    vat: forextraCost ? forextraCost?.vat : 5,
+    shipingCost: forextraCost ? forextraCost?.shipingCost : 20,
+  });
 
-  const data = [
-    {
-      id: 1,
-      name: "AppleWatch",
-      brand: "Apple",
-      unitePrice: 100,
-      initQuantity: 1,
-    },
-    {
-      id: 2,
-      name: "Mi Band 3",
-      brand: "xiaomi",
-      unitePrice: 80,
-      initQuantity: 1,
-    },
-    {
-      id: 3,
-      name: "Oraimo Band 5",
-      brand: "orima",
-      unitePrice: 50,
-      initQuantity: 1,
-    },
-  ];
+  const checkout = useReactiveVar(pocketKhali);
+  const cartData = useReactiveVar(cartItemsVar);
+  const { vat, shipingCost } = useReactiveVar(extraCost);
 
-  const [cartData, setCartData] = useState(data);
-  const [subTotal, setSubTotal] = useState(0);
+  const subTotal = cartData.reduce((acc, cu) => {
+    acc += cu.product_quantity * cu.price;
+    return acc;
+  }, 0);
 
-  const quantityHandler = (id, quantity) => {
-    const objIndex = cartData.findIndex((obj) => obj.id == id);
-    cartData[objIndex].initQuantity = quantity;
-    let Total = 0;
-    cartData.map((item) => (Total += item.initQuantity * item.unitePrice));
-    setSubTotal(Total);
+  const quantityHandler = (action, index) => {
+    if (action == "+") {
+      cartData[index].product_quantity = cartData[index].product_quantity + 1;
+    } else if (action == "-" && cartData[index].product_quantity > 1) {
+      cartData[index].product_quantity = cartData[index].product_quantity - 1;
+    }
+    cartItemsVar([...cartData]);
   };
 
-  const removeItemHandler = (id) => {
-    setCartData(cartData.filter((item) => item.id !== id));
+  const removeItemHandler = (index) => {
+    cartData.splice(index, 1);
+    cartItemsVar([...cartData]);
   };
-
-  useEffect(() => {
-    let Total = 0;
-    cartData.map((item) => (Total += item.initQuantity * item.unitePrice));
-    setSubTotal(Total);
-  }, [cartData]);
+  if (checkout) {
+    return (
+      <>
+        {/* <button onClick={() => pocketKhali(false)} >Back To Cart</button> */}
+        <CheckoutForm pocketKhali={pocketKhali}>
+          <CartPrising
+            subTotal={subTotal}
+            vatRate={vat}
+            setCheckout={pocketKhali}
+            shippingCost={shipingCost}
+          />
+        </CheckoutForm>
+      </>
+    );
+  }
 
   return (
     <>
       <CartContainer>
+        <BackButtonContainer>
+          <Link href="/">
+            <Button bg="primary">
+              <FaArrowLeft/>
+              Back To Store
+            </Button>
+          </Link>
+        </BackButtonContainer>
         <InfoContainer>
-          {checkout ? (
-            <CheckoutForm />
-          ) : (
-            <CartInfo
-              cartData={cartData}
-              setCartData={setCartData}
-              quantityHandler={quantityHandler}
-              removeItemHandler={removeItemHandler}
-            />
-          )}
-
+          <CartInfo
+            cartData={cartData}
+            quantityHandler={quantityHandler}
+            removeItemHandler={removeItemHandler}
+            cartItemsVar={cartItemsVar}
+          />
           <CartPrising
             subTotal={subTotal}
-            vatRate={5}
-            checkout={checkout}
-            setCheckout={setCheckout}
+            vatRate={vat}
+            setCheckout={pocketKhali}
+            isCartValied={true}
           />
         </InfoContainer>
       </CartContainer>
-      <BackButtonContainer>
-        <Link href="/">
-          <Button bg="primary" fontSize={"md"}>
-            Back To Store
-          </Button>
-        </Link>
-      </BackButtonContainer>
     </>
   );
 };

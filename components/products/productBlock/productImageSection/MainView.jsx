@@ -7,12 +7,23 @@ const ImageContainer = styled.div`
   height: 500px;
   border-radius: 3px;
   margin: 0.5rem;
+
+  /* @media screen and (min-width: 420px) and (max-width: 480px) {
+    display: flex;
+    position: absolute;
+    bottom: 300px;
+  } */
 `;
 
-const MainView = () => {
+const MainView = ({ ProductimageUrl, alterForImage }) => {
   return (
     <ImageContainer>
-      <Image src="/demo.png" alt="watch" width="500" height="500" />
+      <Image
+        src={ProductimageUrl}
+        alt={alterForImage}
+        width="500"
+        height="500"
+      />
     </ImageContainer>
   );
 };

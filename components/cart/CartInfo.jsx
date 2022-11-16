@@ -3,24 +3,19 @@ import Button from "../shared/buttons";
 import Bar from "../shared/texts/Bar";
 import BlockText from "../shared/texts/BlockText";
 import CartItem from "./CartItem";
-
+import ItemTittle from './ItemTittle';
 import {
   CartInfoWrap,
-  CartItemCount,
   CartItemList,
   CartTitle,
   ClearAllContainer,
   Hader,
-  ItemTitle,
-  ProductDetailTitle,
-  ProductPriceTitle,
-  ProductQuantityTitle,
-  ProductTotalTitle,
 } from "./CartComponents";
+import { RedButton } from "../shared/buttons";
 
 const CartInfo = ({
   cartData,
-  setCartData,
+  cartItemsVar,
   quantityHandler,
   removeItemHandler,
 }) => {
@@ -30,39 +25,34 @@ const CartInfo = ({
     <CartInfoWrap>
       <Hader>
         <CartTitle>Shopping Cart - Watch Store</CartTitle>
-        <CartItemCount>
-          {" "}
-          {count > 1 ? `${count} Items` : `${count} Item`}{" "}
-        </CartItemCount>
       </Hader>
 
       <Bar width="full" height="sm" />
 
-      <ItemTitle>
-        <ProductDetailTitle>Product Details</ProductDetailTitle>
-        <ProductQuantityTitle>Quantity</ProductQuantityTitle>
-        <ProductPriceTitle>Rate</ProductPriceTitle>
-        <ProductTotalTitle>Total</ProductTotalTitle>
-      </ItemTitle>
+      <ItemTittle/>
 
       <CartItemList>
-        {cartData.map((item) => (
+        {cartData.map((item , index) => (
           <CartItem
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            brand={item.brand}
-            unitePrice={item.unitePrice}
-            quantity={item.initQuantity}
+            key={index}
+            variantsId= {item.variantsId}
+            product_ref={item.product_ref}
+            productImage = {item.productImage}
+            productName={item.productName}
+            productBrand={item.productBrand}
+            color = {item.color}
+            price={item.price}
+            product_quantity={item.product_quantity}
             quantityHandler={quantityHandler}
             removeItemHandler={removeItemHandler}
+            index = {index}
           />
         ))}
       </CartItemList>
       <ClearAllContainer>
         {" "}
         {count > 0 ? (
-          <Button fontSize={"md"} onClick={() => setCartData([])}>
+          <Button fontSize={"md"} onClick={() => cartItemsVar([])}>
             Clear All <FaTrash />
           </Button>
         ) : (

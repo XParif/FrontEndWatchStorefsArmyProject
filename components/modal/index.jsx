@@ -11,7 +11,10 @@ import {
   ModalTitleLogo,
   ModalTitleText,
   ModalWrapper,
+  ModalUnfocused,
+  ClickableLink,
 } from "./ModalComponents";
+import { FaWindowClose } from "react-icons/fa";
 import RegisterForm from "./RegisterForm";
 
 const Modal = ({ modalController }) => {
@@ -19,9 +22,12 @@ const Modal = ({ modalController }) => {
 
   return (
     <ModalWrapper>
+      <ModalUnfocused onClick={() => modalController(false)} />
       <ModalBackground>
         <ModalContainer>
-          <ModalClose onClick={() => modalController(false)}> X </ModalClose>
+          <ModalClose onClick={() => modalController(false)}>
+            <FaWindowClose />
+          </ModalClose>
           <ModalTitle>
             <ModalTitleLogo>
               <BsWatch />
@@ -31,16 +37,25 @@ const Modal = ({ modalController }) => {
           <ModalBody>
             {loginPart ? (
               <>
-                <LoginForm />
-                <ModalFooter onClick={() => setLoginPart(false)}>
-                  Don't you have id? Register here
+                <LoginForm modalController={modalController} />
+                <ModalFooter>
+                  Don't you have id ?
+                  <ClickableLink onClick={() => setLoginPart(false)}>
+                    Register here
+                  </ClickableLink>
                 </ModalFooter>
               </>
             ) : (
               <>
-                <RegisterForm setLoginPart={setLoginPart} />
-                <ModalFooter onClick={() => setLoginPart(true)}>
-                  Already Registered? Login here
+                <RegisterForm
+                  modalController={modalController}
+                  setLoginPart={setLoginPart}
+                />
+                <ModalFooter>
+                  Already registered ?
+                  <ClickableLink onClick={() => setLoginPart(true)}>
+                    Login here
+                  </ClickableLink>
                 </ModalFooter>
               </>
             )}
