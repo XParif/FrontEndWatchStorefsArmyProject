@@ -8,8 +8,7 @@ const SearchContainer = styled.div`
   align-items: center;
 `;
 
-const SearchForm = styled.form`
-`;
+const SearchForm = styled.form``;
 // const SearchInput = styled.input`
 //   min-width: 300px;
 //   font-size: 1.3rem;

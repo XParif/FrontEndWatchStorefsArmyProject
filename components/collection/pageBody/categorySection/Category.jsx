@@ -25,12 +25,14 @@ const CheckBoxDesign = styled.div`
   gap: 0.75rem;
 `;
 
+
 const Box = styled.div`
   width: 1.25rem;
   height: 1.25rem;
   border: 2px solid white;
   border-radius: 1px;
   outline: 2px solid ${({ theme }) => theme?.color?.primary};
+
 
   * {
     color: ${({theme}) => theme?.color?.primary}

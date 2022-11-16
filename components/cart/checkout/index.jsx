@@ -1,33 +1,36 @@
-import { useRouter } from "next/router";
 import { useQuery, useReactiveVar } from "@apollo/client";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { cartItemsVar, Loading2, message } from "../../../apolloClient";
+import { client } from "../../../apolloClient/index";
+import { getAddress, mutatedAddress, mutationOrder } from "../../../graphql";
+import AddressForm from "../../modal/address";
+import Modal2 from "../../modal/modal2";
+import Button from "../../shared/buttons";
 import Bar from "../../shared/texts/Bar";
+import BlockText from "../../shared/texts/BlockText";
 import {
-  CartItemList,
   AddressHeader,
+  CartItemList,
+
+  CompleteButton,
+  CompleteOrder,
+  Key,
+  OrderList,
+  OrderState,
+  PlaceOrder,
+  SingleOrder,
+
+
   UserAddress,
   UserAddressGroup,
-  Key,
   Value,
-  PlaceOrder,
-  CompleteOrder,
-  OrderList,
-  SingleOrder,
-  OrderState,
-  CompleteButton,
 } from "../CartComponents";
 import CartItem from "../CartItem";
 import ItemTittle from "../ItemTittle";
-import Form from "./forms";
-import { useEffect, useState } from "react";
-import { getAddress, mutatedAddress, mutationOrder } from "../../../graphql";
-import Button from "../../shared/buttons";
-import Modal2 from "../../modal/modal2";
-import AddressForm from "../../modal/address";
-import { client } from "../../../apolloClient/index";
-import BlockText from "../../shared/texts/BlockText";
 import { justifySpaceBetween } from "../../../utils/display.styled";
+
 
 const InfoContainer2 = styled.div`
   display: grid;
@@ -35,6 +38,12 @@ const InfoContainer2 = styled.div`
   width: 100%;
   padding: 10px;
   margin: 0 auto;
+
+  @media screen and (min-width: 420px) and (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+    font-size: ${({ theme }) => theme?.fontSizes?.md};
+  }
 `;
 const CartInfoWrap = styled.div`
   flex: 3;
@@ -169,7 +178,7 @@ const CheckoutForm = ({ userID, children, pocketKhali }) => {
             }}
             bg="primary"
             fontSize="md"
-            >
+          >
             Go Back Home
           </Button>
           <Button
@@ -290,6 +299,7 @@ const CheckoutForm = ({ userID, children, pocketKhali }) => {
           Place Order
         </Button>
       </PlaceOrder>
+
     </CartInfoWrap>
   );
 };
