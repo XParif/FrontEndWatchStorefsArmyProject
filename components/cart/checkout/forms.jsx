@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { alignItemsCenter } from './../../../utils/display.styled';
 
 const FormStyle = styled.form``;
 
@@ -66,11 +67,10 @@ const Input = ({
 };
 
 const MultipleColumn = styled.div`
-  display: flex;
+  ${alignItemsCenter}
+  justify-content: space-between;
   margin: 1rem;
   gap: 1rem;
-  justify-content: space-between;
-  align-items: center;
 `;
 
 const SingleColumn = styled.div`
