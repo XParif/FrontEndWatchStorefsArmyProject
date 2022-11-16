@@ -20,8 +20,6 @@ const Category = ({sorting , title, list , qureParamsArray }) => {
     acc[`${cu}`] =  qureParamsArray.find(v => v == cu) ? true : false;
     return acc
 },{}))
-
-console.log(uiStateQureParamsArray)
   const reFIneUiStateQureParamsArray = (item)=>{
     if(!qureObj[`${item}`]){
 
@@ -62,13 +60,20 @@ console.log(uiStateQureParamsArray)
       <CheckboxGroupStyle>
         {list.map((item ,index) => {
 
-          const reFinequreParamsArray = uiStateQureParamsArray.filter(v=> v !== item) ;
+          const reFinequreParamsArray = []; 
+
+
           if(!qureObj[`${item}`]){
-            reFinequreParamsArray.push(item)
+            reFinequreParamsArray[index] = [ ...uiStateQureParamsArray , item]
+          }else{
+            reFinequreParamsArray[index] = uiStateQureParamsArray.filter(v => v !== item) ;
+          }
+          if(!Array.isArray(reFinequreParamsArray[index])){
+            reFinequreParamsArray[index] = []
           }
 
           return(
-            <Link onClick={()=> reFIneUiStateQureParamsArray(item)}  key={index} href={{ pathname: '/collections', query: { catagories: reFinequreParamsArray , sorting : sorting}}}>
+            <Link onClick={()=> reFIneUiStateQureParamsArray(item)}  key={index} href={{ pathname: '/collections', query: { catagories: reFinequreParamsArray[index] , sorting : sorting}}}>
               <Checkbox   defaultChecked={qureObj[`${item}`]}  text={item} />
             </Link>
           )
