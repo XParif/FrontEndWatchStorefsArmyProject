@@ -9,15 +9,20 @@ import { InputField, InputForm, InputLabel } from "./common";
 
 const RegisterFormContainer = styled.div`
   width: 900px;
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 720px) and (max-width: 976px) {
+    width: 300px;
+  }
 `;
 
 const SectionWrapper = styled.div`
-  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* grid-template-columns: 1fr; */
 `;
 
 const Section = styled.div`

@@ -8,6 +8,13 @@ import { InputField, InputForm, InputLabel } from "./common";
 // import buttonLoading from "../../buttonLoading.svg"
 const LoginFormContainer = styled.div`
   width: 500px;
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 720px) and (max-width: 976px) {
+    width: 300px;
+  }
 `;
 
 const LoginForm = ({ modalController }) => {
