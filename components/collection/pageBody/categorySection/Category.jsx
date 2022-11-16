@@ -83,8 +83,6 @@ const Category = ({sorting , title, list , qureParamsArray }) => {
 
           reFinequreParamsArray[index] = reFinequreParamsArray[index].slice(1)
           // if(!Array.isArray(reFinequreParamsArray[index])){
-            console.log(reFinequreParamsArray[index])
-
           return(
             <Link onClick={()=> reFIneUiStateQureParamsArray(item)}  key={index} href={{ pathname: '/collections', query: { catagories: reFinequreParamsArray[index] , sorting : sorting}}}>
               <Checkbox   defaultChecked={qureObj[`${item}`]}  text={item} />
