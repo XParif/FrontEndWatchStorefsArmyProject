@@ -4,6 +4,7 @@ import { BaseButton } from "../shared/buttons";
 import Container from "../shared/container";
 import SectionBar from "../shared/texts/SectionBar";
 import AllTabs from "./allTabs";
+import { alignItemsCenter } from './../../utils/display.styled';
 
 const Wrap = styled.div`
   padding: 1.5rem 0 5rem 0;
@@ -36,8 +37,7 @@ const Breadcrumb = styled.ul`
 `;
 
 const TopContent = styled.div`
-  display: flex;
-  align-items: center;
+  ${alignItemsCenter}
   justify-content: space-between;
   padding: 1.5rem 0 1rem 0;
 `;
@@ -52,8 +52,7 @@ const SignOutButton = styled(BaseButton)`
 `;
 
 const Profile = styled.div`
-  display: flex;
-  align-items: center;
+${alignItemsCenter}
   gap: 1.5rem;
 `;
 const Picture = styled.div`

@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import { alignItemsCenter } from './../../../utils/display.styled';
 
 const FeatureWrap = styled.div`
-  display: flex;
-  align-items: center;
+  ${alignItemsCenter}
   gap: 0.7rem;
   background: ${({ theme }) => theme?.color?.white};
   border-radius: 10px;

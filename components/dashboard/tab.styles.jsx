@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { justifyAlignCenter } from './../../utils/display.styled';
 
 export const TabContainer = styled.div`
   display: grid;
@@ -36,9 +37,7 @@ export const Tab = styled.a`
   padding: 1rem 0;
   border-radius: 0.3rem;
   transition: background-color 0.5s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${justifyAlignCenter}
   gap: 0.4rem;
 
   :hover {

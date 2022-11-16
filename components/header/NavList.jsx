@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import { alignItemsCenter } from './../../utils/display.styled';
 
 const NavItem = styled.h3`
-  display: flex;
-  align-items: center;
+  ${alignItemsCenter}
   gap: 0.5rem;
   margin: 0 7px;
   padding: 5px;

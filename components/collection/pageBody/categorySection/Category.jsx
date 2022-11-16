@@ -5,6 +5,7 @@ import Title from "./../../../shared/texts/Title";
 import { useState, useEffect } from "react";
 import BlockText from "../../../shared/texts/BlockText";
 import { FaCheck } from "react-icons/fa";
+import { alignItemsCenter } from './../../../../utils/display.styled';
 
 const CheckboxGroupStyle = styled.div`
   display: flex;
@@ -20,8 +21,7 @@ const CategoryStyle = styled.div`
 `;
 
 const CheckBoxDesign = styled.div`
-  display: flex;
-  align-items: center;
+  ${alignItemsCenter}
   gap: 0.75rem;
 `;
 

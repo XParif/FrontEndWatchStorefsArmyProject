@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import { justifySpaceCenter } from "../../utils/display.styled";
 
 const ButtonBox = styled.div`
-  display: flex;
-  justify-content: center;
+  ${justifySpaceCenter}
 `;
 
 export default ButtonBox;
