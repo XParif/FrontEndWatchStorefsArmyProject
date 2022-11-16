@@ -16,7 +16,9 @@ const Search = ({ placeholder, children }) => {
   return (
     <SearchStyle>
       <SearchInput placeholder={placeholder} />
-      <SearchButton children={children} />
+      <SearchButton >  
+        { children}
+      </SearchButton >
     </SearchStyle>
   );
 };

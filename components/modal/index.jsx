@@ -39,7 +39,7 @@ const Modal = ({ modalController }) => {
               <>
                 <LoginForm modalController={modalController} />
                 <ModalFooter>
-                  Don't you have id ?
+                  {`Don't you have id ?`}
                   <ClickableLink onClick={() => setLoginPart(false)}>
                     Register here
                   </ClickableLink>

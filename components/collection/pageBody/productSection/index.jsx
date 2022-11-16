@@ -3,6 +3,7 @@ import BlockText from "../../../shared/texts/BlockText";
 import ProductSorting from "./ProductSorting";
 import CardGroup from './../../../shared/cards/CardGroup';
 import Pagination from './../../../shared/paginations/index';
+import { useState } from "react";
 
 const ProductSectionStyle = styled.div`
   width: 75%;
@@ -102,17 +103,18 @@ const ProductController = styled.div`
 // ];
 
 const ProductSection = ({ sorting ,qureParamsArray,filteredProduct , pagiNationINfo}) => {
- 
+  const [uiState , setUiState] = useState(false)
   const { pageCount , page , pageSize , total } = pagiNationINfo
   return (
     <ProductSectionStyle>
       <ProductController>
-        <ProductSorting page={page} sorting = {sorting} qureParamsArray={qureParamsArray}   />
+        <ProductSorting  page={page} sorting = {sorting} qureParamsArray={qureParamsArray}   />
+        <Pagination uiState={uiState} setUiState={setUiState} sorting= {sorting} qureParamsArray={qureParamsArray} totalPage={pageCount} page={page} />
         <BlockText size="md">Showing page-{!!page? page : 1} of {!!pageCount ? pageCount : 1 } Page(s)</BlockText>
       </ProductController>
       <CardGroup list={filteredProduct} />
       <ProductController>
-        <Pagination sorting= {sorting} qureParamsArray={qureParamsArray} totalPage={pageCount} page={page} />
+        <Pagination setUiState={setUiState}  uiState={uiState} sorting= {sorting} qureParamsArray={qureParamsArray} totalPage={pageCount} page={page} />
         <BlockText size="md">Showing page-{!!page? page : 1} of {!!pageCount ? pageCount : 1 } Page(s)</BlockText>
       </ProductController>
     </ProductSectionStyle>
