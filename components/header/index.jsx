@@ -8,7 +8,11 @@ import NavBar from "./NavBar";
 import SearchOption from "./SearchOption";
 
 const Wrapper = styled.div`
-  /* position: fixed; */
+  @media screen and (min-width: 976px) {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+  }
 `;
 
 const HeaderContainer = styled.div`
