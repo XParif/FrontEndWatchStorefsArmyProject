@@ -90,6 +90,7 @@ const Category = ({sorting , title, list , qureParamsArray }) => {
           return(
             <Link onClick={()=> reFIneUiStateQureParamsArray(item)}  key={index} href={{ pathname: '/collections', query: { catagories: reFinequreParamsArray[index] , sorting : sorting}}}>
               <Checkbox   defaultChecked={( -1 !== uiStateQureParamsArray.findIndex(v => v == item))}  text={item} />
+               {qureObj[item] && <h1>AME Active</h1>  }
             </Link>
           )
 
