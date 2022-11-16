@@ -15,6 +15,8 @@ const CheckboxGroupStyle = styled.div`
 
 const CategoryStyle = styled.div`
   margin-bottom: 2rem;
+  position: sticky;
+  top: 0;
 `;
 
 const CheckBoxDesign = styled.div`

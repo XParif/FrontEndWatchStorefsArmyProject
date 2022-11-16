@@ -13,6 +13,10 @@ const ProductController = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: ${({theme}) => theme?.color?.white};
+  position: sticky;
+  top: 0;
+  z-index: 1;
 `;
 
 // const allProduct = [
