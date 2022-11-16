@@ -1,57 +1,66 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { client, isLogin, Loading2 , message } from "../../apolloClient";
+import { client, isLogin, Loading2, message } from "../../apolloClient";
 import { getRegister } from "../../graphql";
+import Button from "../shared/buttons/index";
+import Checkbox from "./../shared/checkboxes/index";
 import AddressForm from "./address";
 import { InputField, InputForm, InputLabel } from "./common";
-import Button from '../shared/buttons/index'
-import Checkbox from './../shared/checkboxes/index';
-
 
 const RegisterFormContainer = styled.div`
   width: 900px;
 `;
 
 const SectionWrapper = styled.div`
-  width: 100%;
+  width: 40%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* grid-template-columns: 1fr; */
 `;
 
 const Section = styled.div`
   margin: 5px;
 `;
 
-const RegisterForm = ({modalController}) => {
+const RegBtnWrapper = styled.div`
+  /* width: 300px; */
+  /* margin: 0 auto; */
+`;
+
+const RegisterForm = ({ modalController }) => {
   const [formInput, setFormInput] = useState({});
-  const [addressInput , setAddressInput] = useState({});
-  const [putAddress,setPutAddress] = useState(false)
-  const regHandler = async(e) => {
+  const [addressInput, setAddressInput] = useState({});
+  const [putAddress, setPutAddress] = useState(false);
+  const regHandler = async (e) => {
     e.preventDefault();
     try {
-      Loading2(true)
-      let query ;
-      if(putAddress){
-        query = getRegister(formInput , addressInput)
-      }else{
-        query = getRegister(formInput)
+      Loading2(true);
+      let query;
+      if (putAddress) {
+        query = getRegister(formInput, addressInput);
+      } else {
+        query = getRegister(formInput);
       }
-      const {data , error} = await client.mutate({
-        mutation : query
-      })
-      console.log(data)
-      const jwt = data?.userReg?.jwt
-      localStorage.setItem('jwt_token', `Bearer ${jwt}`);
-      localStorage.setItem('logedInUserId', data?.userReg?.user?.id);
-      isLogin(true)
-      Loading2(false)
-      modalController(false)
-      message({type : "success" ,body : data?.userReg?.message})
+      const { data, error } = await client.mutate({
+        mutation: query,
+      });
+      console.log(data);
+      const jwt = data?.userReg?.jwt;
+      localStorage.setItem("jwt_token", `Bearer ${jwt}`);
+      localStorage.setItem("logedInUserId", data?.userReg?.user?.id);
+      isLogin(true);
+      Loading2(false);
+      modalController(false);
+      message({ type: "success", body: data?.userReg?.message });
     } catch (error) {
-      message({type : "failed" ,body : "SomeThing Went Worng , Plz Type Correctly"})
-      Loading2(false)
+      message({
+        type: "failed",
+        body: "SomeThing Went Worng , Plz Type Correctly",
+      });
+      Loading2(false);
     }
-    
   };
 
   const handleChange = (e) => {
@@ -120,12 +129,21 @@ const RegisterForm = ({modalController}) => {
           {/* <div  onClick={()=> setPutAddress(prv => (prv? false : true)) } > */}
           {/* <InputField type="button" value={(putAddress? "Skip For Now" : "Put Address" )} /> */}
           {/* </div> */}
-          <Checkbox text="I want to add my address now" onClick={()=> setPutAddress(prv => (prv? false : true)) } />
-          {putAddress? <AddressForm handleChange={handleAddressInputChange} /> : ""}
+          <Checkbox
+            text="I want to add my address now"
+            onClick={() => setPutAddress((prv) => (prv ? false : true))}
+          />
+          {putAddress ? (
+            <AddressForm handleChange={handleAddressInputChange} />
+          ) : (
+            ""
+          )}
         </SectionWrapper>
-        <Button bg="primary" type="submit">
-          Register
-        </Button>
+        <RegBtnWrapper>
+          <Button bg="primary" type="submit">
+            Register
+          </Button>
+        </RegBtnWrapper>
       </InputForm>
     </RegisterFormContainer>
   );
