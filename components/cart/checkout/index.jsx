@@ -27,6 +27,7 @@ import Modal2 from "../../modal/modal2";
 import AddressForm from "../../modal/address";
 import { client } from "../../../apolloClient/index";
 import BlockText from "../../shared/texts/BlockText";
+import { justifySpaceBetween } from "../../../utils/display.styled";
 
 const InfoContainer2 = styled.div`
   display: grid;
@@ -42,8 +43,7 @@ const CartInfoWrap = styled.div`
 `;
 
 const Hader = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${justifySpaceBetween}
   width: 100%;
 `;
 const CartTitle = styled.h3``;

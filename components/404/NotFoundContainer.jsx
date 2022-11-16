@@ -1,12 +1,11 @@
 import styled from "styled-components";
+import { justifyAlignCenter } from "../../utils/display.styled";
 
 const NotFoundContainer = styled.div`
   width: 100%;
   height: 400px;
-  display: flex;
+  ${justifyAlignCenter}
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 
 export default NotFoundContainer
