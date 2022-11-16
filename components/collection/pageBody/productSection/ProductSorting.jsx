@@ -2,6 +2,7 @@ import styled from "styled-components";
 import InlineText from "./../../../shared/texts/InlineText";
 import Button from "./../../../shared/buttons";
 import Link from "next/link";
+import { useState } from "react";
 
 const Dropdown = styled.span`
   position: relative;
@@ -41,7 +42,8 @@ const DropDownContent = styled.div`
 `;
 
 const ProductSorting = ({sorting , qureParamsArray}) => {
-
+  const [uiState , setUiState] = useState(false)
+  
 
 
   return (
@@ -54,13 +56,13 @@ const ProductSorting = ({sorting , qureParamsArray}) => {
         </Button>
         <DropDownContent>
         {sorting === "asc" ? "" :
-          <Link key={1} href={{ pathname: '/collections', query: { catagories: qureParamsArray ,  sorting : `asc`}}}>
+          <Link onClick={()=> setUiState( uiState ? false : true)} key={1} href={{ pathname: '/collections', query: { catagories: qureParamsArray ,  sorting : `asc`}}}>
                 price Low to High
           </Link>
         }
         
         {sorting === "desc" ? "" : 
-          <Link key={2} href={{ pathname: '/collections', query: { catagories: qureParamsArray ,  sorting : `desc`}}}>
+          <Link onClick={()=> setUiState( uiState ? false : true)} key={2} href={{ pathname: '/collections', query: { catagories: qureParamsArray ,  sorting : `desc`}}}>
             price Hgh to Low
           </Link>
         }

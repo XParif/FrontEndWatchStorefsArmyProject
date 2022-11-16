@@ -26,6 +26,13 @@ const CartBody = () => {
   const cartData = useReactiveVar(cartItemsVar);
   const { vat, shipingCost } = useReactiveVar(extraCost);
 
+  const [userID , setUseID ] = useState("") ;
+  useEffect(()=>{
+    if(typeof window !== undefined){
+      setUseID(Number(localStorage.getItem("logedInUserId")))
+    }
+  },[checkout])
+
   const subTotal = cartData.reduce((acc, cu) => {
     acc += cu.product_quantity * cu.price;
     return acc;
@@ -48,7 +55,7 @@ const CartBody = () => {
     return (
       <>
         {/* <button onClick={() => pocketKhali(false)} >Back To Cart</button> */}
-        <CheckoutForm pocketKhali={pocketKhali}>
+        <CheckoutForm userID={userID} pocketKhali={pocketKhali}>
           <CartPrising
             subTotal={subTotal}
             vatRate={vat}

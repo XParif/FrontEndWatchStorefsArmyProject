@@ -13,6 +13,10 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    BACKEND_API_END_POINT: 'https://fs-army-teamf-clockstore.herokuapp.com/graphql',
+  },
+
 }
 
 module.exports = nextConfig
