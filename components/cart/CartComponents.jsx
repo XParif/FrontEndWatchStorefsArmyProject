@@ -10,6 +10,12 @@ export const CartContainer = styled.div`
     theme.color[bg] ?? theme?.color?.secondary};
   min-height: 500px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  @media screen and (min-width: 420px) and (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+    font-size: ${({ theme }) => theme?.fontSizes?.md};
+  }
 `;
 
 export const InfoContainer = styled.div`
@@ -17,6 +23,11 @@ export const InfoContainer = styled.div`
   width: 100%;
   padding: 1rem;
   margin: 0 auto;
+
+  @media screen and (min-width: 420px) and (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const BackButtonContainer = styled.div`
@@ -192,6 +203,13 @@ export const UserAddress = styled.p`
   & > div {
     display: flex;
     justify-content: space-between;
+  }
+
+  @media screen and (min-width: 420px) and (max-width: 480px) {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    font-size: ${({ theme }) => theme?.fontSizes?.md};
   }
 `;
 

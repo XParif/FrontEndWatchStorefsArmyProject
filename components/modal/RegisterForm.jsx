@@ -1,44 +1,59 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { client, isLogin, Loading2 , message } from "../../apolloClient";
+import { client, isLogin, Loading2, message } from "../../apolloClient";
 import { getRegister } from "../../graphql";
+import Button from "../shared/buttons/index";
+import Checkbox from "./../shared/checkboxes/index";
 import AddressForm from "./address";
 import { InputField, InputForm, InputLabel } from "./common";
-import Button from '../shared/buttons/index'
-import Checkbox from './../shared/checkboxes/index';
-
 
 const RegisterFormContainer = styled.div`
   width: 900px;
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 720px) and (max-width: 976px) {
+    width: 300px;
+  }
 `;
 
 const SectionWrapper = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Section = styled.div`
   margin: 5px;
 `;
 
-const RegisterForm = ({modalController}) => {
+const RegBtnWrapper = styled.div`
+  /* width: 300px; */
+  /* margin: 0 auto; */
+`;
+
+const RegisterForm = ({ modalController }) => {
   const [formInput, setFormInput] = useState({});
-  const [addressInput , setAddressInput] = useState({});
-  const [putAddress,setPutAddress] = useState(false)
-  const regHandler = async(e) => {
+  const [addressInput, setAddressInput] = useState({});
+  const [putAddress, setPutAddress] = useState(false);
+  const regHandler = async (e) => {
     e.preventDefault();
     try {
-      Loading2(true)
-      let query ;
-      if(putAddress){
-        query = getRegister(formInput , addressInput)
-      }else{
-        query = getRegister(formInput)
+      Loading2(true);
+      let query;
+      if (putAddress) {
+        query = getRegister(formInput, addressInput);
+      } else {
+        query = getRegister(formInput);
       }
+
+
       const {data , error} = await client.mutate({
         mutation : query
       })
+
       const jwt = data?.userReg?.jwt
       if(typeof window !== undefined){
         localStorage.setItem('jwt_token', `Bearer ${jwt}`);
@@ -48,11 +63,15 @@ const RegisterForm = ({modalController}) => {
       Loading2(false)
       modalController(false)
       message({type : "success" ,body : data?.userReg?.message})
+
+
     } catch (error) {
-      message({type : "failed" ,body : "SomeThing Went Worng , Plz Type Correctly"})
-      Loading2(false)
+      message({
+        type: "failed",
+        body: "SomeThing Went Worng , Plz Type Correctly",
+      });
+      Loading2(false);
     }
-    
   };
 
   const handleChange = (e) => {
@@ -121,14 +140,24 @@ const RegisterForm = ({modalController}) => {
           {/* <div  onClick={()=> setPutAddress(prv => (prv? false : true)) } > */}
           {/* <InputField type="button" value={(putAddress? "Skip For Now" : "Put Address" )} /> */}
           {/* </div> */}
-          <div onClick={()=> setPutAddress(prv => (prv? false : true)) }>
-            <Checkbox text="I want to add my address now"  />
+
+          <div onClick={() => setPutAddress((prv) => (prv ? false : true))}>
+            <Checkbox text="I want to add my address now" />
           </div>
-          {putAddress? <AddressForm handleChange={handleAddressInputChange} /> : ""}
+
+
+          {putAddress ? (
+            <AddressForm handleChange={handleAddressInputChange} />
+          ) : (
+            ""
+          )}
+
         </SectionWrapper>
-        <Button bg="primary" type="submit">
-          Register
-        </Button>
+        <RegBtnWrapper>
+          <Button bg="primary" type="submit">
+            Register
+          </Button>
+        </RegBtnWrapper>
       </InputForm>
     </RegisterFormContainer>
   );
