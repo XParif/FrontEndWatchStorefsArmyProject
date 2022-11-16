@@ -24,7 +24,6 @@ const Category = ({sorting , title, list , qureParamsArray }) => {
     return acc
 },{}))
 
-  console.log(qureObj)
 
   const reFIneUiStateQureParamsArray = (item)=>{
     if(!qureObj[`${item}`]){

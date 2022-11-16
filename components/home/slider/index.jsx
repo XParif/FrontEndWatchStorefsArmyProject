@@ -3,7 +3,6 @@ import Background from "../../shared/backgrounds";
 import Container from "../../shared/container";
 
 const handleClick = (index) => {
-  console.log(`${index} no item clicked`);
 };
 
 const Slider = () => {
