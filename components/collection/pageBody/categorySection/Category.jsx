@@ -7,6 +7,8 @@ import { useState, useEffect } from 'react';
 const CheckboxGroupStyle = styled.div`
   display: flex;
   flex-direction: column;
+  gap: .25rem;
+  margin: 1rem 0;
 `;
 
 const CategoryStyle = styled.div`
@@ -14,6 +16,7 @@ const CategoryStyle = styled.div`
 `;
 
 const Category = ({sorting , title, list , qureParamsArray }) => {
+  qureParamsArray = qureParamsArray.split('+')
   const [uiStateQureParamsArray , setUiStateQureParamsArray] = useState([...qureParamsArray]);
   
   const [qureObj , setQureObj] =   useState(list.reduce((acc , cu)=>{
@@ -21,7 +24,8 @@ const Category = ({sorting , title, list , qureParamsArray }) => {
     return acc
 },{}))
 
-console.log(uiStateQureParamsArray)
+  console.log(qureObj)
+
   const reFIneUiStateQureParamsArray = (item)=>{
     if(!qureObj[`${item}`]){
 
@@ -62,14 +66,33 @@ console.log(uiStateQureParamsArray)
       <CheckboxGroupStyle>
         {list.map((item ,index) => {
 
-          const reFinequreParamsArray = uiStateQureParamsArray.filter(v=> v !== item) ;
+          const reFinequreParamsArray = []; 
+
+
           if(!qureObj[`${item}`]){
-            reFinequreParamsArray.push(item)
+            reFinequreParamsArray[index] = reFinequreParamsArray[index] = uiStateQureParamsArray.reduce((acc , cu)=>{
+              acc =  acc + "+" + cu   
+              return acc
+            });
+            reFinequreParamsArray[index]+= `+${item}`
+          }else{
+            reFinequreParamsArray[index] = uiStateQureParamsArray.reduce((acc , cu)=>{
+              if(cu == item){
+                return acc
+              }
+              acc =  acc + "+" +cu  
+              return acc
+            }); 
+            
           }
 
+          reFinequreParamsArray[index] = reFinequreParamsArray[index].slice(1)
+          // if(!Array.isArray(reFinequreParamsArray[index])){
+            
           return(
-            <Link onClick={()=> reFIneUiStateQureParamsArray(item)}  key={index} href={{ pathname: '/collections', query: { catagories: reFinequreParamsArray , sorting : sorting}}}>
-              <Checkbox   defaultChecked={qureObj[`${item}`]}  text={item} />
+            <Link onClick={()=> reFIneUiStateQureParamsArray(item)}  key={index} href={{ pathname: '/collections', query: { catagories: reFinequreParamsArray[index] , sorting : sorting}}}>
+              <Checkbox   defaultChecked={( -1 !== uiStateQureParamsArray.findIndex(v => v == item))}  text={item} />
+               {qureObj[item] && <h1>AME Active</h1>  }
             </Link>
           )
 

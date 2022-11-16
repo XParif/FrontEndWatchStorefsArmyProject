@@ -108,7 +108,7 @@ export const getProductByCatagory = (selectedCatagory ,page , sorting , pageSize
     page = 1
   }
   if(!pageSize){
-    pageSize = 10
+    pageSize = 9
   }
   if(!sorting){
     sorting = `asc`
