@@ -1,10 +1,9 @@
 import styled from "styled-components";
-// import Image from "next/image";
+import Image from "next/image";
 import Title from "../../shared/title";
 import Container from "../../shared/container";
 import Button from "../../shared/buttons";
 import { FaInfoCircle, FaHome } from "react-icons/fa";
-
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -37,7 +36,7 @@ const MostPremiumWatch = () => {
           <ImageContainer>
             {/* <Image src="/diamondWatch.jpg" alt="diamond-watch" layout="fill" />*/}
             {/* TODO: I face some size issue with next image component */}
-            <img src="/diamondWatch.jpg" alt="diamond-watch" />
+            <Image src="/diamondWatch.jpg" alt="diamond-watch" />
           </ImageContainer>
 
           <div>
@@ -46,7 +45,7 @@ const MostPremiumWatch = () => {
             <p>
               {`
               Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
+              industry. Lorem Ipsum has been the industrys standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
               type and scrambled it to make a type specimen book. It has
               survived not only five centuries, but also the leap into

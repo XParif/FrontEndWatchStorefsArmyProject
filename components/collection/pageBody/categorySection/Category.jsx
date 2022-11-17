@@ -19,6 +19,7 @@ const CategoryStyle = styled.div`
   top: 0;
 `;
 
+
 const CheckBoxDesign = styled.div`
   display: flex;
   align-items: center;
@@ -80,6 +81,7 @@ const Category = ({ sorting, title, list, qureParamsArray }) => {
       });
     }
   };
+
 
   return (
     <CategoryStyle>
