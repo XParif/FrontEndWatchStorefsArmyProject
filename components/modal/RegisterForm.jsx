@@ -6,6 +6,7 @@ import Button from "../shared/buttons/index";
 import Checkbox from "./../shared/checkboxes/index";
 import AddressForm from "./address";
 import { InputField, InputForm, InputLabel } from "./common";
+import { justifyAlignCenter } from './../../utils/display.styled';
 
 const RegisterFormContainer = styled.div`
   width: 900px;
@@ -19,10 +20,8 @@ const RegisterFormContainer = styled.div`
 `;
 
 const SectionWrapper = styled.div`
-  display: flex;
+  ${justifyAlignCenter}
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 
 const Section = styled.div`

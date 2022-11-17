@@ -14,15 +14,15 @@ import { isLogin, LookupJwt, message, pocketKhali } from "../../apolloClient";
 import { useReactiveVar } from "@apollo/client";
 import { useRouter } from "next/router";
 import NavList from "./NavList";
+import { justifySpaceAround, alignItemsCenter } from "../../utils/display.styled";
+
 const NavContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
+${justifySpaceAround}
 
   @media screen and (min-width: 440px) and (max-width: 560px) {
-    display: flex;
+    ${alignItemsCenter}
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
     font-weight: ${({ theme }) => theme?.fontWeight?.small};
     font-size: ${({ theme }) => theme?.fontSizes?.default};
   }
@@ -102,8 +102,10 @@ const NavBar = ({ modalController, CartItemCount }) => {
 
                 isLogin(false);
                 message({ type: "success", body: "Successfully Logged Out" });
-
-                router.push("/");
+                Loading2(true)
+                if(typeof window !== undefined){
+                  window.location.reload()
+                }
               }}
             >
               <NavList title="LogOut" logo={<FaSignOutAlt />} />

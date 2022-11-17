@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { justifyAlignCenter } from './../../utils/display.styled';
 
 const LoadingStyle = styled.div`
   z-index: 1;
@@ -8,9 +9,7 @@ const LoadingStyle = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${justifyAlignCenter}
 `;
 
 export default LoadingStyle;

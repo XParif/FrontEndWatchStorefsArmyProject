@@ -17,6 +17,7 @@ import {
   FaLinkedin,
   FaRedditSquare,
 } from "react-icons/fa";
+import { RadioButtonLabel, RadioButtonInput } from "../../Products.styled";
 
 
 const ProductTittle = ({children}) =>{
@@ -99,12 +100,11 @@ const ProductInformationSection = ({ addtoCardhandeler,pointedVariantIndex ,prod
         <InlineText>Color : </InlineText>
         <SelectBox>
 
-          {variants.map((item , index ) => ( 
-            <label htmlFor= {item.id} key={index} >
-              <input onChange={() => variantsTensionReliefer(index , '🥵')} checked={pointedVariantIndex==index? true : false} name="😟" id={item.id} type="radio" /> 
+          {variants.map((item , index ) => (
+            <RadioButtonLabel htmlFor= {item.id} key={index}>
+              <RadioButtonInput onChange={() => variantsTensionReliefer(index , '🥵')} checked={pointedVariantIndex==index? true : false} name="😟" id={item.id} type="radio" />
               {item.color}
-            </label>
-        
+            </RadioButtonLabel>
           ))}
 
         </SelectBox>
