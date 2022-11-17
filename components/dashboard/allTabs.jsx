@@ -15,11 +15,11 @@ import { gql, useLazyQuery } from "@apollo/client";
 import { OuterOrderRow, InnerOrderRow } from "./dashboard.styled";
 import BlockText from "./../shared/texts/BlockText";
 
-const AllTabs = () => {
+const AllTabs = ({userID}) => {
   const [calledOrderData, { data: ordeINfo, loading: orderFetchLoading }] =
     useLazyQuery(gql`
       query {
-        orders {
+        orders (filters : {user_ref : {id : {eq : ${userID}}}},sort:["id:desc"]) {
           data {
             id
             attributes {

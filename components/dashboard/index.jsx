@@ -130,7 +130,7 @@ const Dashboard = () => {
           <SectionBar />
 
           <Body>
-            <AllTabs   />
+            <AllTabs userID={userData?.me?.id} />
           </Body>
         </Container>
       </Wrap>
