@@ -120,7 +120,7 @@ const AllTabs = () => {
             zipCode,
           } = items.delivaryAddress;
           return (
-            <OuterOrderRow>
+            <OuterOrderRow key={index}>
               <BlockText size="md" weight="medium">Order ID : #{items.id}</BlockText>
               <BlockText size="md" weight="medium">
                 Payment Method : {items.paymentMethod} Delivery
@@ -132,9 +132,9 @@ const AllTabs = () => {
               </BlockText>
 
               {items?.ordersItem?.map((item, index) => {
-                console.log(item);
+               
                 return (
-                  <InnerOrderRow>
+                  <InnerOrderRow key ={index}>
                     <BlockText size="md" weight="medium">Item Order ID : #{item.id}</BlockText>
                     <BlockText size="md" weight="medium">
                       {" "}
