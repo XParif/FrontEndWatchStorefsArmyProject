@@ -131,7 +131,7 @@ export const getProductByCatagory = (selectedCatagory ,page , sorting , pageSize
 
 export const GetProduct = gql`
 query GetProduct{
-  allProducts ${productgqlString}
+  allProducts (pagination :{pageSize : 9}) ${productgqlString}
 `;
 
 
