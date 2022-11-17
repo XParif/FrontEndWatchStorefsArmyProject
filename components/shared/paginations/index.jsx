@@ -12,7 +12,7 @@ const PaginationStyle = styled.div`
 
 const Pagination = ({uiState , setUiState ,page ,qureParamsArray, totalPage , sorting }) => {
   let nextPage = page < totalPage ? page+1 : page
-  let prvPage = page > 2 ? page-1 : page
+  let prvPage = page >= 2 ? page-1 : page
   if(totalPage == undefined){
     totalPage = 1
   }
