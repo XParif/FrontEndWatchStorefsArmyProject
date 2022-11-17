@@ -26,6 +26,8 @@ const ProductBlock = ({productInfo}) => {
   })
 
   const [pointedVariantIndex , setPointedVariantIndex] = useState(0)
+
+
     const variants = [{id : -1 , variantsImage : productInfo?.productImage?.url  , color : "default" , variantsId : -1, variantPrice :  productInfo?.defualtPrice}]
 
     productInfo.variants.map((item) => {
@@ -59,11 +61,11 @@ const ProductBlock = ({productInfo}) => {
       <ProductBlockStyle>
         <ProductImageSection >
           <MainView ProductimageUrl={ProductimageUrl} alterForImage = {productInfo?.productName} />
-          <SmallView variants = {variants} variantsTensionReliefer= {variantsTensionReliefer} />
+          <SmallView pointedVariantIndex={pointedVariantIndex}  variants = {variants} variantsTensionReliefer= {variantsTensionReliefer} />
       </ProductImageSection >
         <ProductInformationSection addtoCardhandeler={()=> addtoCardhandeler(forCartBosta)} pointedVariantIndex={pointedVariantIndex} productInfo={productInfo} variantsTensionReliefer = {variantsTensionReliefer} variants = {variants} price = {price} />
       </ProductBlockStyle>
-      <DetailsSection />
+      <DetailsSection productInfo={productInfo} />
      </>
   );
 };
