@@ -6,12 +6,12 @@ import Button from "../../shared/buttons";
 import ButtonGroup from "../../shared/buttons/ButtonGroup";
 import styled from "styled-components";
 import { FaChevronDown } from "react-icons/fa";
+import { justifySpaceCenter } from "../../../utils/display.styled";
 
 const ButtonList = ["All", "Classic", "Modern", "Smart Watch", "Men", "Women"];
 
 const CustomButton = styled.div`
-  display: flex;
-  justify-content: center;
+  ${justifySpaceCenter}
 `;
 
 const FeaturedProducts = ({list}) => {

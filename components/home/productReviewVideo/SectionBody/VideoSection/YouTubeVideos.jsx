@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Video from './Video'
+import { justifySpaceBetween } from './../../../../../utils/display.styled';
 
 const YoutubeVideosStyle = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${justifySpaceBetween}
   flex-wrap: wrap;
 `;
 

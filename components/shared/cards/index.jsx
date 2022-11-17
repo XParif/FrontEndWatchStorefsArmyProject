@@ -8,6 +8,7 @@ import Button from "../buttons";
 import Link from "next/link";
 import PriceBlock from "./textBlock/PriceBlock";
 import InlineText from './../texts/InlineText';
+import { justifySpaceBetween } from './../../../utils/display.styled';
 
 const BaseCard = styled.div`
   margin: 1rem 0.5rem;
@@ -16,9 +17,8 @@ const BaseCard = styled.div`
   transition: 0.5s;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   overflow: hidden;
-  display: flex;
+  ${justifySpaceBetween}
   flex-direction: column;
-  justify-content: space-between;
 
   &:hover {
     transform: scale(1.025);

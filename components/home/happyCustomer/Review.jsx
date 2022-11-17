@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { FaQuoteLeft } from "react-icons/fa";
 import BlockText from "../../shared/texts/BlockText";
 import Bar from "../../shared/texts/Bar";
+import { alignItemsCenter } from './../../../utils/display.styled';
 
 const ReviewStyle = styled.div`
   margin: 1rem;
   padding: 2rem;
   border-radius: 10px;
-  display: flex;
+  ${alignItemsCenter}
   flex-direction: column;
-  align-items: center;
 
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 `;
@@ -20,9 +20,8 @@ const FaQuoteLeftStyle = styled.div`
 `;
 
 const Reviewer = styled.div`
-  display: flex;
+  ${alignItemsCenter}
   flex-direction: column;
-  align-items: center;
   gap: .5rem;
   & > img {
     width: 70px;

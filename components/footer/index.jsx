@@ -3,11 +3,11 @@ import Background from "../shared/backgrounds";
 import Container from "../shared/container";
 import FBodyItem from "./FBodyItem";
 import Subscribe from "./Subscribe";
+import { alignItemsCenter, justifySpaceBetween } from './../../utils/display.styled';
 
 const CopyrightMsg = styled.div`
-  display: flex;
+  ${alignItemsCenter}
   justify-content: space-around;
-  align-items: center;
   color: ${({ theme }) => theme?.color?.white};
   width: 100%;
   height: 2.5rem;
@@ -16,16 +16,13 @@ const CopyrightMsg = styled.div`
 `;
 
 const FooterBody = styled.div`
+${justifySpaceBetween}
   padding: 5rem 0;
-  display: flex;
-  justify-content: space-between;
   background-color: ${({ bg, theme }) =>
     theme.color[bg] ?? theme?.color?.secondary};
 
   @media screen and (min-width: 720px) and (max-width: 976px) {
     display: grid;
-    justify-content: center;
-    align-items: center;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 0.5rem;
     padding: 0.5rem;
@@ -33,8 +30,6 @@ const FooterBody = styled.div`
 
   @media screen and (min-width: 420px) and (max-width: 480px) {
     display: grid;
-    justify-content: center;
-    align-items: center;
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
     padding: 1rem;

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import Button from "../../../../shared/buttons";
 import { FaChevronDown } from "react-icons/fa";
+import { justifySpaceCenter } from './../../../../../utils/display.styled';
 
 const CustomButtonStyle = styled.div`
-  display: flex;
-  justify-content: center;
+  ${justifySpaceCenter}
 `;
 
 const CustomButton = () => {
