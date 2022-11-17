@@ -7,6 +7,8 @@ const handleClick = (index) => {
 
 const Slider = () => {
   return (
+    <Container>
+
         <Carousel
           autoPlay={true}
           infiniteLoop={true}
@@ -16,13 +18,14 @@ const Slider = () => {
           showStatus={false}
           useKeyboardArrows={true}
           onClickItem={handleClick}
-        >
-          <img src="/images/slider/1.png" />
-          <img src="/images/slider/2.png" />
-          <img src="/images/slider/3.png" />
-          <img src="/images/slider/4.png" />
+          >
+          <img src="/images/slider/1.jpg" />
+          <img src="/images/slider/2.webp" />
+          <img src="/images/slider/3.webp" />
+          <img src="/images/slider/4.webp" />
         </Carousel>
 
+          </Container>
   );
 };
 export default Slider;
