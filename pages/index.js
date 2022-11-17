@@ -16,7 +16,7 @@ const  Home = ({allProducts})=> {
 
   return (
     <>
-      {/* <Slider /> */}
+      <Slider />
       {/* <HotOffer /> */}
       {/* <SummerSale /> */}
       <FeaturedProducts list = {allProducts} />

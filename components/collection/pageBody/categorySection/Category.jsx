@@ -20,6 +20,7 @@ const CategoryStyle = styled.div`
   top: 5rem;
 `;
 
+
 const CheckBoxDesign = styled.div`
   ${alignItemsCenter}
   gap: 0.75rem;
@@ -80,6 +81,7 @@ const Category = ({ sorting, title, list, qureParamsArray }) => {
       });
     }
   };
+
 
   return (
     <CategoryStyle>

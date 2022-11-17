@@ -3,7 +3,7 @@ import Dashboard from "../components/dashboard";
 const dashboard = () => {
   return (
     <>
-      <Dashboard />
+    {typeof window !== undefined && <Dashboard />}
     </>
   );
 };

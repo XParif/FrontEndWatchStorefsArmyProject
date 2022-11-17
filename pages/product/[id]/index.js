@@ -7,7 +7,7 @@ import Container from '../../../components/shared/container/index';
 import {client} from '../../../apolloClient/index';
 import { getSingleProduct } from '../../../graphql';
 const Product = ({productInfo , loading}) => {
-
+  
   return (
     <Background bg="white">
       <Container>
