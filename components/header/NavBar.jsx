@@ -15,6 +15,7 @@ import { useReactiveVar } from "@apollo/client";
 import { useRouter } from "next/router";
 import NavList from "./NavList";
 import { justifySpaceAround, alignItemsCenter } from "../../utils/display.styled";
+import { Loading2 } from "../../apolloClient";
 
 const NavContainer = styled.div`
 ${justifySpaceAround}

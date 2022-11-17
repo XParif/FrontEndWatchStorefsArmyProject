@@ -15,7 +15,9 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ModalUnfocused = styled.div`
-  z-index: 100000;
+  z-index: 100001;
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
