@@ -7,6 +7,7 @@ import ButtonGroup from "../../shared/buttons/ButtonGroup";
 import styled from "styled-components";
 import { FaChevronDown } from "react-icons/fa";
 import { justifySpaceCenter } from "../../../utils/display.styled";
+import Link from "next/link";
 
 const ButtonList = ["All", "Classic", "Modern", "Smart Watch", "Men", "Women"];
 
@@ -23,9 +24,11 @@ const FeaturedProducts = ({list}) => {
         </SectionHeading>
         <CardGroup list={list} />
         <CustomButton>
+          <Link href="/collections">
           <Button>
             Show More <FaChevronDown />{" "}
           </Button>
+         </Link> 
         </CustomButton>
       </Container>
     </Background>
