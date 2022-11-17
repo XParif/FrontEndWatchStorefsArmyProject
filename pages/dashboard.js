@@ -4,7 +4,7 @@ import { useReactiveVar } from '@apollo/client';
 
 
 
-const Dashboard = () => {
+const Dashboardp = () => {
   // const [custom , setCustom ]  = useState(isLogin())
   const login = useReactiveVar(isLogin)
 
@@ -23,5 +23,5 @@ const Dashboard = () => {
   
 };
 
-export default Dashboard;
+export default Dashboardp;
 
