@@ -27,7 +27,7 @@ const SingleImage = styled.div`
   }
 `;
 
-const SmallView = ({ variants, variantsTensionReliefer }) => {
+const SmallView = ({ variants, variantsTensionReliefer  , pointedVariantIndex}) => {
   return (
     <SmallViewStyle>
       {variants.map((item, index) => {

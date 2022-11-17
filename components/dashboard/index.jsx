@@ -4,6 +4,8 @@ import { BaseButton } from "../shared/buttons";
 import Container from "../shared/container";
 import SectionBar from "../shared/texts/SectionBar";
 import AllTabs from "./allTabs";
+import { gql, useQuery , useLazyQuery } from '@apollo/client';
+import { Loading2 } from '../../apolloClient/index';
 
 const Wrap = styled.div`
   padding: 1.5rem 0 5rem 0;
@@ -78,6 +80,23 @@ const Details = styled.div`
 `;
 
 const Dashboard = () => {
+   const {data : userData , loading , error} = useQuery(gql`query{
+    me{
+      id,
+      email,
+      username
+    }
+  }`)
+
+  
+
+
+  if(loading){
+    Loading2(true)
+  }else{
+    Loading2(false)
+  }
+
   return (
     <>
       <Wrap>
@@ -96,27 +115,23 @@ const Dashboard = () => {
             <TopContent>
               <Profile>
                 <Picture>
-                  <img src="/HM_Azijul.jpg" alt="Profile Picture" />
+                  <img src="/useImage.png" alt="Profile Picture" />
                   {/* TODO:issues when i use nextjs image component, i faced some problem in design. so i use here html img tag. in future hope we can solve it */}
                 </Picture>
 
                 <Details>
-                  <h3>HM Azijul</h3>
+                  <h3>{userData?.me?.username}</h3>
                   <p>
-                    Madaripur sadar, Dhaka, <br />
-                    Bangladesh
+                  {userData?.me?.email}
                   </p>
                 </Details>
               </Profile>
-              <div>
-                <SignOutButton>Sign Out</SignOutButton>
-              </div>
             </TopContent>
           </Top>
           <SectionBar />
 
           <Body>
-            <AllTabs />
+            <AllTabs   />
           </Body>
         </Container>
       </Wrap>

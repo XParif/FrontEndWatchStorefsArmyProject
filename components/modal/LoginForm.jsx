@@ -22,6 +22,7 @@ const LoginForm = ({ modalController }) => {
 
   const loginHandler = async (e) => {
     e.preventDefault();
+
     try {
       Loading2(true);
       const { data, error } = await client.mutate({
@@ -44,6 +45,7 @@ const LoginForm = ({ modalController }) => {
         body: "UserEmail/UserName OR PassWord dosen't Match",
       });
       setFormInput({});
+
     }
   };
 
