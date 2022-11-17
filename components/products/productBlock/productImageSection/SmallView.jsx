@@ -33,7 +33,6 @@ const SmallView = ({ variants, variantsTensionReliefer  , pointedVariantIndex}) 
   return (
     <SmallViewStyle>
       {variants.map((item, index) => {
-      console.log(pointedVariantIndex, index);
         return (
           <SingleImage
             key={index}
