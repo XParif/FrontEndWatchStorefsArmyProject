@@ -6,36 +6,35 @@ import Container from "./../shared/container/";
 import BrandLogo from "./BrandLogo";
 import NavBar from "./NavBar";
 import SearchOption from "./SearchOption";
+import { alignItemsCenter } from './../../utils/display.styled';
 
 const Wrapper = styled.div`
   @media screen and (min-width: 976px) {
-    position: fixed;
+    position: sticky;
+    top : 0;
     width: 100%;
     z-index: 100;
   }
 `;
 
 const HeaderContainer = styled.div`
-  display: flex;
+${alignItemsCenter}
   justify-content: space-between;
-  align-items: center;
 
   /* height: 5rem; */
   background-color: ${({ bg = "primary", theme }) =>
     theme.color[bg] ?? theme?.color?.secondary};
 
   @media screen and (min-width: 720px) and (max-width: 976px) {
-    display: flex;
+    ${alignItemsCenter}
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: center;
   }
 
   @media screen and (min-width: 440px) and (max-width: 560px) {
-    display: flex;
+    ${alignItemsCenter}
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
     font-weight: ${({ theme }) => theme?.fontWeight?.small};
     font-size: ${({ theme }) => theme?.fontSizes?.default};
   }

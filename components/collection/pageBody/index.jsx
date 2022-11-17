@@ -2,11 +2,11 @@ import styled from "styled-components";
 import Container from "../../shared/container/index";
 import CategorySection from './categorySection'
 import ProductSection from './productSection'
+import { justifySpaceBetween } from './../../../utils/display.styled';
 
 const PageBodyStyle = styled.div`
   & > div {
-    display: flex;
-    justify-content: space-between;
+    ${justifySpaceBetween}
   }
 `;
 

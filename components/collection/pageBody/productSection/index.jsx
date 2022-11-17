@@ -4,18 +4,18 @@ import ProductSorting from "./ProductSorting";
 import CardGroup from './../../../shared/cards/CardGroup';
 import Pagination from './../../../shared/paginations/index';
 import { useState } from "react";
+import { alignItemsCenter } from './../../../../utils/display.styled';
 
 const ProductSectionStyle = styled.div`
   width: 100%;
 `;
 
 const ProductController = styled.div`
-  display: flex;
+  ${alignItemsCenter}
   justify-content: space-between;
-  align-items: center;
   background-color: ${({theme}) => theme?.color?.white};
   position: sticky;
-  top: 0;
+  top: 4rem;
   z-index: 1;
 `;
 

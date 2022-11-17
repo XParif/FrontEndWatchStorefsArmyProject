@@ -6,6 +6,7 @@ import CustomButton from "./../components/404/CustomButton";
 import { FaHome } from "react-icons/fa";
 import Link from "next/link";
 
+
 const NotFound = () => {
   return (
     <Container>

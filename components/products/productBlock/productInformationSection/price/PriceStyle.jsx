@@ -1,9 +1,9 @@
 import styled from "styled-components";
+import { justifySpaceBetween } from './../../../../../utils/display.styled';
 
 const PriceStyle = styled.div`
-  display: flex;
+  ${justifySpaceBetween}
   width: 150px;
-    justify-content: space-between;
 `;
 
 export default PriceStyle

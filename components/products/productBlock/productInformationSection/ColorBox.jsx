@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import { alignItemsCenter } from './../../../../utils/display.styled';
 
 const ColorBox = styled.div`
-  display: flex;
-  align-items: center;
+  ${alignItemsCenter}
   gap: 1rem;
 `;
 

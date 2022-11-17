@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Button from "../buttons";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import  Link  from 'next/link';
+import { useState } from "react";
 
 const PaginationStyle = styled.div`
   display: flex;

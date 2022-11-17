@@ -1,11 +1,10 @@
 import { FaSearch } from "react-icons/fa";
 import styled from "styled-components";
 import Search from "./../shared/searchs";
+import { justifyAlignCenter } from './../../utils/display.styled';
 
 const SearchContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${justifyAlignCenter}
 `;
 
 const SearchForm = styled.form``;

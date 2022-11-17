@@ -1,9 +1,5 @@
 import {css} from 'styled-components'
 
-export const flex = css`
-    display: flex;
-`
-
 export const justifySpaceBetween = css`
     display: flex;
     justify-content: space-between;
@@ -16,6 +12,11 @@ export const justifySpaceCenter = css`
 export const justifySpaceEvenly = css`
     display: flex;
     justify-content: space-evenly;
+
+`
+export const justifySpaceAround = css`
+    display: flex;
+    justify-content: space-around;
 `
 
 export const alignItemsCenter = css`

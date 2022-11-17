@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import { justifySpaceBetween } from './../../../../utils/display.styled';
 const PriceStyle = styled.div`
   margin-top : .75rem;
-  display: flex;
-  justify-content: space-between;
+  ${justifySpaceBetween}
 `;
 
 const PriceBlock = ({children}) => {
