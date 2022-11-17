@@ -140,8 +140,8 @@ const RegisterForm = ({ modalController }) => {
           {/* <InputField type="button" value={(putAddress? "Skip For Now" : "Put Address" )} /> */}
           {/* </div> */}
 
-          <div onClick={() => setPutAddress((prv) => (prv ? false : true))}>
-            <Checkbox text="I want to add my address now" />
+          <div >
+            <Checkbox text="I want to add my address now" handleClick={() => setPutAddress((prv) => (prv ? false : true))} />
           </div>
 
 

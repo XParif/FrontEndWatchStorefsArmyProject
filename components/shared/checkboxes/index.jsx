@@ -12,18 +12,18 @@ const CheckboxStyle = styled.div`
 
 
 
-const Checkbox = ({ text , defaultChecked }) => {
+const Checkbox = ({ text, handleClick }) => {
 
   return (
-    <CheckboxStyle>
+    <CheckboxStyle >
       <input
-        defaultChecked={defaultChecked}
         type="checkbox"
         id={text}
         name={text}
         value={text}
+        onChange={handleClick} 
       />
-      <label for={text}>{text}</label>
+      <label for={text} >{text}</label>
     </CheckboxStyle>
   );
 };
