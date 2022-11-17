@@ -102,8 +102,10 @@ const NavBar = ({ modalController, CartItemCount }) => {
 
                 isLogin(false);
                 message({ type: "success", body: "Successfully Logged Out" });
-
-                router.push("/");
+                Loading2(true)
+                if(typeof window !== undefined){
+                  window.location.reload()
+                }
               }}
             >
               <NavList title="LogOut" logo={<FaSignOutAlt />} />
